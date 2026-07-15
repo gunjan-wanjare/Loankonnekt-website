@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a192f;
+  --muted: #64748b;
+  --surface: #f1f5f9;
+  --surface-blue: #e8f1ff;
+  --navy: #050A18;
+  --navy-deep: #040812;
+  --brand: #0066ff;
+  --brand-bright: #3b82f6;
+  --border: rgba(10, 25, 47, 0.1);
+  --header-offset: 5.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-blue: var(--surface-blue);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-brand: var(--brand);
+  --color-brand-bright: var(--brand-bright);
+  --font-sans: var(--font-geist-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-offset: 6.25rem;
+  }
+}
+
+section[id],
+[id="top"],
+[id="trust"],
+[id="platform"],
+[id="features"],
+[id="process"],
+[id="compare"],
+[id="stats"],
+[id="faq"],
+[id="contact"] {
+  scroll-margin-top: var(--header-offset);
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--brand);
+  color: #fff;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero ambient glow */
+.hero-glow {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 35%, rgba(37, 99, 235, 0.28), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(30, 80, 162, 0.18), transparent 65%);
+}
+
+/* CTA pinstripe texture */
+.cta-pinstripe {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 11px,
+    rgba(255, 255, 255, 0.035) 11px,
+    rgba(255, 255, 255, 0.035) 12px
+  );
+}
+
+@keyframes trust-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-trust-marquee {
+  animation: trust-marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-trust-marquee {
+    animation: none;
+  }
+}
