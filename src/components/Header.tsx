@@ -209,16 +209,15 @@ export function Header() {
               {headerContent.cta.label}
             </Button>
 
-            {/* Crediple-style: YAKA lands in header after scroll flight */}
+            {/* Single header YAKA — only after scroll (no floating copy) */}
             <AnimatePresence mode="popLayout">
               {scrolled ? (
                 <motion.div
                   key="header-yaka"
-                  id="yaka-nav-anchor"
                   initial={{ opacity: 0, width: 0, scale: 0.85 }}
                   animate={{ opacity: 1, width: "auto", scale: 1 }}
                   exit={{ opacity: 0, width: 0, scale: 0.85 }}
-                  transition={{ type: "spring", stiffness: 180, damping: 22, delay: 0.12 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 24 }}
                   className="flex items-center gap-3 overflow-hidden pl-1 select-none"
                 >
                   <div className="h-5 w-px shrink-0 bg-navy/15" />
@@ -238,9 +237,7 @@ export function Header() {
                     />
                   </a>
                 </motion.div>
-              ) : (
-                <span id="yaka-nav-anchor" className="sr-only" aria-hidden />
-              )}
+              ) : null}
             </AnimatePresence>
           </div>
 

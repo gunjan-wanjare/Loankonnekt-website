@@ -54,9 +54,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <Preloader onComplete={handleLoaderComplete} />
       ) : null}
 
-      {(phase === "flying" || phase === "ready") && (
+      {phase === "flying" ? (
         <FloatingLogo phase={phase} onIntroComplete={handleIntroComplete} />
-      )}
+      ) : null}
 
       {children}
       <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />

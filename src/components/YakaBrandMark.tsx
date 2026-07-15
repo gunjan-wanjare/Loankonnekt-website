@@ -40,6 +40,7 @@ export function YakaBrandMark({
       )}
     >
       <div
+        data-yaka-icon
         className={cn(
           "relative h-6 w-6 sm:h-10 sm:w-10 md:h-14 md:w-14 xl:h-16 xl:w-16",
           logoClassName,
