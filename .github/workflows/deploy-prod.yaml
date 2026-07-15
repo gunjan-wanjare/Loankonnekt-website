@@ -24,13 +24,32 @@ jobs:
           node-version: "20"
           cache: "npm"
 
+      # =======================
+      # DEBUG OIDC TOKEN
+      # =======================
+      - name: Get OIDC Token
+        id: oidc
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const token = await core.getIDToken("sts.amazonaws.com");
+            core.setSecret(token);
+            core.setOutput("token", token);
+      - name: Decode OIDC Token
+        run: |
+          TOKEN="${{ steps.oidc.outputs.token }}"
+          PAYLOAD=$(echo "$TOKEN" | cut -d '.' -f2 | tr '_-' '/+' | base64 -d 2>/dev/null || true)
+          echo "===== OIDC TOKEN PAYLOAD ====="
+          echo "$PAYLOAD"
+          echo "=============================="
+      # =======================
+      # AWS LOGIN
+      # =======================
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
-
-
 
       - name: Install dependencies
         run: npm ci
@@ -43,19 +62,15 @@ jobs:
       - name: Verify dist folder
         run: |
           ls -la
-          ls -la dist
-
+          ls -la out
       - name: Deploy to S3
         run: |
-          aws s3 sync dist/ s3://${{ vars.AWS_S3_BUCKET }}/ \
-            --delete
-
+          aws s3 sync out/ s3://${{ vars.AWS_S3_BUCKET }}/ --delete
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.AWS_CLOUDFRONT_ID }} \
             --paths "/*"
-
       - name: Deployment summary
         run: |
           echo "# Deployment Successful" >> $GITHUB_STEP_SUMMARY
