@@ -1,7 +1,7 @@
 "use client";
 
 import { Logo } from "@/components/ui/Logo";
-import { footer, site } from "@/content";
+import { footer } from "@/content";
 
 function FooterBrand() {
   return (
@@ -9,10 +9,7 @@ function FooterBrand() {
       <a href="/" aria-label="LoanKonnekt" className="inline-flex text-xl sm:text-[1.35rem]">
         <Logo tone="dark" />
       </a>
-      <p
-        className="mt-2.5 text-[12px] tracking-wide"
-        style={{ color: site.yaka.color }}
-      >
+      <p className="mt-2.5 text-[12px] tracking-wide text-white">
         A <span className="font-bold">YAKA</span> Brand
       </p>
     </div>
