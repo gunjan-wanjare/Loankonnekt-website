@@ -107,8 +107,8 @@ export const footer = {
   ],
   copyright: "© 2024 Loan Konnekt Technologies Pvt. Ltd. All rights reserved.",
   legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookies" },
+    { label: "Privacy Policy", href: "/privacy/" },
+    { label: "Terms of Service", href: "/terms/" },
+    { label: "Cookie Policy", href: "/cookies/" },
   ],
 } as const;
