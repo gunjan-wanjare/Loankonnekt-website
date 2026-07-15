@@ -15,6 +15,18 @@ function formatPageName(href: string, linkText: string) {
     .join(" ");
 }
 
+/** Routes that already have real pages — never trigger Coming Soon */
+const REAL_ROUTES = new Set(["/", "/privacy", "/terms", "/cookies"]);
+
+function normalizePath(href: string) {
+  try {
+    const url = new URL(href, window.location.origin);
+    return url.pathname.replace(/\/$/, "") || "/";
+  } catch {
+    return href.split("?")[0].split("#")[0] || "/";
+  }
+}
+
 function shouldShowComingSoon(anchor: HTMLAnchorElement) {
   if (anchor.dataset.comingSoon === "false") return false;
 
@@ -34,6 +46,9 @@ function shouldShowComingSoon(anchor: HTMLAnchorElement) {
     // Real in-page section → allow scroll
     if (document.getElementById(id)) return false;
   }
+
+  const path = normalizePath(href);
+  if (REAL_ROUTES.has(path)) return false;
 
   return href.startsWith("#") || href.startsWith("/");
 }

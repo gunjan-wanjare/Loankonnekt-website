@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -56,7 +57,10 @@ function getActiveLabel(): NavLabel | "" {
 }
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/" || pathname === "";
+  const [scrolled, setScrolled] = useState(() => !isHome);
   const [open, setOpen] = useState(false);
   const [activeLabel, setActiveLabel] = useState<NavLabel | "">("");
   const lockUntilRef = useRef(0);
@@ -119,6 +123,16 @@ export function Header() {
     lockUntilRef.current = Date.now() + 1200;
     setOpen(false);
 
+    // From legal / inner pages, send users to home anchors
+    if (!isHome && href.startsWith("#")) {
+      const target = href === "#top" ? "/" : `/${href}`;
+      window.setTimeout(() => {
+        document.body.style.overflow = "";
+        router.push(target);
+      }, 80);
+      return;
+    }
+
     window.setTimeout(() => {
       document.body.style.overflow = "";
       scrollToSection(href);
@@ -130,7 +144,8 @@ export function Header() {
     }, 80);
   };
 
-  const onLight = scrolled;
+  // Privacy / inner pages always use the solid light header
+  const onLight = scrolled || !isHome;
 
   return (
     <>
@@ -147,11 +162,12 @@ export function Header() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-5 md:h-20 md:px-8">
           <a
-            href="#top"
+            href={isHome ? "#top" : "/"}
             className="relative z-10 flex items-center text-xl sm:text-[1.35rem]"
             onClick={(e) => {
               e.preventDefault();
-              goTo("#top", "");
+              if (isHome) goTo("#top", "");
+              else router.push("/");
             }}
           >
             <Logo tone={onLight ? "light" : "dark"} />

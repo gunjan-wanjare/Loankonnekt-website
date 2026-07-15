@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Preloader } from "@/components/Preloader";
 import { ComingSoonModal } from "@/components/ComingSoonModal";
 import {
@@ -31,9 +32,21 @@ function ScrollToTopOnLoad() {
 
 /** Site chrome: preloader → flying YAKA → ready (+ coming soon). */
 export function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/" || pathname === "";
   const { isOpen, pageName, closeModal } = useComingSoonLinks();
-  const [phase, setPhase] = useState<HomeIntroPhase>(() => getInitialIntroPhase());
+  const [phase, setPhase] = useState<HomeIntroPhase>(() =>
+    getInitialIntroPhase(),
+  );
   const loaderDoneRef = useRef(false);
+
+  useEffect(() => {
+    if (!isHome) {
+      setPhase("ready");
+      return;
+    }
+    setPhase(getInitialIntroPhase());
+  }, [isHome, pathname]);
 
   const handleLoaderComplete = useCallback(() => {
     if (loaderDoneRef.current) return;
@@ -46,15 +59,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     setPhase("ready");
   }, []);
 
+  const showIntro = isHome && phase !== "ready";
+
   return (
-    <IntroContext.Provider value={{ phase }}>
+    <IntroContext.Provider value={{ phase: isHome ? phase : "ready" }}>
       <ScrollToTopOnLoad />
 
-      {phase === "loading" ? (
+      {showIntro && phase === "loading" ? (
         <Preloader onComplete={handleLoaderComplete} />
       ) : null}
 
-      {phase === "flying" ? (
+      {showIntro && phase === "flying" ? (
         <FloatingLogo phase={phase} onIntroComplete={handleIntroComplete} />
       ) : null}
 
