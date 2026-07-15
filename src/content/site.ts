@@ -11,9 +11,13 @@ export const site = {
     alt: "LoanKonnekt — AI Digital Lending Platform",
   },
   yaka: {
-    src: "/images/yaka-light.png",
+    /** Soft mark for dark navy (hero / preloader) — Crediple dark */
+    softSrc: "/images/yaka-soft.png",
+    /** Royal blue mark for light surfaces (scrolled header) — Crediple light */
+    lightSrc: "/images/yaka-light.png",
     alt: "A YAKA Brand",
-    color: "#155DFC",
+    darkText: "#B0C0F8",
+    lightText: "#2F80ED",
   },
 } as const;
 

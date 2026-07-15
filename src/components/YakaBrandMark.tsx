@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { site } from "@/content";
 
 type YakaBrandMarkProps = {
   className?: string;
@@ -10,27 +9,28 @@ type YakaBrandMarkProps = {
   taglineClassName?: string;
   showTagline?: boolean;
   /**
-   * dark = navy / dark surfaces (hero, preloader)
-   * light = white surfaces (scrolled header)
-   * Kept for layout callers; tagline always matches logo blue.
+   * dark — hero / preloader (navy): soft mark + #B0C0F8 tagline (Crediple dark)
+   * light — on white surfaces: royal blue mark + #2F80ED tagline (Crediple light)
    */
   tone?: "dark" | "light";
   priority?: boolean;
 };
 
 /**
- * Shared YAKA mark + “A YAKA Brand” tagline.
- * Always uses the same hi-res blue logo so color matches everywhere.
+ * Crediple-style YAKA mark + “A YAKA Brand” tagline.
+ * Used on Preloader + Hero only — Footer keeps its own white copy.
  */
 export function YakaBrandMark({
   className,
   logoClassName,
   taglineClassName,
   showTagline = true,
-  tone: _tone = "dark",
+  tone = "dark",
   priority = true,
 }: YakaBrandMarkProps) {
-  void _tone;
+  const isDark = tone === "dark";
+  const logoSrc = isDark ? "/images/yaka-soft.png" : "/images/yaka-light.png";
+  const taglineClass = isDark ? "text-[#B0C0F8]" : "text-[#2F80ED]";
 
   return (
     <div
@@ -46,8 +46,8 @@ export function YakaBrandMark({
         )}
       >
         <Image
-          src={site.yaka.src}
-          alt={site.yaka.alt}
+          src={logoSrc}
+          alt="YAKA"
           fill
           priority={priority}
           quality={100}
@@ -59,11 +59,12 @@ export function YakaBrandMark({
         <p
           className={cn(
             "max-w-[4rem] text-center text-[7.5px] font-medium leading-[1.15] tracking-wide sm:max-w-none sm:whitespace-nowrap sm:text-[10px] md:text-[11px]",
+            taglineClass,
             taglineClassName,
           )}
-          style={{ color: site.yaka.color }}
         >
-          A <span className="font-bold">YAKA</span> Brand
+          A{" "}
+          <span className={cn("font-bold", taglineClass)}>YAKA</span> Brand
         </p>
       ) : null}
     </div>

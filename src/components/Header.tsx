@@ -229,7 +229,7 @@ export function Header() {
                     className="relative block h-5 w-[22px] shrink-0"
                   >
                     <Image
-                      src={site.yaka.src}
+                      src={site.yaka.lightSrc}
                       alt="YAKA"
                       fill
                       sizes="22px"
@@ -258,7 +258,7 @@ export function Header() {
                   className="relative h-7 w-7 shrink-0"
                 >
                   <Image
-                    src={site.yaka.src}
+                    src={site.yaka.lightSrc}
                     alt="YAKA"
                     fill
                     sizes="28px"
