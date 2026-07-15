@@ -19,11 +19,11 @@ function FooterBrand() {
 export function Footer() {
   return (
     <footer id="contact" className="border-t border-white/10 bg-[#050A18] text-white">
-      <div className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-6 sm:py-14 md:px-8 lg:py-16">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+      <div className="mx-auto w-full max-w-7xl px-5 py-5 sm:px-6 md:px-8 md:py-6">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
           <div className="max-w-md shrink-0 lg:max-w-sm">
             <FooterBrand />
-            <p className="mt-4 max-w-[17.5rem] text-[13px] leading-[1.55] text-slate-400 sm:mt-5 sm:max-w-[19rem] sm:text-sm sm:leading-relaxed">
+            <p className="mt-2.5 max-w-[17.5rem] text-[13px] leading-[1.55] text-slate-400 sm:max-w-[19rem] sm:text-sm sm:leading-relaxed">
               {footer.blurb.map((line) => (
                 <span key={line} className="block">
                   {line}
@@ -32,13 +32,13 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid w-full grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-6 lg:max-w-3xl lg:gap-8">
+          <div className="grid w-full grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-4 sm:gap-x-6 lg:max-w-3xl lg:gap-7">
             {footer.columns.map((col) => (
               <div key={col.heading} className="min-w-0">
                 <h3 className="text-[13px] font-semibold tracking-tight text-white sm:text-sm">
                   {col.heading}
                 </h3>
-                <ul className="mt-3 space-y-2.5 sm:mt-4 sm:space-y-3">
+                <ul className="mt-2 space-y-1.5 sm:mt-2.5 sm:space-y-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <a
@@ -55,7 +55,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+        <div className="mt-5 flex flex-col gap-2.5 border-t border-white/10 pt-4 sm:mt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p className="text-[12px] leading-relaxed text-slate-500 sm:text-sm">
             {footer.copyright}
           </p>
