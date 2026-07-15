@@ -93,8 +93,10 @@ export function Ecosystem() {
           >
             {ecosystem.nodes.map((_, i) => {
               const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
-              const x = 50 + Math.cos(angle) * RADIUS;
-              const y = 50 + Math.sin(angle) * RADIUS;
+              // Stop just inside the icon so dashes don't run under labels
+              const lineRadius = RADIUS - 5.5;
+              const x = 50 + Math.cos(angle) * lineRadius;
+              const y = 50 + Math.sin(angle) * lineRadius;
               const isActive = active === i;
 
               return (
@@ -130,20 +132,22 @@ export function Ecosystem() {
             </span>
           </motion.div>
 
-          {/* Orbit nodes */}
+          {/* Orbit nodes — icon sits on spoke end; label always faces outward */}
           {ecosystem.nodes.map((node, i) => {
             const Icon = getIcon(node.icon);
             const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
             const x = 50 + Math.cos(angle) * RADIUS;
             const y = 50 + Math.sin(angle) * RADIUS;
             const isActive = active === i;
-            // Prefer tooltip below for bottom half, above for top half
-            const tooltipBelow = Math.sin(angle) >= -0.15;
+            const sin = Math.sin(angle);
+            // Top / bottom halves: keep label outside the ring so spokes never cross text
+            const labelOutwardTop = sin < -0.2;
+            const tooltipBelow = !labelOutwardTop;
 
             return (
               <motion.div
                 key={node.label}
-                className="absolute z-30 flex w-[7.25rem] -translate-x-1/2 -translate-y-1/2 flex-col items-center md:w-32"
+                className="absolute z-30 -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${x}%`, top: `${y}%` }}
                 initial={{ opacity: 0, scale: 0.7 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -161,11 +165,12 @@ export function Ecosystem() {
                   aria-pressed={isActive}
                   aria-describedby={isActive ? `eco-tip-${i}` : undefined}
                   onClick={() => setActive(i)}
-                  className="group flex flex-col items-center outline-none"
+                  className="group relative flex outline-none"
                 >
+                  {/* Icon anchored at spoke tip */}
                   <span
                     className={cn(
-                      "inline-flex h-12 w-12 items-center justify-center rounded-2xl border shadow-sm transition-all duration-300 md:h-14 md:w-14",
+                      "relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-2xl border shadow-sm transition-all duration-300 md:h-14 md:w-14",
                       isActive
                         ? "border-brand-bright bg-brand-bright text-white shadow-[0_12px_28px_-10px_rgba(59,130,246,0.65)]"
                         : "border-black/5 bg-white text-brand-bright hover:border-brand-bright/30",
@@ -173,10 +178,17 @@ export function Ecosystem() {
                   >
                     <Icon size={22} strokeWidth={1.85} />
                   </span>
+
+                  {/* Label — always outside the hub (below on bottom, above on top) */}
                   <span
                     className={cn(
-                      "mt-2.5 text-center text-[11px] font-semibold leading-snug md:text-xs",
+                      "pointer-events-none absolute left-1/2 z-20 w-[7.25rem] -translate-x-1/2 text-center text-[11px] font-semibold leading-snug md:w-32 md:text-xs",
+                      // Soft plate so any spoke underlap stays hidden
+                      "rounded-md bg-[#F7F9FC]/95 px-1 py-0.5",
                       isActive ? "text-navy" : "text-slate-500",
+                      labelOutwardTop
+                        ? "bottom-[calc(100%+0.55rem)]"
+                        : "top-[calc(100%+0.55rem)]",
                     )}
                   >
                     {node.label}
@@ -193,10 +205,10 @@ export function Ecosystem() {
                       exit={{ opacity: 0, y: tooltipBelow ? 4 : -4, scale: 0.96 }}
                       transition={{ duration: 0.22 }}
                       className={cn(
-                        "absolute z-40 w-[180px] rounded-xl bg-navy px-3.5 py-2.5 text-center text-[11px] leading-relaxed text-white shadow-xl md:w-[210px] md:text-xs",
+                        "absolute left-1/2 z-40 w-[180px] -translate-x-1/2 rounded-xl bg-navy px-3.5 py-2.5 text-center text-[11px] leading-relaxed text-white shadow-xl md:w-[210px] md:text-xs",
                         tooltipBelow
-                          ? "top-[calc(100%+0.35rem)]"
-                          : "bottom-[calc(100%+0.35rem)]",
+                          ? "top-[calc(100%+2.65rem)]"
+                          : "bottom-[calc(100%+2.65rem)]",
                       )}
                     >
                       {node.description}

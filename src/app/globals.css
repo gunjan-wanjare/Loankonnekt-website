@@ -62,6 +62,11 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+body.preloader-active,
+body.modal-open {
+  overflow: hidden;
+}
+
 ::selection {
   background: var(--brand);
   color: #fff;

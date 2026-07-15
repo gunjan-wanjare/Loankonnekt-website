@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -10,6 +11,8 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { YakaBrandMark } from "@/components/YakaBrandMark";
+import { useIntroPhase } from "@/components/FloatingLogo";
 import { hero } from "@/content";
 import { easeOutExpo, heroContainer, heroItem } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -184,13 +187,43 @@ function ApprovalCard() {
 const cardComponents = [ScoreCard, PipelineCard, DecisionsCard, ApprovalCard];
 
 export function Hero() {
+  const { phase } = useIntroPhase();
+  const [scrolled, setScrolled] = useState(false);
+  const showStaticYaka = phase === "ready" && !scrolled;
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 24);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
   return (
     <section
       id={hero.id}
-      className="relative overflow-hidden bg-[#050A18] pt-[5.25rem] text-white sm:pt-24"
+      className="relative overflow-hidden bg-[#050A18] pt-[6.5rem] text-white sm:pt-28"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_95%_50%_at_50%_-5%,rgba(37,99,235,0.4),transparent_60%)] sm:bg-[radial-gradient(ellipse_70%_50%_at_50%_20%,rgba(37,99,235,0.22),transparent_70%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_35%_at_85%_5%,rgba(59,130,246,0.16),transparent_50%)]" />
+
+      {/* Anchor for flying logo — static mark only after land, before scroll */}
+      <div
+        id="yaka-logo-anchor"
+        className="pointer-events-none absolute top-[4.5rem] right-3 z-20 sm:right-5 md:top-[5.25rem] md:right-8 lg:right-12"
+      >
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: showStaticYaka ? 1 : 0,
+            y: showStaticYaka ? 0 : -6,
+          }}
+          transition={{ duration: 0.25, ease: easeOutExpo }}
+          className={cn(!showStaticYaka && "pointer-events-none")}
+          aria-hidden={!showStaticYaka}
+        >
+          <YakaBrandMark tone="dark" />
+        </motion.div>
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <motion.div
@@ -234,14 +267,6 @@ export function Hero() {
             className="mt-6 flex w-full flex-col gap-2.5 sm:mt-8 sm:flex-row sm:items-center sm:justify-center sm:gap-4"
           >
             <Button
-              href={hero.primaryCta.href}
-              variant="primary"
-              size="lg"
-              className="min-h-12 w-full shadow-[0_12px_40px_rgba(0,102,255,0.55)] sm:w-auto"
-            >
-              {hero.primaryCta.label}
-            </Button>
-            <Button
               href={hero.secondaryCta.href}
               variant="secondary"
               size="lg"
@@ -251,25 +276,6 @@ export function Hero() {
             >
               {hero.secondaryCta.label}
             </Button>
-          </motion.div>
-
-          <motion.div
-            variants={heroItem}
-            className="mt-5 flex items-center justify-center gap-2.5 sm:mt-7 sm:gap-3"
-          >
-            <div className="flex -space-x-2">
-              {hero.trustAvatars.map((initials) => (
-                <span
-                  key={initials}
-                  className="inline-flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#050A18] bg-[#3B82F6] text-[9px] font-bold text-white sm:h-8 sm:w-8 sm:text-[10px]"
-                >
-                  {initials}
-                </span>
-              ))}
-            </div>
-            <p className="text-[12px] font-medium text-white/50 sm:text-sm">
-              {hero.trustLine}
-            </p>
           </motion.div>
         </motion.div>
 

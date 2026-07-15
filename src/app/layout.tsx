@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { AppShell } from "@/components/AppShell";
 import { seo, site } from "@/content";
 import "./globals.css";
 
@@ -108,8 +109,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IN" className={`${geistSans.variable} h-full antialiased`}>
+      <head>
+        {/* Force top before browser restores mid-page scroll on refresh */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `history.scrollRestoration="manual";window.scrollTo(0,0);`,
+          }}
+        />
+      </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

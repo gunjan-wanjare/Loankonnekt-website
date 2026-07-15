@@ -9,7 +9,6 @@ export {
   compare,
   stats,
   faq,
-  finalCta,
 } from "./home";
 export { icons, getIcon } from "./icons";
 export type { IconName } from "./icons";
