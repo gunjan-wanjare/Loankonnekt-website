@@ -9,9 +9,7 @@ export const hero = {
   headlineAccent: "Slow Decisions.",
   subcopy:
     "From customer acquisition to disbursements, LoanKonnekt brings every stage of the lending journey together on a single digital lending platform.",
-  primaryCta: { label: "Start Free", href: "#contact" },
   secondaryCta: { label: "Explore the Product", href: "#features" },
-  trustLine: "Trusted by 150+ financial institutions",
   trustAvatars: ["HD", "SB", "IC", "BF", "TC"],
   cards: [
     {
@@ -305,16 +303,6 @@ export const faq = {
   ],
 } as const;
 
-export const finalCta = {
-  id: "contact",
-  badge: "Start your free trial today",
-  headline: "Ready to Transform",
-  headlineAccent: "Digital Lending?",
-  subcopy:
-    "Join 150+ financial institutions that have modernized their lending operations with Loan Konnekt.",
-  cta: { label: "Talk to Experts", href: "mailto:hello@loankonnekt.com" },
-} as const;
-
 export const homeContent = {
   hero,
   trust,
@@ -324,5 +312,4 @@ export const homeContent = {
   compare,
   stats,
   faq,
-  finalCta,
 } as const;

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { scrollToSection } from "@/lib/scroll";
@@ -194,42 +195,85 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <a
-              href={headerContent.login.href}
-              onClick={(e) => {
-                e.preventDefault();
-                goTo(headerContent.login.href, "About");
-              }}
-              className={cn(
-                "text-sm font-medium tracking-tight transition-colors",
-                onLight
-                  ? "text-navy/70 hover:text-navy"
-                  : "text-white/80 hover:text-white",
-              )}
-            >
-              {headerContent.login.label}
-            </a>
             <Button
               href={headerContent.cta.href}
               size="sm"
               variant="primary"
               onClick={(e) => {
+                // Non-hash CTAs (e.g. /contact) → Coming Soon modal via global handler
+                if (!headerContent.cta.href.startsWith("#")) return;
                 e.preventDefault();
                 goTo(headerContent.cta.href, "About");
               }}
             >
               {headerContent.cta.label}
             </Button>
+
+            {/* Crediple-style: YAKA lands in header after scroll */}
+            <AnimatePresence mode="popLayout">
+              {scrolled ? (
+                <motion.div
+                  key="header-yaka"
+                  initial={{ opacity: 0, width: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, width: "auto", scale: 1 }}
+                  exit={{ opacity: 0, width: 0, scale: 0.85 }}
+                  transition={{ type: "spring", stiffness: 180, damping: 22 }}
+                  className="flex items-center gap-3 overflow-hidden pl-1 select-none"
+                >
+                  <div className="h-5 w-px shrink-0 bg-navy/15" />
+                  <a
+                    href={site.brandUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="A YAKA Brand"
+                    className="relative block h-5 w-[22px] shrink-0"
+                  >
+                    <Image
+                      src={site.yaka.src}
+                      alt="YAKA"
+                      fill
+                      sizes="22px"
+                      className="object-contain"
+                    />
+                  </a>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
           </div>
 
           {/* Mobile menu trigger — brand-forward capsule */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <AnimatePresence>
+              {scrolled ? (
+                <motion.a
+                  key="header-yaka-mobile"
+                  href={site.brandUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="A YAKA Brand"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative h-7 w-7 shrink-0"
+                >
+                  <Image
+                    src={site.yaka.src}
+                    alt="YAKA"
+                    fill
+                    sizes="28px"
+                    className="object-contain"
+                  />
+                </motion.a>
+              ) : null}
+            </AnimatePresence>
           <motion.button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             whileTap={{ scale: 0.96 }}
             className={cn(
-              "relative z-10 inline-flex h-11 items-center gap-2 overflow-hidden rounded-full px-4 text-sm font-bold tracking-tight lg:hidden",
+              "relative z-10 inline-flex h-11 items-center gap-2 overflow-hidden rounded-full px-4 text-sm font-bold tracking-tight",
               onLight
                 ? "bg-[#050A18] text-white shadow-[0_8px_24px_-8px_rgba(5,10,24,0.55)]"
                 : "border border-[#3B82F6]/45 bg-[#2563EB] text-white shadow-[0_0_28px_rgba(37,99,235,0.55)]",
@@ -245,6 +289,7 @@ export function Header() {
             {open ? <X size={17} strokeWidth={2.5} /> : <Menu size={17} strokeWidth={2.5} />}
             <span>{open ? "Close" : "Menu"}</span>
           </motion.button>
+          </div>
         </div>
       </motion.header>
 
@@ -418,6 +463,10 @@ export function Header() {
                   icon={<ArrowUpRight size={18} />}
                   iconPosition="right"
                   onClick={(e) => {
+                    if (!headerContent.cta.href.startsWith("#")) {
+                      setOpen(false);
+                      return;
+                    }
                     e.preventDefault();
                     goTo(headerContent.cta.href, "About");
                   }}
@@ -425,16 +474,6 @@ export function Header() {
                   {headerContent.cta.label}
                 </Button>
                 <div className="mt-3 flex items-center justify-between gap-3">
-                  <a
-                    href={headerContent.login.href}
-                    className="text-sm font-semibold text-slate-300 transition-colors active:text-white"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      goTo(headerContent.login.href, "About");
-                    }}
-                  >
-                    {headerContent.login.label}
-                  </a>
                   <a
                     href={`mailto:${site.email}`}
                     className="truncate text-[12px] text-slate-500 transition-colors active:text-slate-300"

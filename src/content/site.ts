@@ -5,9 +5,15 @@ export const site = {
   url: "https://www.loankonnekt.com",
   email: "hello@loankonnekt.com",
   brandUrl: "https://crediple.com/brands/Loan-Konnekt/",
+  yakaTagline: "A YAKA Brand",
   logo: {
     src: "/images/logo.png",
     alt: "LoanKonnekt — AI Digital Lending Platform",
+  },
+  yaka: {
+    src: "/images/yaka-light.png",
+    alt: "A YAKA Brand",
+    color: "#155DFC",
   },
 } as const;
 
@@ -44,71 +50,61 @@ export const header = {
     { label: "Resources", href: "#faq" },
     { label: "About", href: "#contact" },
   ],
-  login: { label: "Sign In", href: "#contact" },
-  cta: { label: "Contact us", href: "#contact" },
+  cta: { label: "Contact us", href: "/contact" },
 } as const;
 
 export const footer = {
-  blurb:
-    "Intelligent lending infrastructure for the next generation of financial institutions across India.",
-  newsletter: {
-    heading: "Stay ahead in fintech",
-    description: "Insights on lending innovation, delivered monthly.",
-    placeholder: "your@bank.com",
-    submitLabel: "Subscribe",
-  },
+  blurb: [
+    "Intelligent lending infrastructure",
+    "for the next generation of financial",
+    "institutions across India.",
+  ],
   columns: [
     {
       heading: "Products",
       links: [
-        { label: "Loan Origination", href: "#features" },
-        { label: "Credit Engine", href: "#features" },
-        { label: "Digital KYC", href: "#platform" },
-        { label: "Document Vault", href: "#features" },
-        { label: "Risk Analytics", href: "#features" },
+        { label: "Loan Origination", href: "/loan-origination" },
+        { label: "Credit Engine", href: "/credit-engine" },
+        { label: "Digital KYC", href: "/digital-kyc" },
+        { label: "Document Vault", href: "/document-vault" },
+        { label: "Risk Analytics", href: "/risk-analytics" },
       ],
     },
     {
       heading: "Solutions",
       links: [
-        { label: "Banks & HFCs", href: "#features" },
-        { label: "NBFCs", href: "#features" },
-        { label: "Fintechs", href: "#features" },
-        { label: "Microfinance", href: "#features" },
-        { label: "Corporate Lending", href: "#features" },
+        { label: "Banks & HFCs", href: "/solutions/banks" },
+        { label: "NBFCs", href: "/solutions/nbfcs" },
+        { label: "Fintechs", href: "/solutions/fintechs" },
+        { label: "Microfinance", href: "/solutions/microfinance" },
+        { label: "Corporate Lending", href: "/solutions/corporate" },
       ],
     },
     {
       heading: "Resources",
       links: [
-        { label: "Documentation", href: "#faq" },
-        { label: "API Reference", href: "#faq" },
-        { label: "Case Studies", href: "#stats" },
-        { label: "Blog", href: "#faq" },
-        { label: "Webinars", href: "#contact" },
+        { label: "Documentation", href: "/docs" },
+        { label: "API Reference", href: "/api" },
+        { label: "Case Studies", href: "/case-studies" },
+        { label: "Blog", href: "/blog" },
+        { label: "Webinars", href: "/webinars" },
       ],
     },
     {
       heading: "Company",
       links: [
-        { label: "About Us", href: "#contact" },
-        { label: "Careers", href: "#contact" },
-        { label: "Press Kit", href: "#contact" },
-        { label: "Contact", href: "#contact" },
-        { label: "Partners", href: "#trust" },
+        { label: "About Us", href: "/about" },
+        { label: "Careers", href: "/careers" },
+        { label: "Press Kit", href: "/press" },
+        { label: "Contact", href: "/contact" },
+        { label: "Partners", href: "/partners" },
       ],
     },
   ],
-  social: [
-    { label: "LinkedIn", abbr: "IN", href: "#contact" },
-    { label: "Twitter", abbr: "TW", href: "#contact" },
-    { label: "GitHub", abbr: "GH", href: "#contact" },
-    { label: "YouTube", abbr: "YT", href: "#contact" },
-  ],
   copyright: "© 2024 Loan Konnekt Technologies Pvt. Ltd. All rights reserved.",
   legal: [
-    { label: "Privacy Policy", href: "#contact" },
-    { label: "Terms of Service", href: "#contact" },
-    { label: "Cookie Policy", href: "#contact" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Cookie Policy", href: "/cookies" },
   ],
 } as const;

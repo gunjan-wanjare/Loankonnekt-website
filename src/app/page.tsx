@@ -9,7 +9,6 @@ import { Process } from "@/components/sections/Process";
 import { Compare } from "@/components/sections/Compare";
 import { Stats } from "@/components/sections/Stats";
 import { FAQ } from "@/components/sections/FAQ";
-import { FinalCTA } from "@/components/sections/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BackToTop } from "@/components/BackToTop";
 import { seo, site } from "@/content";
@@ -117,7 +116,6 @@ export default function Home() {
         <Compare />
         <Stats />
         <FAQ />
-        <FinalCTA />
       </main>
       <Footer />
       <BackToTop />

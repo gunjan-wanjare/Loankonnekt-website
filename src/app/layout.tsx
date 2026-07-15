@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { AppShell } from "@/components/AppShell";
 import { seo, site } from "@/content";
 import "./globals.css";
 
@@ -109,7 +110,7 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${geistSans.variable} h-full antialiased`}>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
