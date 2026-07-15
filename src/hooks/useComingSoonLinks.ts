@@ -16,7 +16,7 @@ function formatPageName(href: string, linkText: string) {
 }
 
 /** Routes that already have real pages — never trigger Coming Soon */
-const REAL_ROUTES = new Set(["/", "/privacy", "/terms", "/cookies"]);
+const REAL_ROUTES = new Set(["/"]);
 
 function normalizePath(href: string) {
   try {
@@ -35,6 +35,7 @@ function shouldShowComingSoon(anchor: HTMLAnchorElement) {
 
   if (href.startsWith("mailto:") || href.startsWith("tel:")) return false;
   if (href === "/" || href === "#" || href === "#top") return false;
+  if (href.startsWith("#legal-")) return false;
   if (/^https?:\/\//i.test(href)) return false;
 
   // Explicit mark

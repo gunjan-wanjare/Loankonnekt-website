@@ -4,11 +4,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Preloader } from "@/components/Preloader";
 import { ComingSoonModal } from "@/components/ComingSoonModal";
+import { LegalModal } from "@/components/LegalModal";
 import {
   FloatingLogo,
   IntroContext,
 } from "@/components/FloatingLogo";
 import { useComingSoonLinks } from "@/hooks/useComingSoonLinks";
+import { useLegalModal } from "@/hooks/useLegalModal";
 import {
   getInitialIntroPhase,
   markHomeIntroCompleted,
@@ -35,6 +37,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isHome = pathname === "/" || pathname === "";
   const { isOpen, pageName, closeModal } = useComingSoonLinks();
+  const { activePage, closeLegal } = useLegalModal();
   const [phase, setPhase] = useState<HomeIntroPhase>(() =>
     getInitialIntroPhase(),
   );
@@ -75,6 +78,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       {children}
       <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
+      <LegalModal activePage={activePage} onClose={closeLegal} />
     </IntroContext.Provider>
   );
 }
