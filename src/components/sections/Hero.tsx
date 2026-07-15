@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { YakaBrandMark } from "@/components/YakaBrandMark";
+import { useIntroPhase } from "@/components/FloatingLogo";
 import { hero } from "@/content";
 import { easeOutExpo, heroContainer, heroItem } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -186,13 +187,12 @@ function ApprovalCard() {
 const cardComponents = [ScoreCard, PipelineCard, DecisionsCard, ApprovalCard];
 
 export function Hero() {
-  const [showYaka, setShowYaka] = useState(true);
+  const { phase } = useIntroPhase();
+  const [scrolled, setScrolled] = useState(false);
+  const showStaticYaka = phase === "ready" && !scrolled;
 
   useEffect(() => {
-    const update = () => {
-      // Hide when header switches to solid — keep YAKA out of the header strip
-      setShowYaka(window.scrollY <= 24);
-    };
+    const update = () => setScrolled(window.scrollY > 24);
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
@@ -206,20 +206,20 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_95%_50%_at_50%_-5%,rgba(37,99,235,0.4),transparent_60%)] sm:bg-[radial-gradient(ellipse_70%_50%_at_50%_20%,rgba(37,99,235,0.22),transparent_70%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_35%_at_85%_5%,rgba(59,130,246,0.16),transparent_50%)]" />
 
-      {/* Crediple-style YAKA — hero only; hidden once header is scrolled */}
+      {/* Anchor for flying logo — static mark only after land, before scroll */}
       <div
         id="yaka-logo-anchor"
         className="pointer-events-none absolute top-[4.5rem] right-3 z-20 sm:right-5 md:top-[5.25rem] md:right-8 lg:right-12"
       >
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
+          initial={false}
           animate={{
-            opacity: showYaka ? 1 : 0,
-            y: showYaka ? 0 : -8,
+            opacity: showStaticYaka ? 1 : 0,
+            y: showStaticYaka ? 0 : -6,
           }}
           transition={{ duration: 0.25, ease: easeOutExpo }}
-          className={cn(!showYaka && "pointer-events-none")}
-          aria-hidden={!showYaka}
+          className={cn(!showStaticYaka && "pointer-events-none")}
+          aria-hidden={!showStaticYaka}
         >
           <YakaBrandMark tone="dark" />
         </motion.div>

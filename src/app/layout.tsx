@@ -109,6 +109,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IN" className={`${geistSans.variable} h-full antialiased`}>
+      <head>
+        {/* Force top before browser restores mid-page scroll on refresh */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `history.scrollRestoration="manual";window.scrollTo(0,0);`,
+          }}
+        />
+      </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
         <AppShell>{children}</AppShell>
       </body>
