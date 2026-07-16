@@ -17,6 +17,10 @@ function FooterBrand() {
 }
 
 export function Footer() {
+  const isExternalHref = (href: string) => /^https?:\/\//i.test(href);
+  const getAnchorProps = (href: string) =>
+    isExternalHref(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
+
   return (
     <footer id="contact" className="border-t border-white/10 bg-[#050A18] text-white">
       <div className="mx-auto w-full max-w-7xl px-5 py-5 sm:px-6 md:px-8 md:py-6">
@@ -43,6 +47,7 @@ export function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
+                        {...getAnchorProps(link.href)}
                         className="block text-[13px] leading-snug text-slate-400 transition-colors hover:text-white sm:text-sm"
                       >
                         {link.label}
@@ -64,9 +69,21 @@ export function Footer() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[12px] text-slate-500 transition-colors hover:text-white sm:text-sm"
+                {...getAnchorProps(link.href)}
+                aria-label={link.label}
+                className="inline-flex items-center gap-1.5 text-[12px] text-slate-500 transition-colors hover:text-white sm:text-sm"
               >
-                {link.label}
+                {link.label.toLowerCase() === "linkedin" ? (
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 24 24"
+                    className="h-[13px] w-[13px] fill-current"
+                  >
+                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.33 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.55V9h3.56v11.45z" />
+                  </svg>
+                ) : (
+                  link.label
+                )}
               </a>
             ))}
           </div>
