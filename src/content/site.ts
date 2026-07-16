@@ -107,6 +107,10 @@ export const footer = {
   ],
   copyright: "© 2024 Loan Konnekt Technologies Pvt. Ltd. All rights reserved.",
   legal: [
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/loankonnekt/about/",
+    },
     { label: "Privacy Policy", href: "#legal-privacy" },
     { label: "Terms of Service", href: "#legal-terms" },
     { label: "Cookie Policy", href: "#legal-cookies" },
