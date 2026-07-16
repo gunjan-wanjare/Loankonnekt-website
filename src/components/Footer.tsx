@@ -3,6 +3,20 @@
 import { Logo } from "@/components/ui/Logo";
 import { footer } from "@/content";
 
+function LinkedInIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
 function FooterBrand() {
   return (
     <div className="flex flex-col items-start">
@@ -65,27 +79,28 @@ export function Footer() {
             {footer.copyright}
           </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            {footer.legal.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                {...getAnchorProps(link.href)}
-                aria-label={link.label}
-                className="inline-flex items-center gap-1.5 text-[12px] text-slate-500 transition-colors hover:text-white sm:text-sm"
-              >
-                {link.label.toLowerCase() === "linkedin" ? (
-                  <svg
-                    aria-hidden
-                    viewBox="0 0 24 24"
-                    className="h-[13px] w-[13px] fill-current"
-                  >
-                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.33 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.55V9h3.56v11.45z" />
-                  </svg>
-                ) : (
-                  link.label
-                )}
-              </a>
-            ))}
+            {footer.legal.map((link) =>
+              link.label.toLowerCase() === "linkedin" ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  {...getAnchorProps(link.href)}
+                  aria-label="LinkedIn"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.08] text-slate-300 transition-colors hover:bg-brand hover:text-white"
+                >
+                  <LinkedInIcon />
+                </a>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  {...getAnchorProps(link.href)}
+                  className="text-[12px] text-slate-500 transition-colors hover:text-white sm:text-sm"
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
           </div>
         </div>
       </div>
