@@ -15,7 +15,9 @@ export function Stats() {
           </span>
           <h2 className="mt-5 text-[1.75rem] font-semibold tracking-tight text-navy sm:text-3xl md:text-4xl lg:text-5xl">
             {stats.headline}{" "}
-            <span className="text-brand">{stats.headlineAccent}</span>
+            <span className="bg-gradient-to-b from-[#2563EB] via-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">
+              {stats.headlineAccent}
+            </span>
           </h2>
           <p className="mt-4 text-sm text-muted sm:text-base">{stats.subcopy}</p>
         </Reveal>

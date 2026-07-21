@@ -15,8 +15,10 @@ export function Compare() {
             {compare.eyebrow}
           </span>
           <h2 className="mt-5 text-[1.75rem] font-semibold tracking-tight text-navy sm:text-3xl md:text-4xl lg:text-[2.5rem]">
-            {compare.headline}{" "}
-            <span className="text-brand">{compare.headlineAccent}</span>
+            <span className="block">{compare.headline}</span>
+            <span className="mt-1 block bg-gradient-to-b from-[#2563EB] via-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">
+              {compare.headlineAccent}
+            </span>
           </h2>
           <p className="mt-4 text-sm text-muted sm:text-base">{compare.subcopy}</p>
         </Reveal>
