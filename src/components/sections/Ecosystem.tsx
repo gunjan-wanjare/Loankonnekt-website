@@ -7,7 +7,7 @@ import { ecosystem, getIcon } from "@/content";
 import { fadeUpBlur } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-const DEFAULT_ACTIVE = 4; // KYC & AML — matches mockup active state
+const DEFAULT_ACTIVE = 0;
 const RADIUS = 38;
 
 export function Ecosystem() {

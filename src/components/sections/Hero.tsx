@@ -267,11 +267,19 @@ export function Hero() {
             className="mt-6 flex w-full flex-col gap-2.5 sm:mt-8 sm:flex-row sm:items-center sm:justify-center sm:gap-4"
           >
             <Button
-              href={hero.secondaryCta.href}
-              variant="secondary"
+              href={hero.primaryCta.href}
+              variant="primary"
               size="lg"
               icon={<ArrowRight size={16} />}
               iconPosition="right"
+              className="min-h-12 w-full sm:w-auto"
+            >
+              {hero.primaryCta.label}
+            </Button>
+            <Button
+              href={hero.secondaryCta.href}
+              variant="secondary"
+              size="lg"
               className="min-h-12 w-full border-white/30 sm:w-auto"
             >
               {hero.secondaryCta.label}
