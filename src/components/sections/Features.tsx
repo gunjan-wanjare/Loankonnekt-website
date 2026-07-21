@@ -100,7 +100,7 @@ export function Features() {
           </span>
           <h2 className="mt-5 text-[1.75rem] font-semibold tracking-tight text-navy sm:text-3xl md:text-4xl lg:text-[2.75rem]">
             {features.headline}{" "}
-            <span className="bg-gradient-to-r from-[#2563EB] to-[#60A5FA] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-b from-[#2563EB] via-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">
               {features.headlineAccent}
             </span>
           </h2>

@@ -21,7 +21,7 @@ export function FAQ() {
           </span>
           <h2 className="mt-5 text-[1.75rem] font-bold tracking-tight text-[#0F172A] sm:text-3xl md:text-4xl lg:text-[2.75rem]">
             {faq.headline}{" "}
-            <span className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-b from-[#2563EB] via-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">
               {faq.headlineAccent}
             </span>
           </h2>

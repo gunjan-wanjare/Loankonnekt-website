@@ -31,7 +31,9 @@ export function Ecosystem() {
 
           <h2 className="mt-5 text-[1.75rem] font-semibold tracking-tight text-navy sm:text-3xl md:text-4xl lg:text-[2.75rem]">
             {ecosystem.headline}{" "}
-            <span className="text-brand-bright">{ecosystem.headlineAccent}</span>
+            <span className="bg-gradient-to-b from-[#2563EB] via-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">
+              {ecosystem.headlineAccent}
+            </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm text-muted sm:text-base">
             {ecosystem.subcopy}

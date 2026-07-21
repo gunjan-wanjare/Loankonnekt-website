@@ -8,13 +8,18 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { process as processContent, getIcon } from "@/content";
 import { fadeUpBlur } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 const steps = processContent.steps;
+
+/**
+ * Progress fill + glowing dot stop before the last step icon
+ * so they don't merge into the final badge.
+ */
+const PROGRESS_END = "98%";
 
 function StepBadge({
   index,
@@ -96,10 +101,10 @@ export function Process() {
     mass: 0.35,
   });
 
-  const lineWidth = useTransform(progress, [0, 1], ["0%", "100%"]);
-  const lineHeight = useTransform(progress, [0, 1], ["0%", "100%"]);
-  const dotLeft = useTransform(progress, [0, 1], ["0%", "100%"]);
-  const dotTop = useTransform(progress, [0, 1], ["0%", "100%"]);
+  const lineWidth = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
+  const lineHeight = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
+  const dotLeft = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
+  const dotTop = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
 
   return (
     <section
@@ -115,7 +120,9 @@ export function Process() {
           </span>
           <h2 className="mt-5 text-[1.75rem] font-bold tracking-tight text-[#0F172A] sm:text-3xl md:text-4xl lg:text-[2.75rem]">
             {processContent.headline}{" "}
-            <span className="text-[#2563EB]">{processContent.headlineAccent}</span>
+            <span className="bg-gradient-to-b from-[#2563EB] via-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">
+              {processContent.headlineAccent}
+            </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#64748B] sm:text-base">
             {processContent.subcopy}
@@ -125,7 +132,7 @@ export function Process() {
         {/* Desktop / tablet horizontal timeline — same structure as Lawvix */}
         <div className="relative mt-10 hidden md:mt-12 md:block">
           <div className="pointer-events-none absolute left-0 right-0 top-6 sm:top-7">
-            <div className="relative mx-[6%] h-px bg-[#BFDBFE] lg:mx-[8%]">
+            <div className="relative mx-[10%] h-px bg-[#BFDBFE]">
               <motion.div
                 className="absolute inset-y-0 left-0 origin-left bg-[#2563EB]"
                 style={{ width: lineWidth }}
@@ -157,7 +164,7 @@ export function Process() {
 
         {/* Mobile vertical timeline — same structure as Lawvix */}
         <div className="relative mt-8 md:hidden">
-          <div className="absolute bottom-3 left-6 top-3 w-px bg-[#BFDBFE]">
+          <div className="absolute bottom-10 left-6 top-3 w-px bg-[#BFDBFE]">
             <motion.div
               className="absolute inset-x-0 top-0 origin-top bg-[#2563EB]"
               style={{ height: lineHeight }}
