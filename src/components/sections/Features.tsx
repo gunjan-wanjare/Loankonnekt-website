@@ -12,6 +12,9 @@ function FeatureCard({ item }: { item: FeatureItem }) {
   const isDark = item.tone === "navy" || item.tone === "dark";
   const isGreenIcon = "iconTone" in item && item.iconTone === "green";
   const isGreenTags = "tagTone" in item && item.tagTone === "green";
+  const tags = "tags" in item ? item.tags : undefined;
+  const metric = "metric" in item ? item.metric : undefined;
+  const delta = "delta" in item ? item.delta : undefined;
 
   return (
     <div
@@ -19,7 +22,8 @@ function FeatureCard({ item }: { item: FeatureItem }) {
         "flex h-full flex-col rounded-[1.25rem] border p-5 sm:p-6",
         item.tone === "navy" &&
           "border-transparent bg-gradient-to-r from-[#0B1B3A] to-[#163A7A] text-white",
-        item.tone === "white" && "border-navy/8 bg-white text-navy shadow-[0_10px_40px_-24px_rgba(15,23,42,0.35)]",
+        item.tone === "white" &&
+          "border-navy/8 bg-white text-navy shadow-[0_10px_40px_-24px_rgba(15,23,42,0.35)]",
         item.tone === "sky" && "border-brand/10 bg-[#EAF2FF] text-navy",
         item.tone === "dark" && "border-transparent bg-[#07111F] text-white",
       )}
@@ -52,17 +56,15 @@ function FeatureCard({ item }: { item: FeatureItem }) {
         {item.description}
       </p>
 
-      {"tags" in item && item.tags ? (
+      {tags ? (
         <div className="mt-auto flex flex-wrap gap-2 pt-6">
-          {item.tags.map((tag) => (
+          {tags.map((tag) => (
             <span
               key={tag}
               className={cn(
                 "rounded-full px-3 py-1 text-[11px] font-medium sm:text-xs",
                 isDark && "bg-white/10 text-white/85",
-                !isDark &&
-                  !isGreenTags &&
-                  "bg-[#E8F1FF] text-brand-bright",
+                !isDark && !isGreenTags && "bg-[#E8F1FF] text-brand-bright",
                 isGreenTags && "bg-emerald-500/10 text-emerald-700",
               )}
             >
@@ -72,49 +74,12 @@ function FeatureCard({ item }: { item: FeatureItem }) {
         </div>
       ) : null}
 
-      {"speedLabel" in item && item.speedLabel ? (
-        <div className="mt-auto pt-8">
-          <div className="mb-2 flex items-center justify-between text-sm">
-            <span className="text-muted">{item.speedLabel}</span>
-            <span className="font-semibold text-brand-bright">{item.speedValue}</span>
-          </div>
-          <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-            <div
-              className="h-full rounded-full bg-brand-bright"
-              style={{ width: `${item.speedProgress}%` }}
-            />
-          </div>
-        </div>
-      ) : null}
-
-      {"chart" in item && item.chart ? (
-        <div className="mt-auto pt-6">
-          <div className="flex h-20 items-end justify-between gap-2 px-1">
-            {[92, 74, 58, 40].map((h, i) => (
-              <div key={item.chart[i]} className="flex flex-1 flex-col items-center gap-2">
-                <div
-                  className="w-full max-w-[2.25rem] rounded-t-md bg-gradient-to-t from-[#0B1B3A] to-[#4B8BFF]"
-                  style={{ height: `${h}%` }}
-                />
-                <span className="text-[10px] font-medium text-muted">{item.chart[i]}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-5">
-            <p className="text-3xl font-semibold tracking-tight text-brand-bright">
-              {item.metric}
-            </p>
-            <p className="mt-1 text-sm text-muted">{item.metricLabel}</p>
-          </div>
-        </div>
-      ) : null}
-
-      {"delta" in item && item.delta ? (
+      {metric && delta ? (
         <div className="mt-auto flex items-end justify-between gap-3 pt-8">
           <p className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {item.metric}
+            {metric}
           </p>
-          <p className="pb-1 text-sm font-semibold text-emerald-400">{item.delta}</p>
+          <p className="pb-1 text-sm font-semibold text-emerald-400">{delta}</p>
         </div>
       ) : null}
     </div>
@@ -122,7 +87,8 @@ function FeatureCard({ item }: { item: FeatureItem }) {
 }
 
 export function Features() {
-  const [origination, decision, kyc, risk, dashboard] = features.items;
+  const [marketplace, discovery, application, documents, approval] =
+    features.items;
 
   return (
     <section id={features.id} className="bg-[#F7F9FC] py-12 sm:py-16 lg:py-20">
@@ -146,19 +112,19 @@ export function Features() {
           variants={staggerContainer}
         >
           <StaggerItem variants={fadeUp} className="sm:col-span-2">
-            <FeatureCard item={origination} />
+            <FeatureCard item={marketplace} />
           </StaggerItem>
           <StaggerItem variants={fadeUp}>
-            <FeatureCard item={decision} />
+            <FeatureCard item={discovery} />
           </StaggerItem>
           <StaggerItem variants={fadeUp}>
-            <FeatureCard item={kyc} />
+            <FeatureCard item={application} />
           </StaggerItem>
           <StaggerItem variants={fadeUp}>
-            <FeatureCard item={risk} />
+            <FeatureCard item={documents} />
           </StaggerItem>
           <StaggerItem variants={fadeUp}>
-            <FeatureCard item={dashboard} />
+            <FeatureCard item={approval} />
           </StaggerItem>
         </Stagger>
       </div>

@@ -125,7 +125,7 @@ export function Process() {
         {/* Desktop / tablet horizontal timeline — same structure as Lawvix */}
         <div className="relative mt-10 hidden md:mt-12 md:block">
           <div className="pointer-events-none absolute left-0 right-0 top-6 sm:top-7">
-            <div className="relative mx-[12%] h-px bg-[#BFDBFE] lg:mx-[14%]">
+            <div className="relative mx-[6%] h-px bg-[#BFDBFE] lg:mx-[8%]">
               <motion.div
                 className="absolute inset-y-0 left-0 origin-left bg-[#2563EB]"
                 style={{ width: lineWidth }}
@@ -137,7 +137,7 @@ export function Process() {
             </div>
           </div>
 
-          <div className="relative grid grid-cols-3 gap-6 lg:gap-10">
+          <div className="relative grid grid-cols-5 gap-3 lg:gap-5">
             {steps.map((step, index) => (
               <div key={step.num} className="flex flex-col text-left">
                 <div className="flex justify-center">

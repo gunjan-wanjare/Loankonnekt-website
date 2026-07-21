@@ -8,7 +8,7 @@ export const site = {
   yakaTagline: "A YAKA Brand",
   logo: {
     src: "/images/logo.png",
-    alt: "LoanKonnekt — AI Digital Lending Platform",
+    alt: "LoanKonnekt — India’s smart lending marketplace",
   },
   yaka: {
     /** Soft mark for dark navy (hero / preloader) — Crediple dark */
@@ -22,27 +22,27 @@ export const site = {
 } as const;
 
 export const seo = {
-  title: "AI Digital Lending Platform for Banks & NBFCs - LoanKonnekt",
+  title: "Compare Loans Instantly | LoanKonnekt",
   titleTemplate: "%s | LoanKonnekt",
   description:
-    "LoanKonnekt is an RBI-compliant digital lending platform that offers instant credit decisioning, loan origination & quick disbursals. Explore platform now.",
+    "LoanKonnekt brings trusted lenders on one digital platform. Compare loan options, check eligibility, and find the best fit instantly—zero hassles guaranteed.",
   keywords: [
-    "digital lending platform",
-    "instant credit decisioning",
-    "loan origination",
-    "AI digital lending platform",
+    "loan comparison",
+    "loan marketplace",
+    "personal loan",
+    "compare EMI",
+    "loan eligibility",
     "RBI compliant lending",
-    "loan disbursement",
-    "NBFC lending software",
-    "bank lending platform",
-    "credit decisioning",
+    "banks and NBFCs",
+    "digital loan application",
+    "best loan offers",
     "LoanKonnekt",
   ],
   ogImage: {
     url: "/images/logo.png",
     width: 1200,
     height: 630,
-    alt: "LoanKonnekt — AI Digital Lending Platform for Banks & NBFCs",
+    alt: "LoanKonnekt — India’s smart lending marketplace",
   },
 } as const;
 
@@ -59,9 +59,8 @@ export const header = {
 
 export const footer = {
   blurb: [
-    "Intelligent lending infrastructure",
-    "for the next generation of financial",
-    "institutions across India.",
+    "India’s smart lending marketplace",
+    "for the next generation of borrowers.",
   ],
   columns: [
     {

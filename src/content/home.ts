@@ -1,15 +1,16 @@
-/** Homepage content — sourced from Landing page.docx */
+/** Homepage content — sourced from LoanKonnekt Landing Page (Sanjana L) */
 
 import type { IconName } from "./icons";
 
 export const hero = {
   id: "top",
-  badge: "AI-Powered · RBI Compliant · Enterprise Ready",
-  headline: "Stop Losing Borrowers to",
-  headlineAccent: "Slow Decisions.",
+  badge: "Trusted Lenders · Instant Matching · Zero Hassles",
+  headline: "Your Search for the Best Loan",
+  headlineAccent: "Ends Here.",
   subcopy:
-    "From customer acquisition to disbursements, LoanKonnekt brings every stage of the lending journey together on a single digital lending platform.",
-  secondaryCta: { label: "Explore the Product", href: "#features" },
+    "LoanKonnekt brings you trusted lenders on one digital platform. Compare loan options and find the best fit instantly. Zero hassles guaranteed.",
+  primaryCta: { label: "Apply Now", href: "/apply" },
+  secondaryCta: { label: "Learn More", href: "#features" },
   trustAvatars: ["HD", "SB", "IC", "BF", "TC"],
   cards: [
     {
@@ -72,153 +73,159 @@ export const trust = {
 
 export const ecosystem = {
   id: "platform",
-  badge: "PLATFORM INTELLIGENCE",
-  headline: "The Only Lending Platform",
-  headlineAccent: "You Need",
+  badge: "BORROWER FIRST",
+  headline: "We Make Borrowing",
+  headlineAccent: "Stress-Free.",
   subcopy:
-    "Every function here runs on the same intelligence layer built for RBI compliance. No silos. No handoffs.",
+    "Whether taking your first loan or tenth, LoanKonnekt matches you with the best lenders for your profile.",
   coreLabel: "Loan Konnekt",
   coreIcon: "Layers" as IconName,
   nodes: [
     {
-      icon: "Brain" as IconName,
-      label: "AI Credit Analysis",
+      icon: "Target" as IconName,
+      label: "Tailored Loan Matching",
       description:
-        "Bureau + alternative data scoring with explainable AI decisions.",
+        "Get matched with lenders that fit your profile, goals, and eligibility.",
     },
     {
-      icon: "Shield" as IconName,
-      label: "Risk Assessment",
+      icon: "Brain" as IconName,
+      label: "Personalised Recommendations",
       description:
-        "Policy engines and risk grids tuned for every product and segment.",
+        "See loan options curated for your needs—not a one-size-fits-all list.",
+    },
+    {
+      icon: "SearchCheck" as IconName,
+      label: "Smart Eligibility Check",
+      description:
+        "Know where you stand before you apply, with clear eligibility insights.",
+    },
+    {
+      icon: "LineChart" as IconName,
+      label: "Interest & EMI Comparison",
+      description:
+        "Compare rates, EMIs, and tenures side by side to pick the best deal.",
     },
     {
       icon: "Users" as IconName,
-      label: "Borrower Journey",
+      label: "Dedicated Application Assistance",
       description:
-        "Guided digital journeys from application to repayment across channels.",
+        "Get help at every step so your application moves forward smoothly.",
     },
     {
       icon: "FileBadge" as IconName,
-      label: "Document Intelligence",
+      label: "Full Documentation Guidance",
       description:
-        "OCR, extraction, and automated verification for lending documents.",
-    },
-    {
-      icon: "Eye" as IconName,
-      label: "KYC & AML",
-      description:
-        "Aadhaar, PAN, Digilocker integration with liveliness check.",
-    },
-    {
-      icon: "Lock" as IconName,
-      label: "Fraud Detection",
-      description:
-        "Device, identity, and application fraud signals in real time.",
-    },
-    {
-      icon: "Activity" as IconName,
-      label: "Loan Monitoring",
-      description:
-        "Portfolio health, early warning signals, and collections triggers.",
+        "Know exactly what to upload and how—no paperwork confusion.",
     },
     {
       icon: "CircleCheck" as IconName,
-      label: "Compliance",
+      label: "Ongoing Support",
       description:
-        "Audit trails, maker-checker flows, and regulated reporting built-in.",
+        "Stay supported from discovery through approval and beyond.",
     },
   ],
 } as const;
 
 export const features = {
   id: "features",
-  badge: "PRODUCT SUITE",
-  headline: "The Complete Lending Stack,",
-  headlineAccent: "Rebuilt",
+  badge: "PLATFORM",
+  headline: "More Than",
+  headlineAccent: "Lending.",
   subcopy:
-    "Everything — from origination to portfolio visibility — under one roof of LoanKonnekt.",
+    "Whether comparing loan options or managing documentation, LoanKonnekt is for borrowers who prefer convenience and safety.",
   items: [
     {
-      key: "origination",
-      title: "Loan Origination",
+      key: "marketplace",
+      title: "Lender Marketplace",
       description:
-        "A fully digital origination flow that compresses days of process into hours.",
-      icon: "FileText" as IconName,
+        "Choose from 150+ leading banks and RBI-registered NBFCs on one platform.",
+      icon: "Building2" as IconName,
       tone: "navy" as const,
-      tags: ["Auto-fill", "eSign", "Instant KYC", "Multi-product"],
+      tags: ["Banks", "NBFCs", "RBI Registered", "One Platform"],
     },
     {
-      key: "decision",
-      title: "AI Credit Decisioning",
+      key: "discovery",
+      title: "Loan Discovery",
       description:
-        "Instant credit decisions with 99.2% accuracy. No more manual reviews and long hours.",
-      icon: "Brain" as IconName,
+        "Browse loan offers tailored to your profile. Compare interest rates, EMIs, repayment tenures, eligibility, and processing fees to find the perfect loan for your needs.",
+      icon: "SearchCheck" as IconName,
       tone: "white" as const,
-      speedLabel: "Decision Speed",
-      speedValue: "< 2 sec",
-      speedProgress: 88,
+      tags: ["Rates", "EMIs", "Tenure", "Fees"],
     },
     {
-      key: "kyc",
-      title: "Paperless Verification",
-      description: "Full KYC compliance without a single physical document.",
-      icon: "Eye" as IconName,
+      key: "application",
+      title: "Digital Application",
+      description:
+        "Submit your loan application online in just a few steps. First-time borrower? We'll guide you every step of the way.",
+      icon: "FileInput" as IconName,
       tone: "white" as const,
       iconTone: "green" as const,
-      tags: ["Aadhaar OTP", "Face Match", "Liveliness"],
+      tags: ["Online", "Guided", "Few Steps"],
       tagTone: "green" as const,
     },
     {
-      key: "risk",
-      title: "Risk Intelligence",
+      key: "documents",
+      title: "Document Management",
       description:
-        "AI-powered predictive models that catch what traditional credit scores might miss.",
-      icon: "Target" as IconName,
+        "Say goodbye to complicated paperwork. Upload your documents and let us handle the application process.",
+      icon: "FileBadge" as IconName,
       tone: "sky" as const,
-      chart: ["Applied", "Verified", "Assessed", "Approved"] as const,
-      metric: "94.7%",
-      metricLabel: "Prediction Accuracy",
+      tags: ["Upload", "Paperless", "Assisted"],
     },
     {
-      key: "dashboard",
-      title: "Live Portfolio",
-      description: "Every loan, every metric is always updated in real time.",
-      icon: "BarChart3" as IconName,
+      key: "approval",
+      title: "Approval Assistance",
+      description:
+        "From application to approval, our team ensures a smooth borrowing experience for you.",
+      icon: "BadgeCheck" as IconName,
       tone: "dark" as const,
-      metric: "₹2,847 Cr",
-      delta: "↑ 23% MoM",
+      metric: "200K+",
+      delta: "Borrowers trust us",
     },
   ],
 } as const;
 
 export const process = {
   id: "process",
-  badge: "BORROWER JOURNEY",
+  badge: "HOW IT WORKS",
   headline: "The Quickest Path to",
-  headlineAccent: "Disbursement",
+  headlineAccent: "Approval.",
   subcopy:
-    'A digital journey to instantly close the gap between "applied" and "funded."',
+    'Bridging the gap between "Applied" and "Approved" with a smarter digital experience.',
   steps: [
     {
       num: "01",
       icon: "FileText" as IconName,
-      label: "Apply",
-      description: "Apply and upload document from any device",
+      label: "Enter requirements",
+      description: "Enter your loan requirements",
       tone: "primary" as const,
     },
     {
       num: "02",
-      icon: "CircleCheck" as IconName,
-      label: "Validate",
-      description: "Validated instantly with zero manual steps",
+      icon: "SearchCheck" as IconName,
+      label: "Get eligible offers",
+      description: "See offers matched to your profile",
       tone: "primary" as const,
     },
     {
       num: "03",
+      icon: "LineChart" as IconName,
+      label: "Compare and choose",
+      description: "Compare lenders, rates, and options",
+      tone: "primary" as const,
+    },
+    {
+      num: "04",
+      icon: "FileBadge" as IconName,
+      label: "Submit documents",
+      description: "Upload documents with guided support",
+      tone: "primary" as const,
+    },
+    {
+      num: "05",
       icon: "Zap" as IconName,
-      label: "Approve & Disburse",
-      description: "Approve and disburse same-day",
+      label: "Get approved",
+      description: "Get approved and receive funds",
       tone: "light" as const,
     },
   ],
@@ -227,31 +234,29 @@ export const process = {
 export const compare = {
   id: "compare",
   eyebrow: "WHY LOANKONNEKT",
-  headline: "Why Institutions Are Moving Off",
-  headlineAccent: "Legacy Infrastructure",
-  subcopy: "The difference Loan Konnekt intelligence brings.",
+  headline: "What Makes LoanKonnekt a",
+  headlineAccent: "Smarter Choice",
+  subcopy: "See why 200k+ borrowers trust us.",
   traditional: {
-    title: "Traditional Lending",
-    subtitle: "Manual, disconnected",
+    title: "Other Platforms",
+    subtitle: "Scattered & manual",
     items: [
-      "A 7–10 day underwriting queue",
-      "Files, folders, and photocopies",
-      "Disconnected tools, manual syncing",
-      "Outdated numbers",
-      "Defaults discovered too late",
-      "Audits take weeks to prepare for",
+      "Manual loan search",
+      "Limited lender options",
+      "No loan comparisons",
+      "Handle documentation yourself",
+      "Limited assistance after application",
     ],
   },
   loankonnekt: {
     title: "LoanKonnekt",
-    subtitle: "Fast, intelligent",
+    subtitle: "Smart & supported",
     items: [
-      "A 2–4 hour decision window",
-      "OCR extraction and e-signatures",
-      "A single source of truth",
-      "Numbers updated in real-time",
-      "Defaults flagged early by design",
-      "Audit-ready by default",
+      "Eligibility-based loan matching",
+      "Multiple lenders on one platform",
+      "Compare lenders, rates, and options in one place",
+      "Documentation support from start to finish",
+      "Support from application till approval",
     ],
   },
 } as const;
@@ -259,10 +264,10 @@ export const compare = {
 export const stats = {
   id: "stats",
   eyebrow: "IMPACT",
-  headline: "Our Track",
-  headlineAccent: "Record",
+  headline: "Our",
+  headlineAccent: "Impact.",
   subcopy:
-    "Financial firms using Loan Konnekt are already seeing results like these. You can, too.",
+    "Thousands of borrowers have already found the right loan with LoanKonnekt.",
   items: [
     { value: "₹8500+ Cr", label: "Loans Processed" },
     { value: "200K+", label: "Borrowers" },
@@ -278,27 +283,27 @@ export const faq = {
   badge: "FAQ",
   headline: "Frequently Asked",
   headlineAccent: "Questions",
-  subcopy: "Everything you need to know about Loan Konnekt.",
+  subcopy: "Still have queries? We've answered the most common ones below.",
   items: [
     {
-      q: "How quickly can we integrate Loan Konnekt into our existing systems?",
-      a: "Onboarding typically takes 1–2 weeks. Our team handles integration alongside your existing stack.",
+      q: "Does LoanKonnekt provide loans directly?",
+      a: "No, we do not provide loans directly. We connect you with trusted lenders and assist you through the application process. The lender disburses the loan amount.",
     },
     {
-      q: "Is Loan Konnekt compliant with RBI regulations?",
-      a: "We adhere to the latest RBI digital lending norms, covering KYC, data localization, and fair practice requirements out of the box.",
+      q: "How does LoanKonnekt help me find the right loan?",
+      a: "We use secure bank integrations to fetch loan offers based on your eligibility, so you can compare and choose the best one.",
     },
     {
-      q: "What AI models power the credit decision engine?",
-      a: "Our models are continuously retrained on live lending outcomes, so accuracy improves as your portfolio grows.",
+      q: "Is LoanKonnekt compliant with RBI regulations?",
+      a: "Yes, we follow RBI digital lending guidelines to ensure secure, transparent, and compliant lending practices.",
+    },
+    {
+      q: "Are the banks and NBFCs listed on LoanKonnekt verified and trustworthy?",
+      a: "Yes, we ensure the lending institutions listed on our platform are RBI-regulated banks and registered NBFCs.",
     },
     {
       q: "How does Loan Konnekt ensure data security?",
-      a: "Full audit trails, encrypted storage, and strict role-based access control across the entire platform.",
-    },
-    {
-      q: "What pricing model do you offer?",
-      a: "We have a flexible, volume-based pricing model that scales with your lending activity.",
+      a: "We protect your data with encrypted storage, complete audit trails, and strict role-based access controls across the platform.",
     },
   ],
 } as const;
