@@ -56,7 +56,7 @@ export function Footer() {
                 <h3 className="text-[13px] font-semibold tracking-tight text-white sm:text-sm">
                   {col.heading}
                 </h3>
-                <ul className="mt-2 space-y-1.5 sm:mt-2.5 sm:space-y-2">
+                <ul className="mt-2 sm:space-y-0.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <a

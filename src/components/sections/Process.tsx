@@ -110,7 +110,7 @@ export function Process() {
     <section
       id={processContent.id}
       ref={sectionRef}
-      className="bg-[#F7F9FC] py-12 sm:py-16 lg:py-20"
+      className="bg-[#F7F9FC] py-10"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">

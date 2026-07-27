@@ -18,7 +18,7 @@ export function Ecosystem() {
   return (
     <section
       id={ecosystem.id}
-      className="relative overflow-hidden bg-[#F7F9FC] py-12 sm:py-16 lg:py-20"
+      className="relative overflow-hidden bg-[#F7F9FC] py-10"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.9)_0%,transparent_70%)]" />
 

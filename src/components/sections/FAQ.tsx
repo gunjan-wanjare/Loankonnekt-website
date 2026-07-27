@@ -12,7 +12,7 @@ export function FAQ() {
   const [open, setOpen] = useState(-1);
 
   return (
-    <section id={faq.id} className="bg-white py-12 sm:py-16 lg:py-20">
+    <section id={faq.id} className="bg-white py-10">
       <div className="mx-auto max-w-3xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#EAF2FF] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1D4ED8] sm:text-xs">
