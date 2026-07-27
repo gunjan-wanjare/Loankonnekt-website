@@ -7,7 +7,7 @@ import { fadeUp, fadeUpBlur, staggerContainer } from "@/lib/motion";
 
 export function Compare() {
   return (
-    <section id={compare.id} className="bg-white py-12 sm:py-16 lg:py-20">
+    <section id={compare.id} className="bg-white py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#EAF2FF] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1D4ED8] sm:text-xs">

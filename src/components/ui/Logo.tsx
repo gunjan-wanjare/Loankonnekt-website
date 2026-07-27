@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { site } from "@/content";
 
 type LogoProps = {
   className?: string;
@@ -6,17 +8,16 @@ type LogoProps = {
   tone?: "dark" | "light";
 };
 
-export function Logo({ className, tone = "dark" }: LogoProps) {
+export function Logo({ className }: LogoProps) {
   return (
-    <span
-      className={cn(
-        "inline-flex items-baseline font-semibold tracking-tight select-none",
-        className,
-      )}
-      aria-label="LoanKonnekt"
-    >
-      <span className={tone === "dark" ? "text-white" : "text-navy"}>Loan</span>
-      <span className="text-brand">Konnekt</span>
-    </span>
+    <div className={cn("relative h-14 w-50", className)}>
+      <Image
+        src={site.logo.src}
+        alt={site.logo.alt}
+        fill
+        priority
+        className="object-contain w-full h-full"
+      />
+    </div>
   );
 }

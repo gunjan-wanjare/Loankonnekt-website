@@ -21,9 +21,9 @@ function FeatureCard({ item }: { item: FeatureItem }) {
       className={cn(
         "flex h-full flex-col rounded-[1.25rem] border p-5 sm:p-6",
         item.tone === "navy" &&
-          "border-transparent bg-gradient-to-r from-[#0B1B3A] to-[#163A7A] text-white",
+        "border-transparent bg-gradient-to-r from-[#0B1B3A] to-[#163A7A] text-white",
         item.tone === "white" &&
-          "border-navy/8 bg-white text-navy shadow-[0_10px_40px_-24px_rgba(15,23,42,0.35)]",
+        "border-navy/8 bg-white text-navy shadow-[0_10px_40px_-24px_rgba(15,23,42,0.35)]",
         item.tone === "sky" && "border-brand/10 bg-[#EAF2FF] text-navy",
         item.tone === "dark" && "border-transparent bg-[#07111F] text-white",
       )}
@@ -91,7 +91,7 @@ export function Features() {
     features.items;
 
   return (
-    <section id={features.id} className="bg-[#F7F9FC] py-12 sm:py-16 lg:py-20">
+    <section id={features.id} className="bg-[#F7F9FC] py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#E8F1FF] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-bright sm:text-xs">
