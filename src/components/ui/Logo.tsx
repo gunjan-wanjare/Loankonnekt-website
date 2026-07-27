@@ -8,7 +8,9 @@ type LogoProps = {
   tone?: "dark" | "light";
 };
 
-export function Logo({ className }: LogoProps) {
+export function Logo({ className, tone = "light" }: LogoProps) {
+  const isDark = tone === "dark";
+
   return (
     <div className={cn("relative h-14 w-50", className)}>
       <Image
@@ -16,7 +18,8 @@ export function Logo({ className }: LogoProps) {
         alt={site.logo.alt}
         fill
         priority
-        className="object-contain w-full h-full"
+        className="h-full w-full object-contain"
+        style={isDark ? { filter: "brightness(0) invert(1)" } : undefined}
       />
     </div>
   );
