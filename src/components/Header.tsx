@@ -189,7 +189,7 @@ export function Header() {
                     goTo(link.href, link.label);
                   }}
                   className={cn(
-                    "relative pb-1.5 text-sm font-medium tracking-tight transition-colors",
+                    "relative text-sm font-medium tracking-tight transition-colors",
                     onLight
                       ? isActive
                         ? "text-navy"

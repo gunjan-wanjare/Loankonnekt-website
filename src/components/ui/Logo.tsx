@@ -12,13 +12,13 @@ export function Logo({ className, tone = "light" }: LogoProps) {
   const isDark = tone === "dark";
 
   return (
-    <div className={cn("relative h-14 w-50", className)}>
+    <div className={cn("relative h-5 w-50", className)}>
       <Image
         src={site.logo.src}
         alt={site.logo.alt}
         fill
         priority
-        className="h-full w-full object-contain"
+        className="h-5 w-full"
         style={isDark ? { filter: "brightness(0) invert(1)" } : undefined}
       />
     </div>
