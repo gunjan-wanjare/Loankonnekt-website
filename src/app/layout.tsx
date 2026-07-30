@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import { AppShell } from "@/components/AppShell";
 import { seo, site } from "@/content";
 import "./globals.css";
@@ -110,6 +111,22 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${geistSans.variable} h-full antialiased`}>
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZJ3C7B2PSF"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZJ3C7B2PSF');
+          `}
+        </Script>
+        <meta
+          name="google-site-verification"
+          content="EsvzOuLamVLFhCGM2lLWEN40sshku_XjfUoW881tOaU"
+        />
         {/* Force top before browser restores mid-page scroll on refresh */}
         <script
           dangerouslySetInnerHTML={{
