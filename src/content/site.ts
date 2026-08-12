@@ -54,7 +54,7 @@ export const header = {
     { label: "Resources", href: "#faq" },
     { label: "About", href: "#contact" },
   ],
-  cta: { label: "Contact us", href: "/contact" },
+  cta: { label: "Contact us", href: "#contact" },
 } as const;
 
 export const footer = {
