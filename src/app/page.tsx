@@ -12,6 +12,7 @@ import { FAQ } from "@/components/sections/FAQ";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BackToTop } from "@/components/BackToTop";
 import { seo, site } from "@/content";
+import { Contact } from "@/components/sections/Contact";
 
 export const metadata: Metadata = {
   title: {
@@ -116,6 +117,7 @@ export default function Home() {
         <Compare />
         <Stats />
         <FAQ />
+        <Contact />
       </main>
       <Footer />
       <BackToTop />

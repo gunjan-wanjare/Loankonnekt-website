@@ -9,6 +9,8 @@ export {
   compare,
   stats,
   faq,
+  landingContact,
+  landingContactInfo,
 } from "./home";
 export { privacy } from "./privacy";
 export { terms } from "./terms";
