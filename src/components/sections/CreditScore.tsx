@@ -120,10 +120,10 @@ export function CreditScore() {
 
           <div className="relative grid items-center gap-10 px-6 py-10 sm:px-10 sm:py-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8 lg:px-14 lg:py-16 xl:px-16">
             <Reveal variants={slideInLeft}>
-              <h2 className="max-w-lg text-[1.85rem] font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem]">
+              <h2 className="max-w-lg text-[1.6rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[1.8rem] md:text-[2.1rem] lg:text-[2.3rem]">
                 {creditScore.headline}
               </h2>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#94A3B8] sm:text-base">
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-[#94A3B8]">
                 {creditScore.subcopy}
               </p>
 

@@ -52,11 +52,11 @@ export const seo = {
 
 export const header = {
   nav: [
-    { label: "Home", href: "#top" },
-    { label: "Loan", href: "#features" },
-    { label: "How it works", href: "#process" },
-    { label: "About Us", href: "#compare" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Loans", href: "/loans/" },
+    { label: "How It Works", href: "/how-it-works/" },
+    { label: "About Us", href: "/about/" },
+    { label: "Contact", href: "/contact/" },
   ],
   cta: { label: "Download App", href: "/download" },
 } as const;
@@ -100,10 +100,10 @@ export const footer = {
     {
       heading: "Company",
       links: [
-        { label: "About Us", href: "/about" },
+        { label: "About Us", href: "/about/" },
         { label: "Careers", href: "/careers" },
         { label: "Press Kit", href: "/press" },
-        { label: "Contact", href: "#contact" },
+        { label: "Contact", href: "/contact/" },
         { label: "Partners", href: "/partners" },
       ],
     },

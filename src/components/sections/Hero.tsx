@@ -126,7 +126,7 @@ export function Hero() {
         >
           <motion.h1
             variants={heroItem}
-            className="mt-2 bg-[linear-gradient(90deg,#0047FF_0%,#051325_53.3%)] bg-clip-text text-[2.15rem] font-extrabold leading-[1.12] tracking-tight text-transparent sm:mt-3 sm:text-5xl md:text-[3.35rem] lg:mt-0 lg:text-[3.85rem]"
+            className="heading-gradient mt-2 text-[1.9rem] font-extrabold leading-[1.12] tracking-tight sm:mt-3 sm:text-[2.4rem] md:text-[2.75rem] lg:mt-0 lg:text-[3rem]"
           >
             <span className="block">{hero.headline}</span>
             <span className="block">{hero.headlineAccent}</span>
@@ -134,7 +134,7 @@ export function Hero() {
 
           <motion.p
             variants={heroItem}
-            className="mx-auto mt-5 max-w-[32rem] text-[15px] leading-relaxed text-[#4B5563] sm:mt-6 sm:text-base md:text-[1.05rem]"
+            className="mx-auto mt-5 max-w-[32rem] text-sm leading-relaxed text-[#4B5563] sm:mt-6"
           >
             {hero.subcopy}
           </motion.p>

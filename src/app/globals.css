@@ -79,6 +79,13 @@ a {
   text-underline-offset: 3px;
 }
 
+.heading-gradient {
+  background: linear-gradient(90deg, #0047ff 0%, #051325 53.3%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;

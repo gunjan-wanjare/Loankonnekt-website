@@ -1,5 +1,6 @@
 /** Homepage content — sourced from LoanKonnekt Landing Page (Sanjana L) */
 
+import { Mail, MapPin, Phone } from "lucide-react";
 import type { IconName } from "./icons";
 
 export const hero = {
@@ -366,6 +367,60 @@ export const testimonials = {
     },
   ],
 } as const;
+
+export const landingContact = {
+  id: "contact",
+  heading: "How can we help you today?",
+  supporting:
+    "Tell us about your business. We'll show you how Orgatry fits.",
+  submitLabel: "Submit",
+  fields: {
+    firstName: {
+      label: "First Name*",
+      placeholder: "Enter your first name",
+    },
+    lastName: {
+      label: "Last Name*",
+      placeholder: "Enter your last name",
+    },
+    email: {
+      label: "Email",
+      placeholder: "Enter your email",
+    },
+    subject: {
+      label: "Subject",
+      placeholder: "Enter your subject",
+    },
+    description: {
+      label: "Description",
+      placeholder: "Please describe what you need",
+    },
+  },
+} as const;
+
+export const landingContactInfo = [
+  {
+    id: "email",
+    label: "Email",
+    value: "hello@orgatry.com",
+    href: "mailto:hello@orgatry.com",
+    icon: Mail,
+  },
+  {
+    id: "phone",
+    label: "Phone",
+    value: "+91 1234567890",
+    href: "tel:+911234567890",
+    icon: Phone,
+  },
+  {
+    id: "office",
+    label: "Office",
+    value: "Sattva Knowledge City, Hi-Tec City, Hyderabad.",
+    href: undefined,
+    icon: MapPin,
+  },
+] as const;
 
 export const faq = {
   id: "faq",

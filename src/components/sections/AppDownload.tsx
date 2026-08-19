@@ -42,10 +42,10 @@ export function AppDownload() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8">
         <Reveal variants={slideInLeft} className="pb-2 lg:pb-6">
-          <h2 className="max-w-xl text-[1.85rem] font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem]">
+          <h2 className="max-w-xl text-[1.6rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[1.8rem] md:text-[2.1rem] lg:text-[2.3rem]">
             {appDownload.headline}
           </h2>
-          <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#94A3B8] sm:text-base">
+          <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#94A3B8]">
             {appDownload.subcopy}
           </p>
 

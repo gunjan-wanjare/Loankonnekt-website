@@ -110,7 +110,7 @@ export function Support() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="text-center">
-          <h2 className="text-[1.65rem] font-bold tracking-tight text-white sm:text-3xl md:text-[2.15rem]">
+          <h2 className="text-[1.45rem] font-bold tracking-tight text-white sm:text-[1.65rem] md:text-[1.85rem]">
             {support.headline}
           </h2>
         </Reveal>

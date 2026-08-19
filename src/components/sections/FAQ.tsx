@@ -15,7 +15,7 @@ export function FAQ() {
     <section id={faq.id} className="bg-[#F5F7FB] py-12 sm:py-14 md:py-16">
       <div className="mx-auto max-w-3xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="text-center">
-          <h2 className="text-[1.85rem] font-bold tracking-tight text-[#0B3A82] sm:text-3xl md:text-4xl lg:text-[2.5rem]">
+          <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
             {faq.headline}
           </h2>
         </Reveal>

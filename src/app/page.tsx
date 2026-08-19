@@ -98,7 +98,7 @@ const jsonLd = {
       keywords: seo.keywords.join(", "),
       offers: {
         "@type": "Offer",
-        url: `${site.url}/#contact`,
+        url: `${site.url}/contact/`,
         availability: "https://schema.org/InStock",
       },
     },

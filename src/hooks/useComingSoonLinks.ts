@@ -16,7 +16,7 @@ function formatPageName(href: string, linkText: string) {
 }
 
 /** Routes that already have real pages — never trigger Coming Soon */
-const REAL_ROUTES = new Set(["/"]);
+const REAL_ROUTES = new Set(["/", "/loans", "/how-it-works", "/about", "/contact"]);
 
 function normalizePath(href: string) {
   try {

@@ -1,93 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { Logo } from "@/components/ui/Logo";
-import { scrollToSection } from "@/lib/scroll";
 import { header as headerContent, site } from "@/content";
 import { cn } from "@/lib/utils";
 
 const links = headerContent.nav;
 
-type NavLabel = (typeof links)[number]["label"];
-
-function sectionTop(el: HTMLElement) {
-  return el.getBoundingClientRect().top + window.scrollY;
-}
-
-function getActiveLabel(): NavLabel | "" {
-  const header = document.querySelector("header");
-  const headerHeight = header?.getBoundingClientRect().height ?? 80;
-  const probe = window.scrollY + headerHeight + 72;
-
-  const seenIds = new Set<string>();
-  const sections: { label: NavLabel; top: number }[] = [];
-
-  for (const link of links) {
-    const id = link.href.replace("#", "");
-    if (!id || seenIds.has(id)) continue;
-    seenIds.add(id);
-
-    const el = document.getElementById(id);
-    if (!el) continue;
-    sections.push({ label: link.label, top: sectionTop(el) });
-  }
-
-  sections.sort((a, b) => a.top - b.top);
-  if (!sections.length) return "Home";
-  if (probe < sections[0].top) return "Home";
-
-  let current: NavLabel | "" = "Home";
-  for (const section of sections) {
-    if (section.top <= probe) current = section.label;
-  }
-  return current;
-}
-
 export function Header() {
   const pathname = usePathname();
-  const router = useRouter();
-  const isHome = pathname === "/" || pathname === "";
   const [open, setOpen] = useState(false);
-  const [activeLabel, setActiveLabel] = useState<NavLabel | "">("Home");
-  const lockUntilRef = useRef(0);
-  const lockedLabelRef = useRef<NavLabel | "">("");
-
-  useEffect(() => {
-    let ticking = false;
-
-    const update = () => {
-      if (Date.now() < lockUntilRef.current) {
-        if (lockedLabelRef.current) setActiveLabel(lockedLabelRef.current);
-        ticking = false;
-        return;
-      }
-
-      lockedLabelRef.current = "";
-      setActiveLabel(getActiveLabel());
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    window.addEventListener("hashchange", update);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      window.removeEventListener("hashchange", update);
-    };
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -95,38 +22,6 @@ export function Header() {
       document.body.style.overflow = "";
     };
   }, [open]);
-
-  const goTo = (href: string, label?: NavLabel | "") => {
-    const nextLabel =
-      label ?? links.find((l) => l.href === href)?.label ?? "";
-
-    if (nextLabel) {
-      lockedLabelRef.current = nextLabel;
-      setActiveLabel(nextLabel);
-    }
-
-    lockUntilRef.current = Date.now() + 1200;
-    setOpen(false);
-
-    if (!isHome && href.startsWith("#")) {
-      const target = href === "#top" ? "/" : `/${href}`;
-      window.setTimeout(() => {
-        document.body.style.overflow = "";
-        router.push(target);
-      }, 80);
-      return;
-    }
-
-    window.setTimeout(() => {
-      document.body.style.overflow = "";
-      scrollToSection(href);
-      window.setTimeout(() => {
-        lockUntilRef.current = 0;
-        lockedLabelRef.current = "";
-        setActiveLabel(getActiveLabel() || nextLabel);
-      }, 1250);
-    }, 80);
-  };
 
   return (
     <>
@@ -137,33 +32,21 @@ export function Header() {
         className="fixed inset-x-0 top-0 z-50 border-b border-navy/6 bg-white pt-[env(safe-area-inset-top)]"
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-5 md:h-[4.5rem] md:px-8">
-          <a
-            href={isHome ? "#top" : "/"}
-            className="relative z-10 flex items-center"
-            onClick={(e) => {
-              e.preventDefault();
-              if (isHome) goTo("#top", "Home");
-              else router.push("/");
-            }}
-          >
+          <Link href="/" aria-label="LoanKonnekt" className="relative z-10 flex items-center">
             <Logo tone="light" size="lg" />
-          </a>
+          </Link>
 
           <nav
-            className="hidden items-center gap-12 lg:flex xl:gap-16"
+            className="hidden items-center lg:flex gap-8"
             aria-label="Primary"
           >
             {links.map((link) => {
-              const isActive = activeLabel === link.label;
+              const isActive = pathname === link.href;
               return (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    goTo(link.href, link.label);
-                  }}
                   className={cn(
                     "text-[15px] tracking-tight transition-colors",
                     isActive
@@ -172,7 +55,7 @@ export function Header() {
                   )}
                 >
                   {link.label}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -261,10 +144,10 @@ export function Header() {
               <nav aria-label="Mobile">
                 <ul className="space-y-1">
                   {links.map((link) => {
-                    const isActive = activeLabel === link.label;
+                    const isActive = pathname === link.href;
                     return (
                       <li key={link.label}>
-                        <a
+                        <Link
                           href={link.href}
                           aria-current={isActive ? "page" : undefined}
                           className={cn(
@@ -273,13 +156,10 @@ export function Header() {
                               ? "bg-[#0047FF]/8 font-bold text-[#0047FF]"
                               : "font-medium text-[#434657]",
                           )}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            goTo(link.href, link.label);
-                          }}
+                          onClick={() => setOpen(false)}
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}

@@ -19,7 +19,7 @@ export function Process() {
 
           <div className="relative grid items-end gap-8 px-5 pt-10 sm:px-8 sm:pt-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-6 lg:px-14 lg:pt-14 xl:px-16">
             <Reveal variants={slideInLeft} className="pb-10 lg:pb-16">
-              <h2 className="max-w-md text-[1.85rem] font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem]">
+              <h2 className="max-w-md text-[1.6rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[1.8rem] md:text-[2.1rem] lg:text-[2.3rem]">
                 <span className="block">{processContent.headlineLine1}</span>
                 <span className="block">{processContent.headlineLine2}</span>
               </h2>

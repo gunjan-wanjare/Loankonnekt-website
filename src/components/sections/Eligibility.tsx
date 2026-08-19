@@ -19,12 +19,10 @@ export function Eligibility() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
-          <h2 className="text-[1.85rem] font-bold tracking-tight text-[#0B3A82] sm:text-3xl md:text-4xl lg:text-[2.5rem]">
-            {eligibility.headline}{" "}
-            <span className="text-brand">{eligibility.headlineAccent}</span>{" "}
-            {eligibility.headlineAfter}
+          <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
+            {eligibility.headline} {eligibility.headlineAccent} {eligibility.headlineAfter}
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#6B7280] sm:text-base">
+          <p className="mt-3 text-sm leading-relaxed text-[#6B7280]">
             {eligibility.subcopy}
           </p>
         </Reveal>

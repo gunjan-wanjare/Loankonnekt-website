@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { footer } from "@/content";
 
@@ -28,13 +29,13 @@ export function Footer() {
   );
 
   return (
-    <footer id="contact" className="border-t border-[#E5E7EB] bg-white">
+    <footer className="border-t border-[#E5E7EB] bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-5 md:px-8 md:py-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2.2fr)] lg:gap-12">
           <div className="max-w-sm">
-            <a href="/" aria-label="LoanKonnekt" className="inline-flex">
+            <Link href="/" aria-label="LoanKonnekt" className="inline-flex">
               <Logo tone="light" />
-            </a>
+            </Link>
             <p className="mt-3 text-sm font-medium text-[#111827]">
               A <span className="font-bold">YAKA</span> Brand
             </p>

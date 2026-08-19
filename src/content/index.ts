@@ -12,6 +12,8 @@ export {
   testimonials,
   faq,
   appDownload,
+  landingContact,
+  landingContactInfo,
 } from "./home";
 export { privacy } from "./privacy";
 export { terms } from "./terms";
