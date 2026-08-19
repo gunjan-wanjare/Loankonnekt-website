@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Trust } from "@/components/sections/Trust";
-import { Ecosystem } from "@/components/sections/Ecosystem";
 import { Features } from "@/components/sections/Features";
 import { Process } from "@/components/sections/Process";
+import { CreditScore } from "@/components/sections/CreditScore";
 import { Compare } from "@/components/sections/Compare";
-import { Stats } from "@/components/sections/Stats";
+import { EmiCalculator } from "@/components/sections/EmiCalculator";
+import { Support } from "@/components/sections/Support";
+import { Eligibility } from "@/components/sections/Eligibility";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
+import { AppDownload } from "@/components/sections/AppDownload";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BackToTop } from "@/components/BackToTop";
 import { seo, site } from "@/content";
@@ -109,13 +112,16 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Trust />
-        <Ecosystem />
-        <Features />
         <Process />
+        <Features />
+        <CreditScore />
         <Compare />
-        <Stats />
+        <EmiCalculator />
+        <Support />
+        <Eligibility />
+        <Testimonials />
         <FAQ />
+        <AppDownload />
       </main>
       <Footer />
       <BackToTop />

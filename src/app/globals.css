@@ -40,13 +40,16 @@ html {
 
 section[id],
 [id="top"],
-[id="trust"],
-[id="platform"],
-[id="features"],
 [id="process"],
+[id="features"],
+[id="credit-score"],
 [id="compare"],
-[id="stats"],
+[id="emi-calculator"],
+[id="support"],
+[id="eligibility"],
+[id="testimonials"],
 [id="faq"],
+[id="app-download"],
 [id="contact"] {
   scroll-margin-top: var(--header-offset);
 }
@@ -120,4 +123,48 @@ a {
   .animate-trust-marquee {
     animation: none;
   }
+}
+
+.emi-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--brand) 0%,
+    var(--brand) var(--fill),
+    #e5e7eb var(--fill),
+    #e5e7eb 100%
+  );
+  outline: none;
+}
+
+.emi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 3px solid var(--brand);
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25);
+  cursor: pointer;
+}
+
+.emi-slider::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 3px solid var(--brand);
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25);
+  cursor: pointer;
+}
+
+.emi-slider::-moz-range-track {
+  height: 6px;
+  background: transparent;
+  border: none;
 }

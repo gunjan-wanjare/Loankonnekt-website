@@ -1,195 +1,69 @@
 "use client";
 
-import { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
-import { process as processContent, getIcon } from "@/content";
-import { fadeUpBlur } from "@/lib/motion";
-import { cn } from "@/lib/utils";
-
-const steps = processContent.steps;
-
-/**
- * Progress fill + glowing dot stop before the last step icon
- * so they don't merge into the final badge.
- */
-const PROGRESS_END = "98%";
-
-function StepBadge({
-  index,
-  progress,
-  step,
-}: {
-  index: number;
-  progress: MotionValue<number>;
-  step: (typeof steps)[number];
-}) {
-  const Icon = getIcon(step.icon);
-  const isLight = step.tone === "light";
-  const peak = (index + 0.5) / steps.length;
-
-  const scale = useTransform(progress, (value) => {
-    const near = Math.abs(value - peak) < 0.18;
-    return near ? 1.08 : 1;
-  });
-  const boxShadow = useTransform(progress, (value) => {
-    const near = Math.abs(value - peak) < 0.18;
-    return near
-      ? "0 14px 32px -10px rgba(37,99,235,0.55)"
-      : "0 10px 24px -10px rgba(37,99,235,0.35)";
-  });
-
-  return (
-    <motion.div
-      className={cn(
-        "flex h-12 w-12 items-center justify-center rounded-[14px] sm:h-14 sm:w-14",
-        isLight
-          ? "border border-[#E2E8F0] bg-white text-[#2563EB]"
-          : "border-2 border-[#2563EB] bg-[#2563EB] text-white",
-      )}
-      style={{ scale, boxShadow }}
-    >
-      <Icon size={22} strokeWidth={2} />
-    </motion.div>
-  );
-}
-
-function StepCopy({
-  index,
-  progress,
-  title,
-  description,
-  className,
-}: {
-  index: number;
-  progress: MotionValue<number>;
-  title: string;
-  description: string;
-  className?: string;
-}) {
-  const start = index / steps.length;
-  const mid = (index + 0.4) / steps.length;
-  const opacity = useTransform(progress, [start, mid], [0.28, 1]);
-  const y = useTransform(progress, [start, mid], [36, 0]);
-  const scale = useTransform(progress, [start, mid], [0.96, 1]);
-
-  return (
-    <motion.div style={{ opacity, y, scale }} className={className}>
-      <h3 className="text-base font-semibold tracking-tight text-[#0F172A] sm:text-lg">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-[#64748B]">{description}</p>
-    </motion.div>
-  );
-}
+import { process as processContent } from "@/content";
+import { slideInLeft, slideInRight } from "@/lib/motion";
 
 export function Process() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 0.8", "center 0.35"],
-  });
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 24,
-    mass: 0.35,
-  });
-
-  const lineWidth = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
-  const lineHeight = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
-  const dotLeft = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
-  const dotTop = useTransform(progress, [0, 1], ["0%", PROGRESS_END]);
+  const steps = processContent.steps;
 
   return (
-    <section
-      id={processContent.id}
-      ref={sectionRef}
-      className="bg-[#F7F9FC] py-10"
-    >
+    <section id={processContent.id} className="bg-white py-8 sm:py-10 md:py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
-        <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#EAF2FF] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1D4ED8] sm:text-xs">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#2563EB]" aria-hidden />
-            {processContent.badge}
-          </span>
-          <h2 className="mt-5 text-[1.75rem] font-bold tracking-tight text-[#0F172A] sm:text-3xl md:text-4xl lg:text-[2.75rem]">
-            {processContent.headline}{" "}
-            <span className="bg-gradient-to-b from-[#2563EB] via-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">
-              {processContent.headlineAccent}
-            </span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#64748B] sm:text-base">
-            {processContent.subcopy}
-          </p>
-        </Reveal>
+        <div className="relative overflow-hidden rounded-[1.75rem] bg-[#010B18] sm:rounded-[2.25rem] lg:rounded-[2.5rem]">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-10 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,71,255,0.38),transparent_64%)] sm:h-[34rem] sm:w-[34rem]"
+          />
 
-        {/* Desktop / tablet horizontal timeline — same structure as Lawvix */}
-        <div className="relative mt-10 hidden md:mt-12 md:block">
-          <div className="pointer-events-none absolute left-0 right-0 top-6 sm:top-7">
-            <div className="relative mx-[10%] h-px bg-[#BFDBFE]">
-              <motion.div
-                className="absolute inset-y-0 left-0 origin-left bg-[#2563EB]"
-                style={{ width: lineWidth }}
-              />
-              <motion.div
-                className="absolute top-1/2 z-20 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2563EB] shadow-[0_0_0_5px_rgba(37,99,235,0.15)]"
-                style={{ left: dotLeft }}
-              />
-            </div>
-          </div>
+          <div className="relative grid items-end gap-8 px-5 pt-10 sm:px-8 sm:pt-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-6 lg:px-14 lg:pt-14 xl:px-16">
+            <Reveal variants={slideInLeft} className="pb-10 lg:pb-16">
+              <h2 className="max-w-md text-[1.85rem] font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem]">
+                <span className="block">{processContent.headlineLine1}</span>
+                <span className="block">{processContent.headlineLine2}</span>
+              </h2>
 
-          <div className="relative grid grid-cols-5 gap-3 lg:gap-5">
-            {steps.map((step, index) => (
-              <div key={step.num} className="flex flex-col text-left">
-                <div className="flex justify-center">
-                  <StepBadge index={index} progress={progress} step={step} />
-                </div>
-                <StepCopy
-                  index={index}
-                  progress={progress}
-                  title={step.label}
-                  description={step.description}
-                  className="mt-5 text-center"
+              <ol className="relative mt-8 max-w-lg space-y-3.5 sm:mt-10">
+                <span
+                  aria-hidden
+                  className="absolute bottom-9 left-[46px] top-9 border-l-2 border-dashed border-white/90 sm:left-[52px]"
+                />
+
+                {steps.map((step, index) => (
+                  <li key={step.num} className="relative">
+                    <div className="relative z-10 flex items-center gap-3 rounded-full bg-white p-1.5 pr-6 sm:gap-4 sm:p-2 sm:pr-8">
+                      <span className="flex h-12 w-[4.75rem] shrink-0 flex-col items-center justify-center rounded-full bg-[#0047FF] text-center text-[10px] font-bold leading-[1.15] text-white sm:h-[3.35rem] sm:w-[5.5rem] sm:text-[11px]">
+                        <span>Step</span>
+                        <span>{step.num}</span>
+                      </span>
+                      <span className="text-sm font-semibold text-[#111827] sm:text-base">
+                        {step.label}
+                      </span>
+                    </div>
+                    <span className="sr-only">
+                      Step {index + 1} of {steps.length}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+
+            <Reveal
+              variants={slideInRight}
+              className="flex justify-center lg:justify-end"
+            >
+              <div className="relative w-[240px] translate-y-4 sm:w-[270px] sm:translate-y-6 lg:w-[300px] lg:translate-y-8">
+                <Image
+                  src={processContent.phoneSrc}
+                  alt="LoanKonnekt app — check loan eligibility"
+                  width={330}
+                  height={495}
+                  unoptimized
+                  className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_60px_rgba(0,0,0,0.45)]"
                 />
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile vertical timeline — same structure as Lawvix */}
-        <div className="relative mt-8 md:hidden">
-          <div className="absolute bottom-10 left-6 top-3 w-px bg-[#BFDBFE]">
-            <motion.div
-              className="absolute inset-x-0 top-0 origin-top bg-[#2563EB]"
-              style={{ height: lineHeight }}
-            />
-            <motion.div
-              className="absolute left-1/2 z-20 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2563EB] shadow-[0_0_0_4px_rgba(37,99,235,0.15)]"
-              style={{ top: dotTop }}
-            />
-          </div>
-
-          <div className="space-y-8">
-            {steps.map((step, index) => (
-              <div key={step.num} className="relative flex gap-5">
-                <div className="relative z-10 shrink-0">
-                  <StepBadge index={index} progress={progress} step={step} />
-                </div>
-                <StepCopy
-                  index={index}
-                  progress={progress}
-                  title={step.label}
-                  description={step.description}
-                  className="min-w-0 pt-2"
-                />
-              </div>
-            ))}
+            </Reveal>
           </div>
         </div>
       </div>

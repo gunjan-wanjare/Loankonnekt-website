@@ -7,13 +7,17 @@ export const site = {
   brandUrl: "https://crediple.com/brands/Loan-Konnekt/",
   yakaTagline: "A YAKA Brand",
   logo: {
-    src: "/images/logo.png",
+    src: "/logo.png",
+    iconSrc: "/rupee.svg",
+    wordmark: "Loan Konnekt",
     alt: "LoanKonnekt — India’s smart lending marketplace",
   },
   yaka: {
     /** Soft mark for dark navy (hero / preloader) — Crediple dark */
     softSrc: "/images/yaka-soft.png",
     /** Royal blue mark for light surfaces (scrolled header) — Crediple light */
+    /** Header / light surfaces — drop your PNG at public/images/yaka-header.png */
+    headerSrc: "/images/yaka-header.png",
     lightSrc: "/images/yaka-light.png",
     alt: "A YAKA Brand",
     darkText: "#B0C0F8",
@@ -39,7 +43,7 @@ export const seo = {
     "LoanKonnekt",
   ],
   ogImage: {
-    url: "/images/logo.png",
+    url: "/images/Frame.svg",
     width: 1200,
     height: 630,
     alt: "LoanKonnekt — India’s smart lending marketplace",
@@ -48,13 +52,13 @@ export const seo = {
 
 export const header = {
   nav: [
-    { label: "Platform", href: "#platform" },
-    { label: "Products", href: "#features" },
-    { label: "Solutions", href: "#compare" },
-    { label: "Resources", href: "#faq" },
-    { label: "About", href: "#contact" },
+    { label: "Home", href: "#top" },
+    { label: "Loan", href: "#features" },
+    { label: "How it works", href: "#process" },
+    { label: "About Us", href: "#compare" },
+    { label: "Contact", href: "#contact" },
   ],
-  cta: { label: "Contact us", href: "/contact" },
+  cta: { label: "Download App", href: "/download" },
 } as const;
 
 export const footer = {
@@ -99,12 +103,12 @@ export const footer = {
         { label: "About Us", href: "/about" },
         { label: "Careers", href: "/careers" },
         { label: "Press Kit", href: "/press" },
-        { label: "Contact", href: "/contact" },
+        { label: "Contact", href: "#contact" },
         { label: "Partners", href: "/partners" },
       ],
     },
   ],
-  copyright: "© 2024 Loan Konnekt Technologies Pvt. Ltd. All rights reserved.",
+  copyright: "© 2026 Loan Konnekt Technologies Pvt. Ltd. All rights reserved.",
   legal: [
     {
       label: "LinkedIn",

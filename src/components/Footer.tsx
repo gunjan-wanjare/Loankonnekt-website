@@ -17,52 +17,45 @@ function LinkedInIcon() {
   );
 }
 
-function FooterBrand() {
-  return (
-    <div className="flex flex-col items-start">
-      <a href="/" aria-label="LoanKonnekt" className="inline-flex text-xl sm:text-[1.35rem]">
-        <Logo tone="dark" />
-      </a>
-      <p className="mt-2.5 text-[12px] tracking-wide text-white">
-        A <span className="font-bold">YAKA</span> Brand
-      </p>
-    </div>
-  );
-}
-
 export function Footer() {
   const isExternalHref = (href: string) => /^https?:\/\//i.test(href);
   const getAnchorProps = (href: string) =>
     isExternalHref(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
+  const linkedIn = footer.legal.find((link) => link.label.toLowerCase() === "linkedin");
+  const legalLinks = footer.legal.filter(
+    (link) => link.label.toLowerCase() !== "linkedin",
+  );
+
   return (
-    <footer id="contact" className="border-t border-white/10 bg-[#050A18] text-white">
-      <div className="mx-auto w-full max-w-7xl px-5 py-5 sm:px-6 md:px-8 md:py-6">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
-          <div className="max-w-md shrink-0 lg:max-w-sm">
-            <FooterBrand />
-            <p className="mt-2.5 max-w-[17.5rem] text-[13px] leading-[1.55] text-slate-400 sm:max-w-[19rem] sm:text-sm sm:leading-relaxed">
-              {footer.blurb.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
+    <footer id="contact" className="border-t border-[#E5E7EB] bg-white">
+      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-5 md:px-8 md:py-14">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2.2fr)] lg:gap-12">
+          <div className="max-w-sm">
+            <a href="/" aria-label="LoanKonnekt" className="inline-flex">
+              <Logo tone="light" />
+            </a>
+            <p className="mt-3 text-sm font-medium text-[#111827]">
+              A <span className="font-bold">YAKA</span> Brand
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#374151]">
+              {footer.blurb.join(" ")}
             </p>
           </div>
 
-          <div className="grid w-full grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-4 sm:gap-x-6 lg:max-w-3xl lg:gap-7">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
             {footer.columns.map((col) => (
-              <div key={col.heading} className="min-w-0">
-                <h3 className="text-[13px] font-semibold tracking-tight text-white sm:text-sm">
+              <div key={col.heading}>
+                <h3 className="text-sm font-bold tracking-tight text-[#111827]">
                   {col.heading}
                 </h3>
-                <ul className="mt-2 sm:space-y-0.5">
+                <ul className="mt-3 space-y-2">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <a
                         href={link.href}
                         {...getAnchorProps(link.href)}
-                        className="block text-[13px] leading-snug text-slate-400 transition-colors hover:text-white sm:text-sm"
+                        className="text-sm text-[#6B7280] transition-colors hover:text-brand"
                       >
                         {link.label}
                       </a>
@@ -74,33 +67,29 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-col gap-2.5 border-t border-white/10 pt-4 sm:mt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-          <p className="text-[12px] leading-relaxed text-slate-500 sm:text-sm">
-            {footer.copyright}
-          </p>
+        <div className="mt-10 flex flex-col gap-4 border-t border-[#E5E7EB] pt-5 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-[#111827]">{footer.copyright}</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            {footer.legal.map((link) =>
-              link.label.toLowerCase() === "linkedin" ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  {...getAnchorProps(link.href)}
-                  aria-label="LinkedIn"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.08] text-slate-300 transition-colors hover:bg-brand hover:text-white"
-                >
-                  <LinkedInIcon />
-                </a>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  {...getAnchorProps(link.href)}
-                  className="text-[12px] text-slate-500 transition-colors hover:text-white sm:text-sm"
-                >
-                  {link.label}
-                </a>
-              ),
-            )}
+            {linkedIn ? (
+              <a
+                href={linkedIn.href}
+                {...getAnchorProps(linkedIn.href)}
+                aria-label="LinkedIn"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand text-white transition-opacity hover:opacity-90"
+              >
+                <LinkedInIcon />
+              </a>
+            ) : null}
+            {legalLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                {...getAnchorProps(link.href)}
+                className="text-sm text-[#6B7280] transition-colors hover:text-brand"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
