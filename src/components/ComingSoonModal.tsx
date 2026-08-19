@@ -74,13 +74,13 @@ export function ComingSoonModal({
 
             <div
               aria-hidden
-              className="mx-auto mb-5 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[#2563EB]/10 text-[#2563EB]"
+              className="mx-auto mb-5 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[#0047FF]/10 text-[#0047FF]"
             >
               <Clock size={32} strokeWidth={2} />
             </div>
 
-            <p className="mb-2 text-[13px] font-semibold tracking-[0.06em] text-[#2563EB] uppercase">
-              Page Coming Soon
+            <p className="mb-2 text-[13px] font-semibold tracking-[0.06em] text-[#0047FF] uppercase">
+              Coming Soon
             </p>
             <h2
               id="coming-soon-title"
@@ -89,13 +89,13 @@ export function ComingSoonModal({
               {pageName}
             </h2>
             <p className="mb-7 text-[15px] leading-relaxed text-slate-500">
-              We&apos;re working hard to bring you this page. Stay tuned —
-              something powerful is on the way!
+              We&apos;re working on this experience. Stay tuned — it will be
+              available soon.
             </p>
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex min-w-[140px] items-center justify-center rounded-full bg-[#2563EB] px-7 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#1D4ED8]"
+              className="inline-flex min-w-[140px] items-center justify-center rounded-[16px] bg-[#0047FF] px-7 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[#003DE0]"
             >
               Got it
             </button>

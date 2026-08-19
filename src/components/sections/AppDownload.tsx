@@ -1,25 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
-import { AppPhone } from "@/components/sections/AppPhone";
 import { appDownload } from "@/content";
 import { slideInLeft, slideInRight } from "@/lib/motion";
 
 function AppleIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden>
-      <path d="M16.37 12.63c.03-2.32 1.9-3.44 1.98-3.49-1.08-1.58-2.76-1.8-3.36-1.82-1.43-.14-2.79.84-3.51.84-.73 0-1.84-.82-3.03-.8-1.56.02-3 .9-3.8 2.3-1.62 2.81-.41 6.97 1.16 9.25.77 1.12 1.69 2.37 2.9 2.33 1.16-.05 1.6-.75 3-.75s1.8.75 3.03.73c1.25-.02 2.04-1.14 2.8-2.27.88-1.29 1.24-2.54 1.26-2.6-.03-.01-2.41-.92-2.43-3.72ZM14.6 6.4c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.71-1.29Z" />
+    <svg viewBox="0 0 24 24" className="h-[28px] w-[28px] shrink-0" fill="currentColor" aria-hidden>
+      <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zm3.378-3.066c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z" />
     </svg>
   );
 }
 
 function GooglePlayIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden>
-      <path d="M3.6 2.3c-.4.2-.6.6-.6 1.1v17.2c0 .5.2.9.6 1.1l10.1-9.7L3.6 2.3Z" fill="#4285F4" />
-      <path d="M16.8 11.1 13.1 7.5 3.6 2.3l10.1 9.7 3.1-.9Z" fill="#EA4335" />
-      <path d="M3.6 21.7 13.1 16.5l3.7-3.6-3.1-.9-10.1 9.7Z" fill="#34A853" />
-      <path d="M20.1 10.4c.6.4.9.9.9 1.6s-.3 1.2-.9 1.6l-3.3 1.9-3.7-3.6 3.7-3.6 3.3 2.1Z" fill="#FBBC04" />
+    <svg viewBox="0 0 24 24" className="h-[26px] w-[26px] shrink-0" fill="currentColor" aria-hidden>
+      <path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92Zm10.89 10.893 2.302 2.302-10.937 6.333 8.635-8.635Zm3.199-3.199 2.807 1.626a1 1 0 0 1 0 1.732l-2.808 1.626L15.206 12l2.492-2.492ZM5.864 2.658 16.802 8.99l-2.302 2.302-8.636-8.634Z" />
     </svg>
   );
 }
@@ -33,37 +30,39 @@ export function AppDownload() {
   return (
     <section
       id={appDownload.id}
-      className="relative overflow-hidden bg-[linear-gradient(90deg,#040812_0%,#071428_48%,#0B1F4A_100%)] py-12 sm:py-14 md:py-16"
+      className="relative overflow-hidden bg-[#051325]"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.28),transparent_62%)]"
+        className="pointer-events-none absolute right-[-8%] top-1/2 h-[32rem] w-[32rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,71,255,0.42)_0%,rgba(0,71,255,0.12)_42%,transparent_68%)] sm:h-[38rem] sm:w-[38rem]"
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8">
-        <Reveal variants={slideInLeft} className="pb-2 lg:pb-6">
-          <h2 className="max-w-xl text-[1.6rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[1.8rem] md:text-[2.1rem] lg:text-[2.3rem]">
-            {appDownload.headline}
+      <div className="relative mx-auto grid max-w-7xl items-end gap-8 px-4 pt-10 sm:px-5 sm:pt-12 md:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-8 lg:pt-14">
+        <Reveal variants={slideInLeft} className="pb-16 lg:-translate-y-8 lg:pb-24">
+          <h2 className="max-w-xl text-[1.85rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.15rem] md:text-[2.45rem] lg:text-[2.75rem]">
+            <span className="block">{appDownload.headlineLine1}</span>
+            <span className="block">{appDownload.headlineLine2}</span>
           </h2>
-          <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#94A3B8]">
+          <p className="mt-5 max-w-2xl text-base font-normal leading-relaxed text-[#94A3B8] sm:text-lg">
             {appDownload.subcopy}
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-3.5">
             {appDownload.stores.map((store) => {
               const Icon = storeIcons[store.key];
               return (
                 <a
                   key={store.key}
                   href={store.href}
-                  className="inline-flex min-h-12 items-center gap-3 rounded-[12px] border border-white/20 bg-[#0B1220] px-4 py-2 text-white transition-colors hover:bg-[#111827]"
+                  data-coming-soon="true"
+                  className="inline-flex w-full items-center gap-2.5 rounded-[10px] border border-solid border-[#CCDAFF]/55 bg-transparent px-3.5 py-2.5 text-white transition-colors hover:bg-white/5 sm:w-auto sm:px-4 sm:py-2.5"
                 >
                   <Icon />
                   <span className="text-left leading-tight">
-                    <span className="block text-[10px] font-medium tracking-wide text-white/80">
+                    <span className="block text-[10px] font-normal tracking-[0.02em] text-white/85">
                       {store.eyebrow}
                     </span>
-                    <span className="block text-sm font-bold sm:text-[15px]">
+                    <span className="block text-[15px] font-bold sm:text-[16px]">
                       {store.name}
                     </span>
                   </span>
@@ -74,8 +73,15 @@ export function AppDownload() {
         </Reveal>
 
         <Reveal variants={slideInRight} className="flex justify-center lg:justify-end">
-          <div className="lg:translate-y-4">
-            <AppPhone />
+          <div className="relative w-[260px] translate-y-1 sm:w-[300px] sm:translate-y-2 lg:w-[340px] lg:translate-y-3">
+            <Image
+              src={appDownload.phoneSrc}
+              alt="LoanKonnekt app — check loan eligibility"
+              width={311}
+              height={454}
+              unoptimized
+              className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_60px_rgba(0,0,0,0.45)]"
+            />
           </div>
         </Reveal>
       </div>

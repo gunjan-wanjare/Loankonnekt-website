@@ -1,16 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { Star } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { testimonials } from "@/content";
 import { fadeUp, fadeUpBlur, staggerContainer } from "@/lib/motion";
-import { cn } from "@/lib/utils";
-
-const avatarTones = [
-  "bg-[#DBEAFE] text-brand",
-  "bg-[#EDE9FE] text-[#7C3AED]",
-  "bg-[#CFFAFE] text-[#0D9488]",
-] as const;
 
 export function Testimonials() {
   return (
@@ -26,21 +20,21 @@ export function Testimonials() {
         </Reveal>
 
         <Stagger
-          className="mt-8 grid gap-5 sm:mt-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          className="mx-auto mt-8 grid max-w-sm gap-5 sm:mt-10 sm:max-w-none md:grid-cols-2 lg:grid-cols-3 lg:gap-6"
           variants={staggerContainer}
         >
-          {testimonials.items.map((item, index) => (
+          {testimonials.items.map((item) => (
             <StaggerItem key={item.name} variants={fadeUp}>
               <article className="flex h-full flex-col rounded-[1.35rem] bg-[#EEF2FF] p-6 sm:p-7">
                 <div className="flex items-center gap-3">
-                  <span
-                    className={cn(
-                      "inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold",
-                      avatarTones[index % avatarTones.length],
-                    )}
-                  >
-                    {item.initials}
-                  </span>
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.name}
+                    width={48}
+                    height={48}
+                    unoptimized
+                    className="h-12 w-12 shrink-0 rounded-full object-cover"
+                  />
                   <div>
                     <p className="font-bold tracking-tight text-[#111827]">
                       {item.name}
@@ -54,12 +48,14 @@ export function Testimonials() {
                     <Star
                       key={starIndex}
                       size={16}
-                      className="fill-[#FBBF24] text-[#FBBF24]"
+                      fill="#FBBF24"
+                      stroke="#FBBF24"
+                      strokeWidth={1}
                     />
                   ))}
                 </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-[#374151] sm:text-[15px]">
+                <p className="mt-4 text-[15px] font-normal leading-[22px] tracking-normal text-[#051325]">
                   “{item.quote}”
                 </p>
               </article>

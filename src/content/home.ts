@@ -85,6 +85,7 @@ export const features = {
       description: "Quick funds for personal needs",
       href: "/loans/personal",
       tone: "lavender" as const,
+      iconSrc: "/home/loan-personal.png",
     },
     {
       key: "business",
@@ -92,6 +93,7 @@ export const features = {
       description: "Finance to grow your business",
       href: "/loans/business",
       tone: "sky" as const,
+      iconSrc: "/home/loan-business.png",
     },
     {
       key: "home",
@@ -99,6 +101,7 @@ export const features = {
       description: "Easy loan for your dream home",
       href: "/loans/home",
       tone: "peach" as const,
+      iconSrc: "/home/loan-home.png",
     },
     {
       key: "property",
@@ -106,6 +109,7 @@ export const features = {
       description: "Unlock funds from your property",
       href: "/loans/property",
       tone: "mint" as const,
+      iconSrc: "/home/loan-property.png",
     },
     {
       key: "education",
@@ -113,6 +117,7 @@ export const features = {
       description: "Easy financing for higher studies",
       href: "/loans/education",
       tone: "cyan" as const,
+      iconSrc: "/home/loan-education.png",
     },
     {
       key: "car",
@@ -120,8 +125,10 @@ export const features = {
       description: "Drive your dream car easily",
       href: "/loans/car",
       tone: "rose" as const,
+      iconSrc: "/home/loan-car.png",
     },
   ],
+  cta: { label: "Check Loan Offer", href: "/apply" },
 } as const;
 
 export const process = {
@@ -344,7 +351,7 @@ export const testimonials = {
     {
       name: "Rahul Verma",
       role: "Software Engineer",
-      initials: "RV",
+      imageSrc: "/home/testimonial-rahul.png",
       rating: 5,
       quote:
         "LoanKonnekt helped me secure money for my medical emergency in less than 10 minutes. The direct integration and lack of physical verification was incredibly convenient.",
@@ -352,7 +359,7 @@ export const testimonials = {
     {
       name: "Priyah Patel",
       role: "Boutique Owner",
-      initials: "PP",
+      imageSrc: "/home/testimonial-priyah.png",
       rating: 5,
       quote:
         "As a small business owner, getting loans is usually an uphill task. LoanKonnekt's easy self-employed flow verified my business and disbursed ₹2,00,000 without any issues.",
@@ -360,7 +367,7 @@ export const testimonials = {
     {
       name: "Amit Sharma",
       role: "Sales Consultant",
-      initials: "AS",
+      imageSrc: "/home/testimonial-amit.png",
       rating: 5,
       quote:
         "The EMI Calculator was spot-on. No hidden charges, zero surprises, and automatic NACH debit setups meant I never had to worry about repayment dates.",
@@ -442,14 +449,20 @@ export const faq = {
       q: "Are there any hidden pre-payment penalties?",
       a: "Absolutely not. We believe in complete transparency. There are zero pre-payment or foreclosure charges if you decide to pay off your loan early.",
     },
+    {
+      q: "How are the interest rates calculated?",
+      a: "Interest rates starting from just 1.33% p.m. are determined directly by evaluating your credit score, repayment capability, and income details during our assessment flow.",
+    },
   ],
 } as const;
 
 export const appDownload = {
   id: "app-download",
-  headline: "Access LoanKonnekt Anytime, Anywhere.",
+  headlineLine1: "Access LoanKonnekt",
+  headlineLine2: "Anytime, Anywhere.",
   subcopy:
     "Download our top-rated secure mobile app to manage your EMI, track repayment schedules, view pre-approved credit limits, and request immediate money.",
+  phoneSrc: "/home/app-download-phone.png",
   stores: [
     {
       key: "apple",

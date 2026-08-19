@@ -55,7 +55,9 @@ function SliderField({
         <label htmlFor={id} className="text-sm font-bold text-[#1F2937] sm:text-base">
           {label}
         </label>
-        <span className="text-sm font-bold text-brand sm:text-base">{valueText}</span>
+        <span className="text-sm font-extrabold text-[#0047FF] sm:text-base" style={{ fontWeight: 800 }}>
+          {valueText}
+        </span>
       </div>
       <input
         id={id}
@@ -108,7 +110,7 @@ export function EmiCalculator() {
           </p>
         </Reveal>
 
-        <div className="mt-8 grid items-center gap-8 sm:mt-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12">
+        <div className="mt-8 grid items-center gap-8 sm:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22.5rem)] lg:gap-12">
           <Reveal variants={slideInLeft} className="space-y-10">
             <SliderField
               id="emi-amount"
@@ -136,7 +138,7 @@ export function EmiCalculator() {
             />
           </Reveal>
 
-          <Reveal variants={slideInRight}>
+          <Reveal variants={slideInRight} className="w-full max-w-[22.5rem] justify-self-center lg:max-w-none lg:justify-self-end">
             <div className="rounded-[1.5rem] bg-white p-6 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.28)] sm:p-7">
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9CA3AF]">
                 {content.resultLabel}

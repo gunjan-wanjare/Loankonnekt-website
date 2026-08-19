@@ -41,6 +41,7 @@ export default function AboutPage() {
       <Header />
       <main>
         <PageHero
+          primaryHasArrow
           headline={
             <>
               Making Credit Simple
@@ -63,7 +64,9 @@ export default function AboutPage() {
             <InfoCardGrid
               cards={[...missionCards]}
               columns={2}
-              cardClassName="bg-[#F3F6FF]"
+              cardClassName="rounded-[1.5rem] bg-[#0047FF14] px-8 py-8 text-left sm:px-10 sm:py-9"
+              titleClassName="text-xl font-bold text-[#0047FF] sm:text-[1.35rem]"
+              descriptionClassName="mt-3 text-[15px] font-normal leading-relaxed text-[#051325] sm:text-base"
             />
           </div>
         </section>
@@ -76,7 +79,12 @@ export default function AboutPage() {
               </h2>
             </Reveal>
             <div className="mt-8 sm:mt-10">
-              <InfoCardGrid cards={[...coreValues.cards]} columns={4} cardClassName="bg-white" />
+              <InfoCardGrid
+                cards={[...coreValues.cards]}
+                columns={4}
+                cardClassName="rounded-[1.35rem] bg-white p-6 sm:p-7"
+                titleClassName="text-[#0047FF]"
+              />
             </div>
           </div>
         </section>
@@ -86,12 +94,18 @@ export default function AboutPage() {
         <section className="bg-white py-12 sm:py-14 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
             <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
-              <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
+              <h2 className="text-[1.6rem] font-bold tracking-tight text-[#0047FF] sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
                 {beliefs.headline}
               </h2>
             </Reveal>
             <div className="mt-8 sm:mt-10">
-              <InfoCardGrid cards={[...beliefs.cards]} columns={4} cardClassName="bg-[#F3F7FF]" />
+              <InfoCardGrid
+                cards={[...beliefs.cards]}
+                columns={4}
+                cardClassName="rounded-[1.35rem] bg-[#F3F7FF] p-6 sm:p-7"
+                titleClassName="text-[#0047FF]"
+                descriptionClassName="text-[#051325]"
+              />
             </div>
           </div>
         </section>

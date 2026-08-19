@@ -119,14 +119,15 @@ export function Hero() {
         </div>
 
         <motion.div
-          className="mx-auto w-full max-w-[52rem] text-center lg:max-w-none"
+          className="mx-auto w-full max-w-[58rem] text-center lg:max-w-none"
           variants={heroContainer}
           initial="hidden"
           animate="visible"
         >
           <motion.h1
             variants={heroItem}
-            className="heading-gradient mt-2 text-[1.9rem] font-extrabold leading-[1.12] tracking-tight sm:mt-3 sm:text-[2.4rem] md:text-[2.75rem] lg:mt-0 lg:text-[3rem]"
+            className="heading-gradient mt-2 text-center text-[2.15rem] font-bold leading-none tracking-normal sm:mt-3 sm:text-[2.75rem] md:text-[3.25rem] lg:mt-0 lg:text-[64px]"
+            style={{ fontWeight: 700, letterSpacing: "0%" }}
           >
             <span className="block">{hero.headline}</span>
             <span className="block">{hero.headlineAccent}</span>
@@ -134,7 +135,7 @@ export function Hero() {
 
           <motion.p
             variants={heroItem}
-            className="mx-auto mt-5 max-w-[32rem] text-sm leading-relaxed text-[#4B5563] sm:mt-6"
+            className="mx-auto mt-5 max-w-[36rem] text-center text-sm font-normal leading-relaxed text-[#434657] sm:mt-6 sm:text-base"
           >
             {hero.subcopy}
           </motion.p>
@@ -202,7 +203,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto mt-10 grid max-w-lg grid-cols-2 justify-items-center gap-5 px-4 sm:max-w-2xl sm:grid-cols-3 sm:px-5 lg:hidden">
+      <div className="relative z-10 mx-auto mt-10 grid max-w-[22rem] grid-cols-2 justify-items-center gap-4 px-4 sm:max-w-2xl sm:grid-cols-3 sm:gap-5 sm:px-5 lg:hidden">
         {hero.categories.map((category, i) => (
           <LoanCard
             key={category.key}

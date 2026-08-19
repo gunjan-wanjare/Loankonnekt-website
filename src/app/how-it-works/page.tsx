@@ -29,6 +29,7 @@ export default function HowItWorksPage() {
       <Header />
       <main>
         <PageHero
+          primaryHasArrow
           headline={
             <>
               Your Loan Journey,

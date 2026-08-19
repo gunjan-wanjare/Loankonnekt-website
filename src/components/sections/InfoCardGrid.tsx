@@ -16,38 +16,47 @@ export function InfoCardGrid({
   cards,
   columns = 2,
   cardClassName,
+  titleClassName,
+  descriptionClassName,
+  className,
 }: {
   cards: InfoCard[];
   columns?: 2 | 4;
   cardClassName?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
+  className?: string;
 }) {
   return (
     <Stagger
       className={cn(
-        "grid gap-5",
-        columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-4",
+        "grid",
+        columns === 2
+          ? "grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8"
+          : "gap-5 sm:grid-cols-2 lg:grid-cols-4",
+        className,
       )}
       variants={staggerContainer}
     >
       {cards.map((card) => {
         const Icon = card.icon ? getIcon(card.icon) : undefined;
         return (
-          <StaggerItem key={card.key} variants={fadeUp}>
+          <StaggerItem key={card.key} className="h-full" variants={fadeUp}>
             <article
               className={cn(
-                "h-full rounded-[1.35rem] p-6 sm:p-7",
-                cardClassName ?? "bg-white",
+                "h-full",
+                cardClassName ?? "rounded-[1.35rem] bg-white p-6 sm:p-7",
               )}
             >
               {Icon ? (
-                <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-[12px] bg-[#DBEAFE] text-brand">
+                <span className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-[12px] bg-[#0047FF] text-white">
                   <Icon size={22} strokeWidth={2} />
                 </span>
               ) : null}
-              <h3 className="text-lg font-bold tracking-tight text-[#111827]">
+              <h3 className={cn("text-lg font-bold tracking-tight text-[#0047FF]", titleClassName)}>
                 {card.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#4B5563]">
+              <p className={cn("mt-2 text-sm leading-relaxed text-[#4B5563]", descriptionClassName)}>
                 {card.description}
               </p>
             </article>

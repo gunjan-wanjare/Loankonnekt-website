@@ -64,11 +64,11 @@ export function ContactForm() {
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-start gap-10 px-4 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-16">
         <Reveal variants={fadeUpBlur} className="pt-2">
-          <h1 className="heading-gradient max-w-lg text-[1.9rem] font-extrabold leading-[1.15] tracking-tight sm:text-[2.2rem] md:text-[2.5rem] lg:text-[2.65rem]">
+          <h1 className="heading-gradient max-w-2xl text-[1.9rem] font-extrabold leading-[1.15] tracking-tight sm:text-[2.2rem] md:text-[2.5rem] lg:text-[2.65rem]">
             <span className="block">{contactHero.headline[0]}</span>
             <span className="block">{contactHero.headline[1]}</span>
           </h1>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-[#4B5563]">
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#4B5563]">
             {contactHero.supporting}
           </p>
 
@@ -84,7 +84,7 @@ export function ContactForm() {
         </Reveal>
 
         <Reveal variants={fadeUp}>
-          <div className="rounded-[1.5rem] border border-[#DEDEDE] bg-white p-6 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.28)] sm:p-7">
+          <div className="rounded-[1.5rem] border border-[#E2E8F0] bg-[#0047FF14] p-6 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.28)] sm:p-7">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="fullName" className="mb-2 block text-sm font-medium text-[#080808]">

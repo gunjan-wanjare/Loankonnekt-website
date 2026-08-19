@@ -36,6 +36,8 @@ export default function LoansPage() {
       <Header />
       <main>
         <PageHero
+          tall
+          secondaryHasArrow
           headline={
             <>
               Transparent Loans
@@ -51,7 +53,7 @@ export default function LoansPage() {
         >
           <StatsBand eyebrow={loansStats.eyebrow} stats={[...loansStats.stats]} />
         </PageHero>
-        <Features />
+        <Features showCta />
         <LoanComparisonTable />
         <EligibilityEstimator />
         <EmiCalculator />

@@ -116,7 +116,7 @@ export function Support() {
         </Reveal>
 
         <Stagger
-          className="mt-8 grid gap-8 sm:mt-10 sm:grid-cols-3 sm:gap-6"
+          className="mt-8 flex flex-col items-center gap-5 sm:mt-10 sm:flex-row sm:justify-center sm:gap-6 md:gap-8"
           variants={staggerFast}
         >
           {support.items.map((item) => {
@@ -125,7 +125,7 @@ export function Support() {
               <StaggerItem
                 key={item.key}
                 variants={fadeUp}
-                className="flex items-center justify-center gap-3 sm:justify-center"
+                className="flex items-center gap-3"
               >
                 <span className="text-white">
                   <Icon />

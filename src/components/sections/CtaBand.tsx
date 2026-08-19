@@ -22,7 +22,7 @@ export function CtaBand({ headline, subcopy, cta }: CtaBandProps) {
         className="pointer-events-none absolute -left-14 bottom-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.1),transparent_65%)]"
       />
 
-      <Reveal variants={fadeUpBlur} className="relative mx-auto max-w-3xl px-4 text-center sm:px-5">
+      <Reveal variants={fadeUpBlur} className="relative mx-auto max-w-7xl px-4 text-center sm:px-5 md:px-8">
         <h2 className="text-[1.5rem] font-bold tracking-tight text-white sm:text-[1.75rem] md:text-[2rem]">
           {headline}
         </h2>

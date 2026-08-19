@@ -12,8 +12,8 @@ export function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id={faq.id} className="bg-[#F5F7FB] py-12 sm:py-14 md:py-16">
-      <div className="mx-auto max-w-3xl px-4 sm:px-5 md:px-8">
+    <section id={faq.id} className="bg-[#F8FAFC] py-12 sm:py-14 md:py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="text-center">
           <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
             {faq.headline}
@@ -35,7 +35,7 @@ export function FAQ() {
                     onClick={() => setOpen(isOpen ? -1 : index)}
                     aria-expanded={isOpen}
                   >
-                    <span className="text-[15px] font-bold tracking-tight text-[#111827] sm:text-base">
+                    <span className="text-base font-bold leading-snug tracking-normal text-[#051325] sm:text-[18px] sm:leading-none">
                       {item.q}
                     </span>
                     <motion.span
@@ -57,7 +57,7 @@ export function FAQ() {
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="px-5 pb-5 text-sm leading-relaxed text-[#4B5563] sm:px-6 sm:pr-14 sm:text-[15px]">
+                        <p className="px-5 pb-5 text-base font-normal leading-[22px] tracking-normal text-[#434657] sm:px-6 sm:pr-14">
                           {item.a}
                         </p>
                       </motion.div>

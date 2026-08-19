@@ -30,6 +30,11 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-offset);
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {

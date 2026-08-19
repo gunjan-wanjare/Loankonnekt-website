@@ -18,7 +18,7 @@ export function Compare() {
         </Reveal>
 
         <Stagger
-          className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
+          className="mx-auto mt-8 grid max-w-sm gap-4 sm:mt-10 sm:max-w-none sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
           variants={staggerContainer}
         >
           {compare.items.map((item) => {

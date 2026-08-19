@@ -56,11 +56,8 @@ export function Eligibility() {
                         <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#DCFCE7] text-[#16A34A]">
                           <Check size={13} strokeWidth={3} />
                         </span>
-                        <p className="text-sm leading-relaxed text-[#4B5563] sm:text-[15px]">
-                          <span className="font-semibold text-[#111827]">
-                            {item.label}:
-                          </span>{" "}
-                          {item.value}
+                        <p className="text-base font-medium leading-none tracking-normal text-[#434657]">
+                          {item.label}: {item.value}
                         </p>
                       </li>
                     ))}

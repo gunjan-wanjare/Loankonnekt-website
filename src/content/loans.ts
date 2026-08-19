@@ -4,7 +4,7 @@ export const loansHero = {
   subcopy:
     "Explore our curated suite of quick financial products. Transparent rates, flexible repayments, and 100% digital verification.",
   primaryCta: { label: "Check Eligibility", href: "/apply" },
-  secondaryCta: { label: "Explore Loans", href: "#loan-types" },
+  secondaryCta: { label: "Explore Loans", href: "#features" },
   badges: ["Trusted Lenders", "Instant Matching", "Zero Hassles"],
   illustration: {
     src: "/loans/hero-illustration.png",
@@ -75,12 +75,13 @@ export const loanComparison = {
 export const eligibilityEstimator = {
   id: "eligibility-estimator",
   headline: "Quick Eligibility Estimator",
-  salary: { label: "Monthly Net Salary", placeholder: "Enter your monthly net salary" },
+  salary: { label: "Monthly Net Salary", placeholder: "₹ Enter net monthly income" },
   creditTier: {
     label: "Credit Score Tier",
     options: ["Below 650", "650 - 750", "Above 750"],
+    defaultValue: "Above 750",
   },
-  cta: { label: "Estimate My Approval", href: "/apply" },
+  cta: { label: "Estimate Pre-Approval", href: "/apply" },
   requirements: {
     headline: "Minimal Requirements",
     subcopy:

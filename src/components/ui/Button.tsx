@@ -25,7 +25,7 @@ const variants = {
   outline:
     "bg-transparent text-navy border border-navy/20 hover:border-brand hover:text-brand",
   outlineBrand:
-    "bg-white text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF]/5",
+    "bg-white text-[#0047FF] border border-[#0047FF] hover:bg-[#0047FF]/5",
   ghost: "bg-transparent text-navy border border-transparent hover:text-brand",
 };
 
