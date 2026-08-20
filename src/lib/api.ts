@@ -14,18 +14,16 @@ export type ApiRequestConfig = AxiosRequestConfig;
 
 const TOKEN_STORAGE_KEYS = ["iitil-auth-token", "auth-token", "token"];
 const LEGACY_STORE_KEY = "iitil-auth";
+const DEFAULT_API_URL = "";
 
 function getApiBaseUrl(): string {
   const direct = process.env.NEXT_PUBLIC_API_URL;
   const legacy = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const baseUrl = direct ?? legacy;
-
-  if (!baseUrl) {
-    throw new Error("NEXT_PUBLIC_API_URL is required.");
-  }
+  const baseUrl = direct ?? legacy ?? DEFAULT_API_URL;
 
   return baseUrl.replace(/\/$/, "");
 }
+
 
 function getStoredToken(): string | null {
   for (const key of TOKEN_STORAGE_KEYS) {
