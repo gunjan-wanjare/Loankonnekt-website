@@ -10,6 +10,7 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "outline" | "outlineBrand" | "ghost" | "light";
   size?: "sm" | "md" | "lg";
   className?: string;
+  style?: React.CSSProperties;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
   type?: "button" | "submit";
   icon?: React.ReactNode;
@@ -41,6 +42,7 @@ export function Button({
   variant = "primary",
   size = "md",
   className,
+  style,
   onClick,
   type = "button",
   icon,
@@ -76,6 +78,7 @@ export function Button({
           }
         }}
         className={classes}
+        style={style}
         whileHover={{ scale: 1.035, y: -1 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 420, damping: 24 }}
@@ -90,6 +93,7 @@ export function Button({
       type={type}
       onClick={onClick}
       className={classes}
+      style={style}
       whileHover={{ scale: 1.035, y: -1 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 420, damping: 24 }}
