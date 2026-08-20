@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { scrollToSection } from "@/lib/scroll";
-import { cn } from "@/lib/utils";
+import { cn, isInternalHref } from "@/lib/utils";
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -36,6 +37,8 @@ const sizes = {
   lg: "min-h-12 px-7 py-3.5 text-sm sm:px-9 sm:text-base rounded-[16px]",
 };
 
+const MotionLink = motion.create(Link);
+
 export function Button({
   children,
   href,
@@ -63,26 +66,36 @@ export function Button({
     </>
   );
 
+  const motionProps = {
+    className: classes,
+    style,
+    whileHover: { scale: 1.035, y: -1 },
+    whileTap: { scale: 0.97 },
+    transition: { type: "spring" as const, stiffness: 420, damping: 24 },
+  };
+
   if (href) {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (onClick) {
+        onClick(e);
+        return;
+      }
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        scrollToSection(href);
+      }
+    };
+
+    if (isInternalHref(href)) {
+      return (
+        <MotionLink href={href} onClick={handleClick} {...motionProps}>
+          {content}
+        </MotionLink>
+      );
+    }
+
     return (
-      <motion.a
-        href={href}
-        onClick={(e) => {
-          if (onClick) {
-            onClick(e);
-            return;
-          }
-          if (href.startsWith("#")) {
-            e.preventDefault();
-            scrollToSection(href);
-          }
-        }}
-        className={classes}
-        style={style}
-        whileHover={{ scale: 1.035, y: -1 }}
-        whileTap={{ scale: 0.97 }}
-        transition={{ type: "spring", stiffness: 420, damping: 24 }}
-      >
+      <motion.a href={href} onClick={handleClick} {...motionProps}>
         {content}
       </motion.a>
     );
@@ -92,11 +105,7 @@ export function Button({
     <motion.button
       type={type}
       onClick={onClick}
-      className={classes}
-      style={style}
-      whileHover={{ scale: 1.035, y: -1 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 420, damping: 24 }}
+      {...motionProps}
     >
       {content}
     </motion.button>

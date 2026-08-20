@@ -79,13 +79,13 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <a
+            <Link
               href={headerContent.cta.href}
               data-coming-soon="true"
               className="inline-flex min-h-10 items-center justify-center rounded-[12px] bg-[#0047FF] px-5 text-sm font-medium text-white transition-colors hover:bg-[#003DE0]"
             >
               {headerContent.cta.label}
-            </a>
+            </Link>
 
             <a
               id="yaka-logo-anchor"
@@ -209,7 +209,7 @@ export function Header() {
               </nav>
 
               <div className="border-t border-[#EEF2F7] p-4 pb-[calc(env(safe-area-inset-bottom)+1rem)]">
-                <a
+                <Link
                   href={headerContent.cta.href}
                   data-coming-soon="true"
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-[16px] bg-[#0047FF] px-5 text-sm font-semibold text-white"
@@ -217,7 +217,7 @@ export function Header() {
                 >
                   <Smartphone size={16} strokeWidth={2.3} />
                   {headerContent.cta.label}
-                </a>
+                </Link>
               </div>
             </motion.aside>
           </>
