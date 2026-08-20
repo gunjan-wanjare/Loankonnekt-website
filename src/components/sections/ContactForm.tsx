@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { contactHero, contactForm } from "@/content/contact";
 import { fadeUp, fadeUpBlur } from "@/lib/motion";
@@ -21,6 +22,7 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loanType, setLoanType] = useState("");
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,6 +46,7 @@ export function ContactForm() {
       await api.post(endpoints.contact, payload);
       setSubmitted(true);
       form.reset();
+      setLoanType("");
     } catch (error) {
       setErrorMessage(getErrorMessage(error));
     } finally {
@@ -62,21 +65,23 @@ export function ContactForm() {
         className="pointer-events-none absolute inset-y-0 right-0 w-[20%] bg-[radial-gradient(ellipse_60%_50%_at_100%_45%,rgba(59,130,246,0.14),transparent_72%)]"
       />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-start gap-10 px-4 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-16">
-        <Reveal variants={fadeUpBlur} className="pt-2">
-          <h1 className="heading-gradient max-w-2xl text-[1.9rem] font-extrabold leading-[1.15] tracking-tight sm:text-[2.2rem] md:text-[2.5rem] lg:text-[2.65rem]">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.75fr)] lg:gap-10">
+        <Reveal variants={fadeUpBlur} className="lg:-translate-y-3">
+          <h1 className="heading-gradient max-w-none text-[2.15rem] font-bold leading-none tracking-normal sm:text-[2.75rem] lg:text-[64px]">
             <span className="block">{contactHero.headline[0]}</span>
             <span className="block">{contactHero.headline[1]}</span>
           </h1>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#4B5563]">
+          <p className="mt-5 max-w-2xl text-[20px] font-normal leading-[30px] tracking-normal text-[#434657]">
             {contactHero.supporting}
           </p>
 
           <div className="mt-8">
-            <p className="text-sm text-[#6B7280]">{contactHero.askLabel}</p>
+            <p className="text-[20px] font-normal leading-[32px] tracking-normal text-[#000000CC]">
+              {contactHero.askLabel}
+            </p>
             <a
               href={`mailto:${contactHero.email}`}
-              className="mt-1 block text-xl font-bold tracking-tight text-[#111827] hover:text-brand sm:text-2xl"
+              className="mt-1 block text-[30px] font-normal leading-[126%] tracking-normal text-[#000000] hover:text-[#0047FF]"
             >
               {contactHero.email}
             </a>
@@ -122,23 +127,36 @@ export function ContactForm() {
                 <label htmlFor="loanType" className="mb-2 block text-sm font-medium text-[#080808]">
                   {contactForm.fields.loanType.label}
                 </label>
-                <select
-                  id="loanType"
-                  name="loanType"
-                  required
-                  defaultValue=""
-                  disabled={isSubmitting}
-                  className={cn(fieldClassName, "appearance-none")}
-                >
-                  <option value="" disabled>
-                    {contactForm.fields.loanType.placeholder}
-                  </option>
-                  {contactForm.fields.loanType.options.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                <div className="relative">
+                  <select
+                    id="loanType"
+                    name="loanType"
+                    required
+                    value={loanType}
+                    onChange={(event) => setLoanType(event.target.value)}
+                    disabled={isSubmitting}
+                    className={cn(
+                      fieldClassName,
+                      "appearance-none pr-11",
+                      loanType ? "text-[#111827]" : "text-[#9CA3AF]",
+                    )}
+                  >
+                    <option value="" disabled>
+                      {contactForm.fields.loanType.placeholder}
                     </option>
-                  ))}
-                </select>
+                    {contactForm.fields.loanType.options.map((option) => (
+                      <option key={option} value={option} className="text-[#111827]">
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={18}
+                    strokeWidth={2}
+                    className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#000000]"
+                    aria-hidden
+                  />
+                </div>
               </div>
 
               <div>
@@ -167,7 +185,7 @@ export function ContactForm() {
                 disabled={isSubmitting}
                 className={cn(
                   "flex h-[52px] w-full items-center justify-center",
-                  "cursor-pointer rounded-[12px] bg-brand text-sm font-bold text-white",
+                  "cursor-pointer rounded-[12px] bg-[#0047FF] text-sm font-bold text-white",
                   "transition-colors duration-200 hover:bg-[#003DE0]",
                   "focus:outline-none focus:ring-2 focus:ring-brand/30 focus:ring-offset-2",
                   "disabled:cursor-not-allowed disabled:opacity-70",

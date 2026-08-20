@@ -25,17 +25,17 @@ export function Process() {
               </h2>
 
               <ol className="relative mt-8 max-w-lg space-y-3.5 sm:mt-10">
-                <span
-                  aria-hidden
-                  className="absolute bottom-9 left-[46px] top-9 border-l-2 border-dashed border-white/90 sm:left-[52px]"
-                />
-
                 {steps.map((step, index) => (
                   <li key={step.num} className="relative">
+                    {index < steps.length - 1 ? (
+                      <span
+                        aria-hidden
+                        className="absolute left-[3.25rem] top-1/2 z-0 h-[calc(100%+0.875rem)] -translate-x-1/2 border-l-2 border-dashed border-white/90 sm:left-[3.625rem]"
+                      />
+                    ) : null}
                     <div className="relative z-10 flex items-center gap-3 rounded-full bg-white p-1.5 pr-6 sm:gap-4 sm:p-2 sm:pr-8">
-                      <span className="flex h-12 w-[4.75rem] shrink-0 flex-col items-center justify-center rounded-full bg-[#0047FF] text-center text-[10px] font-bold leading-[1.15] text-white sm:h-[3.35rem] sm:w-[5.5rem] sm:text-[11px]">
-                        <span>Step</span>
-                        <span>{step.num}</span>
+                      <span className="inline-flex h-11 min-w-[5.75rem] shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#0047FF] px-3 text-[11px] font-bold text-white sm:h-12 sm:min-w-[6.25rem] sm:text-xs">
+                        Step {step.num}
                       </span>
                       <span className="text-sm font-semibold text-[#111827] sm:text-base">
                         {step.label}

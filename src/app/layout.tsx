@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Be_Vietnam_Pro, Geist, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { AppShell } from "@/components/AppShell";
 import { seo, site } from "@/content";
@@ -8,6 +8,18 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  weight: ["600"],
+});
+
+const beVietnamPro = Be_Vietnam_Pro({
+  variable: "--font-be-vietnam",
+  subsets: ["latin"],
+  weight: ["500"],
 });
 
 export const viewport: Viewport = {
@@ -109,7 +121,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${geistSans.variable} h-full antialiased`}>
+    <html
+      lang="en-IN"
+      className={`${geistSans.variable} ${plusJakartaSans.variable} ${beVietnamPro.variable} h-full antialiased`}
+    >
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZJ3C7B2PSF"

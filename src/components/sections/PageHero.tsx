@@ -20,6 +20,7 @@ type PageHeroProps = {
   secondaryHasArrow?: boolean;
   primaryHasArrow?: boolean;
   tall?: boolean;
+  largeIllustration?: boolean;
   children?: React.ReactNode;
 };
 
@@ -34,6 +35,7 @@ export function PageHero({
   secondaryHasArrow = false,
   primaryHasArrow = false,
   tall = false,
+  largeIllustration = false,
   children,
 }: PageHeroProps) {
   return (
@@ -48,7 +50,9 @@ export function PageHero({
           "relative z-10 mx-auto grid max-w-7xl items-center px-4 sm:px-5 md:px-8",
           tall
             ? "gap-8 py-4 sm:gap-10 sm:py-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,22rem)] lg:gap-6 lg:py-10 xl:grid-cols-[minmax(0,1.2fr)_minmax(20rem,24rem)]"
-            : "gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-6",
+            : largeIllustration
+              ? "gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.95fr)] lg:gap-8"
+              : "gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-6",
         )}
       >
         <Reveal variants={fadeUpBlur}>
@@ -104,13 +108,21 @@ export function PageHero({
             variants={scaleIn}
             className={cn(
               "relative mx-auto w-full",
-              tall ? "max-w-[16.5rem] lg:ml-auto lg:max-w-none" : "max-w-[16.5rem] sm:max-w-sm lg:max-w-[22rem]",
+              tall
+                ? "max-w-[16.5rem] lg:ml-auto lg:max-w-none"
+                : largeIllustration
+                  ? "max-w-[20rem] sm:max-w-md lg:max-w-[28rem]"
+                  : "max-w-[16.5rem] sm:max-w-sm lg:max-w-[22rem]",
             )}
           >
             <div
               className={cn(
                 "relative mx-auto aspect-[542/484]",
-                tall ? "w-[82%] lg:ml-auto lg:w-[88%]" : "w-[78%] lg:ml-auto lg:w-[88%]",
+                tall
+                  ? "w-[82%] lg:ml-auto lg:w-[88%]"
+                  : largeIllustration
+                    ? "w-[92%] lg:ml-auto lg:w-full"
+                    : "w-[78%] lg:ml-auto lg:w-[88%]",
               )}
             >
               <Image
@@ -118,7 +130,13 @@ export function PageHero({
                 alt={illustration.alt}
                 fill
                 unoptimized
-                sizes="(min-width: 1024px) 28vw, 80vw"
+                sizes={
+                  tall
+                    ? "(min-width: 1024px) 28vw, 80vw"
+                    : largeIllustration
+                      ? "(min-width: 1024px) 36vw, 85vw"
+                      : "(min-width: 1024px) 28vw, 80vw"
+                }
                 className="object-contain object-right object-bottom"
                 priority
               />

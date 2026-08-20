@@ -9,7 +9,7 @@ export function WhyWeBuilt() {
   return (
     <section className="bg-white py-12 sm:py-14 md:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-16">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-16">
           <Reveal variants={slideInLeft} className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div
               aria-hidden
@@ -32,15 +32,18 @@ export function WhyWeBuilt() {
           </Reveal>
 
           <Reveal variants={slideInRight}>
-            <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem]">
+            <h2 className="heading-gradient text-[1.75rem] font-bold leading-none tracking-normal sm:text-[2rem] lg:text-[40px]">
               {whyWeBuilt.headline}
             </h2>
-            <p className="mt-5 text-sm font-semibold text-[#111827] sm:text-base">
+            <p className="mt-5 text-[1.25rem] font-semibold leading-6 tracking-normal text-[#111827] lg:text-[24px] lg:leading-6">
               {whyWeBuilt.lead}
             </p>
-            <div className="mt-3 space-y-4">
+            <div className="mt-4 space-y-4">
               {whyWeBuilt.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="text-sm leading-relaxed text-[#4B5563]">
+                <p
+                  key={paragraph}
+                  className="text-base font-normal leading-[1.6] tracking-normal text-[#4B5563] lg:text-[20px] lg:leading-[30px]"
+                >
                   {paragraph}
                 </p>
               ))}

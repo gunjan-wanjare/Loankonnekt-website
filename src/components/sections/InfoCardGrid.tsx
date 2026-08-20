@@ -53,10 +53,10 @@ export function InfoCardGrid({
                   <Icon size={22} strokeWidth={2} />
                 </span>
               ) : null}
-              <h3 className={cn("text-lg font-bold tracking-tight text-[#0047FF]", titleClassName)}>
+              <h3 className={cn("tracking-normal", titleClassName ?? "text-lg font-bold text-[#0047FF]")}>
                 {card.title}
               </h3>
-              <p className={cn("mt-2 text-sm leading-relaxed text-[#4B5563]", descriptionClassName)}>
+              <p className={cn("mt-2 font-normal", descriptionClassName ?? "text-sm leading-relaxed text-[#4B5563]")}>
                 {card.description}
               </p>
             </article>
