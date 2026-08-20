@@ -30,15 +30,14 @@ export function AppDownload() {
   return (
     <section
       id={appDownload.id}
-      className="relative overflow-hidden bg-[#051325]"
+      className="relative bg-[#051325]"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[-8%] top-1/2 h-[32rem] w-[32rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,71,255,0.42)_0%,rgba(0,71,255,0.12)_42%,transparent_68%)] sm:h-[38rem] sm:w-[38rem]"
-      />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <div className="absolute right-[-8%] top-1/2 h-[32rem] w-[32rem] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,71,255,0.42)_0%,rgba(0,71,255,0.12)_42%,transparent_68%)] sm:h-[38rem] sm:w-[38rem]" />
+      </div>
 
       <div className="relative mx-auto grid max-w-7xl items-end gap-8 px-4 pt-10 sm:px-5 sm:pt-12 md:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-8 lg:pt-14">
-        <Reveal variants={slideInLeft} className="pb-16 lg:-translate-y-8 lg:pb-24">
+        <Reveal variants={slideInLeft} className="pb-10 lg:-translate-y-8 lg:pb-16">
           <h2 className="max-w-xl text-[1.85rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.15rem] md:text-[2.45rem] lg:text-[2.75rem]">
             <span className="block">{appDownload.headlineLine1}</span>
             <span className="block">{appDownload.headlineLine2}</span>
@@ -72,15 +71,15 @@ export function AppDownload() {
           </div>
         </Reveal>
 
-        <Reveal variants={slideInRight} className="flex justify-center lg:justify-end">
-          <div className="relative w-[260px] translate-y-1 sm:w-[300px] sm:translate-y-2 lg:w-[340px] lg:translate-y-3">
+        <Reveal variants={slideInRight} className="flex justify-center self-end lg:justify-end">
+          <div className="relative w-[260px] sm:w-[300px] lg:w-[340px]">
             <Image
               src={appDownload.phoneSrc}
               alt="LoanKonnekt app — check loan eligibility"
               width={311}
               height={454}
               unoptimized
-              className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_60px_rgba(0,0,0,0.45)]"
+              className="h-auto w-full object-contain drop-shadow-[0_32px_60px_rgba(0,0,0,0.45)]"
             />
           </div>
         </Reveal>

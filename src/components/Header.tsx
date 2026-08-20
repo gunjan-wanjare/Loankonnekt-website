@@ -161,9 +161,9 @@ export function Header() {
               className="fixed inset-y-0 right-0 z-[70] flex w-[min(20.5rem,88vw)] flex-col bg-white shadow-[-18px_0_50px_-20px_rgba(5,10,24,0.35)] lg:hidden"
             >
               <div className="flex items-center justify-between border-b border-[#EEF2F7] px-5 py-4 pt-[calc(env(safe-area-inset-top)+1rem)]">
-              <div className="min-w-0">
-                <Logo tone="light" size="md" />
-              </div>
+                <div className="min-w-0">
+                  <Logo tone="light" size="md" />
+                </div>
                 <button
                   type="button"
                   aria-label="Close menu"

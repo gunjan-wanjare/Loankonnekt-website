@@ -15,7 +15,11 @@ export function Support() {
   return (
     <section
       id={support.id}
-      className="bg-[linear-gradient(105deg,#2B84FF_0%,#0047FF_32%,#0047FF_58%,#001FAE_100%)] py-14 sm:py-16 lg:py-[4.25rem]"
+      className="py-14 sm:py-16 lg:py-[4.25rem]"
+      style={{
+        background:
+          "linear-gradient(90deg, #3692FF 0%, #1E71FD 12%, #0047FF 28%, #0047FF 58%, #0027C0 82%, #001AA5 100%)",
+      }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="text-center">
