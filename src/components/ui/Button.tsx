@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils";
 type ButtonProps = {
   children: React.ReactNode;
   href?: string;
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "light";
+  variant?: "primary" | "secondary" | "outline" | "outlineBrand" | "ghost" | "light";
   size?: "sm" | "md" | "lg";
   className?: string;
+  style?: React.CSSProperties;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
   type?: "button" | "submit";
   icon?: React.ReactNode;
@@ -18,19 +19,21 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    "bg-[#0066FF] text-white hover:bg-[#1a75ff] border border-[#0066FF] shadow-[0_0_24px_rgba(0,102,255,0.45)]",
+    "bg-[#0047FF] text-[#FFFFFF] hover:bg-[#003DE0] border border-[#0047FF] shadow-none",
   light: "bg-white text-navy hover:bg-white/90 border border-white",
   secondary:
     "bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70",
   outline:
     "bg-transparent text-navy border border-navy/20 hover:border-brand hover:text-brand",
+  outlineBrand:
+    "bg-white text-[#0047FF] border border-[#0047FF] hover:bg-[#0047FF]/5",
   ghost: "bg-transparent text-navy border border-transparent hover:text-brand",
 };
 
 const sizes = {
-  sm: "min-h-10 px-5 py-2 text-sm rounded-full",
-  md: "min-h-11 px-6 py-3 text-sm sm:px-7 rounded-full",
-  lg: "min-h-12 px-7 py-3.5 text-sm sm:px-9 sm:text-base rounded-full",
+  sm: "min-h-10 px-5 py-2 text-sm rounded-[16px]",
+  md: "min-h-11 px-6 py-3 text-sm sm:px-7 rounded-[16px]",
+  lg: "min-h-12 px-7 py-3.5 text-sm sm:px-9 sm:text-base rounded-[16px]",
 };
 
 export function Button({
@@ -39,6 +42,7 @@ export function Button({
   variant = "primary",
   size = "md",
   className,
+  style,
   onClick,
   type = "button",
   icon,
@@ -74,6 +78,7 @@ export function Button({
           }
         }}
         className={classes}
+        style={style}
         whileHover={{ scale: 1.035, y: -1 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 420, damping: 24 }}
@@ -88,6 +93,7 @@ export function Button({
       type={type}
       onClick={onClick}
       className={classes}
+      style={style}
       whileHover={{ scale: 1.035, y: -1 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 420, damping: 24 }}

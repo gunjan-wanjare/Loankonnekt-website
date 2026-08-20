@@ -1,320 +1,498 @@
 /** Homepage content — sourced from LoanKonnekt Landing Page (Sanjana L) */
 
+import { Mail, MapPin, Phone } from "lucide-react";
 import type { IconName } from "./icons";
 
 export const hero = {
   id: "top",
-  badge: "Trusted Lenders · Instant Matching · Zero Hassles",
-  headline: "Your Search for the Best Loan",
-  headlineAccent: "Ends Here.",
+  headline: "Find the Right Loan,",
+  headlineAccent: "Hassle-Free.",
   subcopy:
-    "LoanKonnekt brings you trusted lenders on one digital platform. Compare loan options and find the best fit instantly. Zero hassles guaranteed.",
-  primaryCta: { label: "Apply Now", href: "/apply" },
-  secondaryCta: { label: "Learn More", href: "#features" },
-  trustAvatars: ["HD", "SB", "IC", "BF", "TC"],
-  cards: [
-    {
-      key: "score",
-      title: "CIBIL Credit Score",
-      value: "782",
-      badge: "AA+",
-      delta: "+12 pts this month",
-      type: "score" as const,
-    },
-    {
-      key: "pipeline",
-      title: "Active Loan Pipeline",
-      value: "₹847 Cr",
-      badge: "+18% MoM",
-      type: "pipeline" as const,
-    },
-    {
-      key: "decisions",
-      title: "Active Decisions / min",
-      value: "247",
-      live: true,
-      speed: "< 2s",
-      accuracy: "99.2%",
-      type: "decisions" as const,
-    },
-    {
-      key: "approval",
-      title: "Approval Rate",
-      value: "94.2%",
-      risks: [
-        { label: "Low Risk", value: "72%", tone: "low" as const },
-        { label: "Med Risk", value: "20%", tone: "med" as const },
-        { label: "High Risk", value: "8%", tone: "high" as const },
-      ],
-      type: "approval" as const,
-    },
-  ],
+    "Get approved for loans up to ₹5,00,000 in under 10 minutes with minimal paperwork and flexible monthly repayment options.",
+  primaryCta: { label: "Check Loan Offer", href: "/apply" },
+  secondaryCta: { label: "Download App", href: "/download" },
   stats: [
-    { value: "₹8,500+ Cr", label: "Loans Processed" },
-    { value: "200K+", label: "Active Borrowers" },
-    { value: "97%", label: "Faster Approvals" },
-    { value: "99.8%", label: "Platform Uptime" },
-    { value: "150+", label: "Institutions" },
+    { value: "2M+", label: "Downloads" },
+    { value: "4.7", label: "Rating" },
+    { value: "500k+", label: "Active Users" },
   ],
-} as const;
-
-export const trust = {
-  id: "trust",
-  headline: "Trusted by 150+ leading financial institutions",
-  partners: [
-    { name: "Mahindra Finance", initial: "M" },
-    { name: "Tata Capital", initial: "T" },
-    { name: "Aditya Birla Finance", initial: "A" },
-    { name: "Piramal Finance", initial: "P" },
-    { name: "HDFC Bank", initial: "H" },
-    { name: "ICICI Bank", initial: "I" },
-  ],
-} as const;
-
-export const ecosystem = {
-  id: "platform",
-  badge: "BORROWER FIRST",
-  headline: "We Make Borrowing",
-  headlineAccent: "Stress-Free.",
-  subcopy:
-    "Whether taking your first loan or tenth, LoanKonnekt matches you with the best lenders for your profile.",
-  coreLabel: "Loan Konnekt",
-  coreIcon: "Layers" as IconName,
-  nodes: [
+  categories: [
     {
-      icon: "Target" as IconName,
-      label: "Tailored Loan Matching",
-      description:
-        "Get matched with lenders that fit your profile, goals, and eligibility.",
+      key: "personal",
+      label: "Personal Loan",
+      href: "/loans/personal",
+      side: "left" as const,
+      tone: "lavender" as const,
+      iconSrc: "/home/personal.png",
+      rotate: -3,
     },
     {
-      icon: "Brain" as IconName,
-      label: "Personalised Recommendations",
-      description:
-        "See loan options curated for your needs—not a one-size-fits-all list.",
+      key: "business",
+      label: "Business Loan",
+      href: "/loans/business",
+      side: "left" as const,
+      tone: "sky" as const,
+      iconSrc: "/home/business.png",
+      rotate: 2,
     },
     {
-      icon: "SearchCheck" as IconName,
-      label: "Smart Eligibility Check",
-      description:
-        "Know where you stand before you apply, with clear eligibility insights.",
+      key: "property",
+      label: "Property Loan",
+      href: "/loans/property",
+      side: "left" as const,
+      tone: "mint" as const,
+      iconSrc: "/home/property.png",
+      rotate: -4,
     },
     {
-      icon: "LineChart" as IconName,
-      label: "Interest & EMI Comparison",
-      description:
-        "Compare rates, EMIs, and tenures side by side to pick the best deal.",
+      key: "home",
+      label: "Home Loan",
+      href: "/loans/home",
+      side: "right" as const,
+      tone: "peach" as const,
+      iconSrc: "/home/home.png",
+      rotate: 4,
     },
     {
-      icon: "Users" as IconName,
-      label: "Dedicated Application Assistance",
-      description:
-        "Get help at every step so your application moves forward smoothly.",
+      key: "education",
+      label: "Education Loan",
+      href: "/loans/education",
+      side: "right" as const,
+      tone: "cyan" as const,
+      iconSrc: "/home/education.png",
+      rotate: -2,
     },
     {
-      icon: "FileBadge" as IconName,
-      label: "Full Documentation Guidance",
-      description:
-        "Know exactly what to upload and how—no paperwork confusion.",
-    },
-    {
-      icon: "CircleCheck" as IconName,
-      label: "Ongoing Support",
-      description:
-        "Stay supported from discovery through approval and beyond.",
+      key: "car",
+      label: "Car Loan",
+      href: "/loans/car",
+      side: "right" as const,
+      tone: "rose" as const,
+      iconSrc: "/home/car.png",
+      rotate: 3,
     },
   ],
 } as const;
 
 export const features = {
   id: "features",
-  badge: "PLATFORM",
-  headline: "More Than",
-  headlineAccent: "Lending.",
-  subcopy:
-    "Whether comparing loan options or managing documentation, LoanKonnekt is for borrowers who prefer convenience and safety.",
+  headline: "Types of Loans",
+  subcopy: "Choose the right loan product for your needs",
   items: [
     {
-      key: "marketplace",
-      title: "Lender Marketplace",
-      description:
-        "Choose from 150+ leading banks and RBI-registered NBFCs on one platform.",
-      icon: "Building2" as IconName,
-      tone: "navy" as const,
-      tags: ["Banks", "NBFCs", "RBI Registered", "One Platform"],
+      key: "personal",
+      title: "Personal Loan",
+      description: "Quick funds for personal needs",
+      href: "/loans/personal",
+      tone: "lavender" as const,
+      iconSrc: "/home/loan-personal.png",
     },
     {
-      key: "discovery",
-      title: "Loan Discovery",
-      description:
-        "Browse loan offers tailored to your profile. Compare interest rates, EMIs, repayment tenures, eligibility, and processing fees to find the perfect loan for your needs.",
-      icon: "SearchCheck" as IconName,
-      tone: "white" as const,
-      tags: ["Rates", "EMIs", "Tenure", "Fees"],
-    },
-    {
-      key: "application",
-      title: "Digital Application",
-      description:
-        "Submit your loan application online in just a few steps. First-time borrower? We'll guide you every step of the way.",
-      icon: "FileInput" as IconName,
-      tone: "white" as const,
-      iconTone: "green" as const,
-      tags: ["Online", "Guided", "Few Steps"],
-      tagTone: "green" as const,
-    },
-    {
-      key: "documents",
-      title: "Document Management",
-      description:
-        "Say goodbye to complicated paperwork. Upload your documents and let us handle the application process.",
-      icon: "FileBadge" as IconName,
+      key: "business",
+      title: "Business Loan",
+      description: "Finance to grow your business",
+      href: "/loans/business",
       tone: "sky" as const,
-      tags: ["Upload", "Paperless", "Assisted"],
+      iconSrc: "/home/loan-business.png",
     },
     {
-      key: "approval",
-      title: "Approval Assistance",
-      description:
-        "From application to approval, our team ensures a smooth borrowing experience for you.",
-      icon: "BadgeCheck" as IconName,
-      tone: "dark" as const,
-      metric: "200K+",
-      delta: "Borrowers trust us",
+      key: "home",
+      title: "Home Loan",
+      description: "Easy loan for your dream home",
+      href: "/loans/home",
+      tone: "peach" as const,
+      iconSrc: "/home/loan-home.png",
+    },
+    {
+      key: "property",
+      title: "Property Loan",
+      description: "Unlock funds from your property",
+      href: "/loans/property",
+      tone: "mint" as const,
+      iconSrc: "/home/loan-property.png",
+    },
+    {
+      key: "education",
+      title: "Education Loan",
+      description: "Easy financing for higher studies",
+      href: "/loans/education",
+      tone: "cyan" as const,
+      iconSrc: "/home/loan-education.png",
+    },
+    {
+      key: "car",
+      title: "Car Loan",
+      description: "Drive your dream car easily",
+      href: "/loans/car",
+      tone: "rose" as const,
+      iconSrc: "/home/loan-car.png",
     },
   ],
+  cta: { label: "Check Loan Offer", href: "/apply" },
 } as const;
 
 export const process = {
   id: "process",
-  badge: "HOW IT WORKS",
-  headline: "The Quickest Path to",
-  headlineAccent: "Approval.",
-  subcopy:
-    'Bridging the gap between "Applied" and "Approved" with a smarter digital experience.',
+  headline: "Your Loan Disbursed in Minutes",
+  headlineLine1: "Your Loan Disbursed",
+  headlineLine2: "in Minutes",
+  phoneSrc: "/home/iphone.png",
   steps: [
-    {
-      num: "01",
-      icon: "FileText" as IconName,
-      label: "Enter requirements",
-      description: "Enter your loan requirements",
-      tone: "primary" as const,
-    },
-    {
-      num: "02",
-      icon: "SearchCheck" as IconName,
-      label: "Get eligible offers",
-      description: "See offers matched to your profile",
-      tone: "primary" as const,
-    },
-    {
-      num: "03",
-      icon: "LineChart" as IconName,
-      label: "Compare and choose",
-      description: "Compare lenders, rates, and options",
-      tone: "primary" as const,
-    },
-    {
-      num: "04",
-      icon: "FileBadge" as IconName,
-      label: "Submit documents",
-      description: "Upload documents with guided support",
-      tone: "primary" as const,
-    },
-    {
-      num: "05",
-      icon: "Zap" as IconName,
-      label: "Get approved",
-      description: "Get approved and receive funds",
-      tone: "light" as const,
-    },
+    { num: "1", label: "Sign up and register" },
+    { num: "2", label: "Upload Documents" },
+    { num: "3", label: "Get Approved" },
+    { num: "4", label: "Receive Funds" },
   ],
+  app: {
+    name: "Pratik",
+    greeting: "Hello, Pratik!",
+    subcopy: "Find the best loan for you today.",
+    eligibilityTitle: "Check Your Loan Eligibility",
+    eligibilitySub: "Takes 2 mins  •  No impact on credit score",
+    eligibilityCta: "Check Eligibility",
+    eligibilityHref: "/apply",
+    categoriesLabel: "Loan Categories",
+    categories: [
+      { key: "personal", label: "Personal", href: "/loans/personal" },
+      { key: "business", label: "Business", href: "/loans/business" },
+      { key: "education", label: "Education", href: "/loans/education" },
+    ],
+  },
 } as const;
 
 export const compare = {
   id: "compare",
-  eyebrow: "WHY LOANKONNEKT",
-  headline: "What Makes LoanKonnekt a",
-  headlineAccent: "Smarter Choice",
-  subcopy: "See why 200k+ borrowers trust us.",
-  traditional: {
-    title: "Other Platforms",
-    subtitle: "Scattered & manual",
-    items: [
-      "Manual loan search",
-      "Limited lender options",
-      "No loan comparisons",
-      "Handle documentation yourself",
-      "Limited assistance after application",
-    ],
-  },
-  loankonnekt: {
-    title: "LoanKonnekt",
-    subtitle: "Smart & supported",
-    items: [
-      "Eligibility-based loan matching",
-      "Multiple lenders on one platform",
-      "Compare lenders, rates, and options in one place",
-      "Documentation support from start to finish",
-      "Support from application till approval",
-    ],
-  },
-} as const;
-
-export const stats = {
-  id: "stats",
-  eyebrow: "IMPACT",
-  headline: "Our",
-  headlineAccent: "Impact.",
+  headline: "The Smartest Way to Borrow Money",
   subcopy:
-    "Thousands of borrowers have already found the right loan with LoanKonnekt.",
+    "Compare loan options, understand your choices, and apply with confidence — all in one simple platform.",
   items: [
-    { value: "₹8500+ Cr", label: "Loans Processed" },
-    { value: "200K+", label: "Borrowers" },
-    { value: "97%", label: "Faster Approvals" },
-    { value: "99.8%", label: "Platform Uptime" },
-    { value: "150+", label: "Institutions" },
-    { value: "24x7", label: "Availability" },
+    {
+      key: "collateral",
+      icon: "FileText" as IconName,
+      iconSrc: "/home/Vector.svg",
+      title: "No Collateral Required",
+      description:
+        "Access funds purely based on your credibility. Zero collateral or guarantor needed.",
+    },
+    {
+      key: "approval",
+      icon: "CheckCheck" as IconName,
+      title: "Instant Approval",
+      description:
+        "Our real-time algorithmic assessment checks your eligibility and approves in seconds.",
+    },
+    {
+      key: "emi",
+      icon: "CalendarClock" as IconName,
+      iconSrc: "/home/calendar-check.svg",
+      title: "Flexible EMI Options",
+      description:
+        "Choose a customized repayment structure that perfectly fits your monthly cash flow.",
+    },
+    {
+      key: "docs",
+      icon: "IdCard" as IconName,
+      iconSrc: "/home/file-text.svg",
+      title: "Minimal Documentation",
+      description:
+        "Upload simple digital copies of your PAN, Aadhaar, and a bank statement.",
+    },
+    {
+      key: "digital",
+      icon: "Smartphone" as IconName,
+      title: "100% Digital Process",
+      description:
+        "From application to direct account disbursal — everything happens online.",
+    },
+    {
+      key: "rates",
+      icon: "Percent" as IconName,
+      title: "Competitive Rates",
+      description:
+        "Enjoy low interest rates calculated transparently without hidden setup fees.",
+    },
   ],
 } as const;
 
-export const faq = {
-  id: "faq",
-  badge: "FAQ",
-  headline: "Frequently Asked",
-  headlineAccent: "Questions",
-  subcopy: "Still have queries? We've answered the most common ones below.",
+export const creditScore = {
+  id: "credit-score",
+  headline: "Check Your Credit Score For Free",
+  subcopy:
+    "Track your financial health in real-time. Checking your score is fast, totally secure, and won't affect your credit rating.",
+  badges: [
+    { key: "secure", label: "Encrypted & Secure" },
+    { key: "eligibility", label: "Unlock Credit Eligibility" },
+  ],
+  cta: { label: "Check your score", href: "/credit-score" },
+  trust: {
+    prefix: "Powered by",
+    brand: "Equifax",
+    suffix: "Secure SSL Connection",
+  },
+  gaugeSrc: "/home/Gauge-Canvas (1).png",
+  gauge: {
+    score: 750,
+    min: 300,
+    max: 900,
+    status: "GOOD",
+    updated: "Updated today",
+  },
+} as const;
+
+export const emiCalculator = {
+  id: "emi-calculator",
+  headline: "Calculate Your EMI Instantly",
+  subcopy:
+    "Adjust your loan amount and tenure to instantly estimate your monthly EMI, interest, and total repayment.",
+  amount: {
+    label: "Required Loan Amount",
+    min: 5000,
+    max: 500000,
+    step: 1000,
+    defaultValue: 150000,
+  },
+  tenure: {
+    label: "Loan Tenure",
+    min: 3,
+    max: 36,
+    step: 1,
+    defaultValue: 12,
+    unit: "Months",
+  },
+  monthlyRate: 0.012515,
+  monthlyRateLabel: "1.33% p.m.",
+  processingFeeRate: 0.02,
+  processingFeeLabel: "Processing Fee (2%)",
+  resultLabel: "Your Estimated Monthly EMI",
+  interestLabel: "Interest Rate",
+  totalInterestLabel: "Total Interest Payable",
+  totalRepaymentLabel: "Total Repayment",
+  cta: { label: "Get Cash Instantly", href: "/apply" },
+} as const;
+
+export const support = {
+  id: "support",
+  headline: "Expert assistance whenever you need it",
   items: [
     {
-      q: "Does LoanKonnekt provide loans directly?",
-      a: "No, we do not provide loans directly. We connect you with trusted lenders and assist you through the application process. The lender disburses the loan amount.",
+      key: "immediate",
+      title: "Immediate support",
+      subcopy: "With any time",
+      icon: "headset" as const,
     },
     {
-      q: "How does LoanKonnekt help me find the right loan?",
-      a: "We use secure bank integrations to fetch loan offers based on your eligibility, so you can compare and choose the best one.",
+      key: "chat",
+      title: "24/7",
+      subcopy: "Chat Assistance",
+      icon: "chat24" as const,
     },
     {
-      q: "Is LoanKonnekt compliant with RBI regulations?",
-      a: "Yes, we follow RBI digital lending guidelines to ensure secure, transparent, and compliant lending practices.",
+      key: "connect",
+      title: "Connect",
+      subcopy: "With our expert on phone",
+      icon: "users" as const,
+    },
+  ],
+} as const;
+
+export const eligibility = {
+  id: "eligibility",
+  headline: "Simple",
+  headlineAccent: "Eligibility",
+  headlineAfter: "Requirements",
+  subcopy:
+    "Basic eligibility criteria to help you understand which loan options may be right for you.",
+  cards: [
+    {
+      key: "salaried",
+      icon: "Briefcase" as IconName,
+      tone: "blue" as const,
+      title: "Salaried Employees",
+      items: [
+        { label: "Age", value: "21 to 58 years old" },
+        { label: "Minimum Monthly Net Income", value: "₹15,000" },
+        { label: "Employment", value: "Active service for at least 3 months" },
+        {
+          label: "Income Mode",
+          value: "Directly credited into a registered bank account",
+        },
+        {
+          label: "Documents",
+          value: "Direct bank statements & company ID copy",
+        },
+      ],
     },
     {
-      q: "Are the banks and NBFCs listed on LoanKonnekt verified and trustworthy?",
-      a: "Yes, we ensure the lending institutions listed on our platform are RBI-regulated banks and registered NBFCs.",
+      key: "business",
+      icon: "Store" as IconName,
+      tone: "green" as const,
+      title: "Self-Employed / Business",
+      items: [
+        { label: "Age", value: "21 to 65 years old" },
+        { label: "Minimum Annual Turnover", value: "₹2,00,000" },
+        {
+          label: "Business Vintage",
+          value: "Minimum 1 year of continuous operations",
+        },
+        {
+          label: "Bank Account",
+          value: "Active current or personal savings bank statement",
+        },
+        {
+          label: "Documents",
+          value: "Basic GST registration / ITR and PAN card",
+        },
+      ],
+    },
+  ],
+} as const;
+
+export const testimonials = {
+  id: "testimonials",
+  headline: "What Our Customers Say",
+  subcopy: "See how borrowers are making their loan journey simpler with us.",
+  items: [
+    {
+      name: "Rahul Verma",
+      role: "Software Engineer",
+      imageSrc: "/home/testimonial-rahul.png",
+      rating: 5,
+      quote:
+        "LoanKonnekt helped me secure money for my medical emergency in less than 10 minutes. The direct integration and lack of physical verification was incredibly convenient.",
     },
     {
-      q: "How does Loan Konnekt ensure data security?",
-      a: "We protect your data with encrypted storage, complete audit trails, and strict role-based access controls across the platform.",
+      name: "Priyah Patel",
+      role: "Boutique Owner",
+      imageSrc: "/home/testimonial-priyah.png",
+      rating: 5,
+      quote:
+        "As a small business owner, getting loans is usually an uphill task. LoanKonnekt's easy self-employed flow verified my business and disbursed ₹2,00,000 without any issues.",
+    },
+    {
+      name: "Amit Sharma",
+      role: "Sales Consultant",
+      imageSrc: "/home/testimonial-amit.png",
+      rating: 5,
+      quote:
+        "The EMI Calculator was spot-on. No hidden charges, zero surprises, and automatic NACH debit setups meant I never had to worry about repayment dates.",
+    },
+  ],
+} as const;
+
+export const landingContact = {
+  id: "contact",
+  heading: "How can we help you today?",
+  supporting:
+    "Tell us about your business. We'll show you how Orgatry fits.",
+  submitLabel: "Submit",
+  fields: {
+    firstName: {
+      label: "First Name*",
+      placeholder: "Enter your first name",
+    },
+    lastName: {
+      label: "Last Name*",
+      placeholder: "Enter your last name",
+    },
+    email: {
+      label: "Email",
+      placeholder: "Enter your email",
+    },
+    subject: {
+      label: "Subject",
+      placeholder: "Enter your subject",
+    },
+    description: {
+      label: "Description",
+      placeholder: "Please describe what you need",
+    },
+  },
+} as const;
+
+export const landingContactInfo = [
+  {
+    id: "email",
+    label: "Email",
+    value: "hello@orgatry.com",
+    href: "mailto:hello@orgatry.com",
+    icon: Mail,
+  },
+  {
+    id: "phone",
+    label: "Phone",
+    value: "+91 1234567890",
+    href: "tel:+911234567890",
+    icon: Phone,
+  },
+  {
+    id: "office",
+    label: "Office",
+    value: "Sattva Knowledge City, Hi-Tec City, Hyderabad.",
+    href: undefined,
+    icon: MapPin,
+  },
+] as const;
+
+export const faq = {
+  id: "faq",
+  headline: "Frequently Asked Questions",
+  items: [
+    {
+      q: "What is the maximum loan amount I can borrow?",
+      a: "With LoanKonnekt, you can borrow any personal loan amount ranging from ₹5,000 to a maximum limit of ₹5,00,000, depending completely on your pre-calculated eligibility metrics.",
+    },
+    {
+      q: "How long does it take for the money to be credited?",
+      a: "Our completely digital process is designed for maximum speed. Once approved, the funds are instantly transferred into your linked bank account via direct bank transfer in under 10 minutes.",
+    },
+    {
+      q: "What documents do I need to apply?",
+      a: "You only need to upload digital copies of your PAN card, Aadhaar card, and your active primary bank statements from the previous three months.",
+    },
+    {
+      q: "Are there any hidden pre-payment penalties?",
+      a: "Absolutely not. We believe in complete transparency. There are zero pre-payment or foreclosure charges if you decide to pay off your loan early.",
+    },
+    {
+      q: "How are the interest rates calculated?",
+      a: "Interest rates starting from just 1.33% p.m. are determined directly by evaluating your credit score, repayment capability, and income details during our assessment flow.",
+    },
+  ],
+} as const;
+
+export const appDownload = {
+  id: "app-download",
+  headlineLine1: "Access LoanKonnekt",
+  headlineLine2: "Anytime, Anywhere.",
+  subcopy:
+    "Download our top-rated secure mobile app to manage your EMI, track repayment schedules, view pre-approved credit limits, and request immediate money.",
+  phoneSrc: "/home/app-download-phone.png",
+  stores: [
+    {
+      key: "apple",
+      eyebrow: "Download on the",
+      name: "App Store",
+      href: "/download",
+    },
+    {
+      key: "google",
+      eyebrow: "GET IT ON",
+      name: "Google Play",
+      href: "/download",
     },
   ],
 } as const;
 
 export const homeContent = {
   hero,
-  trust,
-  ecosystem,
   features,
   process,
+  creditScore,
   compare,
-  stats,
+  emiCalculator,
+  support,
+  eligibility,
+  testimonials,
   faq,
+  appDownload,
 } as const;

@@ -30,6 +30,11 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-offset);
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -40,13 +45,16 @@ html {
 
 section[id],
 [id="top"],
-[id="trust"],
-[id="platform"],
-[id="features"],
 [id="process"],
+[id="features"],
+[id="credit-score"],
 [id="compare"],
-[id="stats"],
+[id="emi-calculator"],
+[id="support"],
+[id="eligibility"],
+[id="testimonials"],
 [id="faq"],
+[id="app-download"],
 [id="contact"] {
   scroll-margin-top: var(--header-offset);
 }
@@ -54,6 +62,17 @@ section[id],
 html,
 body {
   overflow-x: clip;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 body {
@@ -74,6 +93,13 @@ body.modal-open {
 
 a {
   text-underline-offset: 3px;
+}
+
+.heading-gradient {
+  background: linear-gradient(90deg, #0047ff 0%, #051325 53.3%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .scrollbar-none {
@@ -120,4 +146,48 @@ a {
   .animate-trust-marquee {
     animation: none;
   }
+}
+
+.emi-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--brand) 0%,
+    var(--brand) var(--fill),
+    #e5e7eb var(--fill),
+    #e5e7eb 100%
+  );
+  outline: none;
+}
+
+.emi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 3px solid var(--brand);
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25);
+  cursor: pointer;
+}
+
+.emi-slider::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 3px solid var(--brand);
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25);
+  cursor: pointer;
+}
+
+.emi-slider::-moz-range-track {
+  height: 6px;
+  background: transparent;
+  border: none;
 }

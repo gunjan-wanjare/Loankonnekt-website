@@ -2,13 +2,18 @@ export { site, seo, header, footer } from "./site";
 export {
   homeContent,
   hero,
-  trust,
-  ecosystem,
   features,
   process,
+  creditScore,
   compare,
-  stats,
+  emiCalculator,
+  support,
+  eligibility,
+  testimonials,
   faq,
+  appDownload,
+  landingContact,
+  landingContactInfo,
 } from "./home";
 export { privacy } from "./privacy";
 export { terms } from "./terms";

@@ -15,8 +15,11 @@ function formatPageName(href: string, linkText: string) {
     .join(" ");
 }
 
-/** Routes that already have real pages — never trigger Coming Soon */
-const REAL_ROUTES = new Set(["/"]);
+/** Routes that already have real pages */
+const REAL_ROUTES = new Set(["/", "/loans", "/how-it-works", "/about", "/contact"]);
+
+/** App / store destinations — Coming Soon modal, not a contact redirect */
+const COMING_SOON_PATHS = new Set(["/download"]);
 
 function normalizePath(href: string) {
   try {
@@ -27,31 +30,42 @@ function normalizePath(href: string) {
   }
 }
 
+function isSafeInternalHref(href: string) {
+  if (!href) return false;
+  if (href.startsWith("mailto:") || href.startsWith("tel:")) return false;
+  if (/^https?:\/\//i.test(href)) return false;
+  return href.startsWith("/") || href.startsWith("#");
+}
+
 function shouldShowComingSoon(anchor: HTMLAnchorElement) {
   if (anchor.dataset.comingSoon === "false") return false;
+  if (anchor.dataset.comingSoon === "true") return true;
 
   const href = anchor.getAttribute("href");
-  if (!href) return false;
-
-  if (href.startsWith("mailto:") || href.startsWith("tel:")) return false;
+  if (!href || !isSafeInternalHref(href)) return false;
   if (href === "/" || href === "#" || href === "#top") return false;
   if (href.startsWith("#legal-")) return false;
-  if (/^https?:\/\//i.test(href)) return false;
 
-  // Explicit mark
-  if (anchor.dataset.comingSoon === "true") return true;
+  return COMING_SOON_PATHS.has(normalizePath(href));
+}
+
+function shouldRedirectToContact(anchor: HTMLAnchorElement) {
+  if (anchor.dataset.comingSoon === "true") return false;
+  if (anchor.dataset.contactRedirect === "false") return false;
+
+  const href = anchor.getAttribute("href");
+  if (!href || !isSafeInternalHref(href)) return false;
+  if (href === "/" || href === "#" || href === "#top") return false;
+  if (href.startsWith("#legal-")) return false;
 
   if (href.startsWith("#")) {
     const id = href.slice(1);
-    if (!id) return false;
-    // Real in-page section → allow scroll
-    if (document.getElementById(id)) return false;
+    return Boolean(id) && !document.getElementById(id);
   }
 
   const path = normalizePath(href);
-  if (REAL_ROUTES.has(path)) return false;
-
-  return href.startsWith("#") || href.startsWith("/");
+  if (REAL_ROUTES.has(path) || COMING_SOON_PATHS.has(path)) return false;
+  return path.startsWith("/");
 }
 
 export function useComingSoonLinks() {
@@ -69,19 +83,26 @@ export function useComingSoonLinks() {
 
       const anchor = target.closest("a");
       if (!(anchor instanceof HTMLAnchorElement)) return;
-      if (!shouldShowComingSoon(anchor)) return;
 
-      event.preventDefault();
-      event.stopPropagation();
+      if (shouldShowComingSoon(anchor)) {
+        event.preventDefault();
+        event.stopPropagation();
+        const name = formatPageName(
+          anchor.getAttribute("href") ?? "",
+          anchor.getAttribute("aria-label")?.trim() ||
+            anchor.textContent?.trim() ||
+            "",
+        );
+        setPageName(name);
+        setIsOpen(true);
+        return;
+      }
 
-      const name = formatPageName(
-        anchor.getAttribute("href") ?? "",
-        anchor.getAttribute("aria-label")?.trim() ||
-          anchor.textContent?.trim() ||
-          "",
-      );
-      setPageName(name);
-      setIsOpen(true);
+      if (shouldRedirectToContact(anchor)) {
+        event.preventDefault();
+        event.stopPropagation();
+        window.location.assign("/contact/");
+      }
     };
 
     document.addEventListener("click", handleClick, true);
