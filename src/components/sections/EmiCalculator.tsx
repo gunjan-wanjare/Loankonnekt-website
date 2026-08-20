@@ -140,10 +140,10 @@ export function EmiCalculator() {
 
           <Reveal variants={slideInRight} className="w-full max-w-[22.5rem] justify-self-center lg:max-w-none lg:justify-self-end">
             <div className="rounded-[1.5rem] bg-white p-6 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.28)] sm:p-7">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9CA3AF]">
+              <p className="text-center text-[14px] font-semibold leading-none tracking-normal text-[#434657]">
                 {content.resultLabel}
               </p>
-              <p className="mt-2 text-[2rem] font-extrabold tracking-tight text-brand sm:text-[2.35rem]">
+              <p className="mt-2 text-center text-[2rem] font-extrabold tracking-tight text-brand sm:text-[2.35rem]">
                 {formatRupee(result.emi)}{" "}
                 <span className="text-[1.15rem] font-bold">/ mo</span>
               </p>
@@ -178,14 +178,20 @@ export function EmiCalculator() {
                 </span>
               </div>
 
-              <Button
-                href={content.cta.href}
-                variant="primary"
-                size="lg"
-                className="mt-6 min-h-12 w-full rounded-[12px] shadow-none"
-              >
-                {content.cta.label}
-              </Button>
+              <div className="mt-6 flex justify-start">
+                <Button
+                  href={content.cta.href}
+                  variant="primary"
+                  size="lg"
+                  className="min-h-12 rounded-[12px] px-6 text-center text-[16px] font-medium leading-7 tracking-normal shadow-none"
+                  style={{
+                    fontFamily: "var(--font-be-vietnam), sans-serif",
+                    fontWeight: 500,
+                  }}
+                >
+                  {content.cta.label}
+                </Button>
+              </div>
             </div>
           </Reveal>
         </div>

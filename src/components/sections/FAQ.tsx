@@ -39,7 +39,7 @@ export function FAQ() {
                       {item.q}
                     </span>
                     <motion.span
-                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      animate={{ rotate: isOpen ? 0 : 180 }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className={cn(
                         "flex h-8 w-8 shrink-0 items-center justify-center text-[#6B7280]",

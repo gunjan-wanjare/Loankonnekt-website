@@ -56,23 +56,21 @@ function LoanCard({
       transition={{ duration: 0.7, delay, ease: easeOutExpo }}
       whileHover={{ y: -6 }}
       className={cn(
-        "flex h-[6.75rem] w-[8rem] flex-col items-center rounded-[1.15rem] px-2.5 pb-2 pt-2 sm:h-[7.15rem] sm:w-[8.5rem]",
+        "flex h-[6.75rem] w-[8rem] flex-col items-center justify-center rounded-[1.15rem] px-2 py-2 sm:h-[7.15rem] sm:w-[8.5rem]",
         tone.card,
       )}
     >
-      <span className="relative flex min-h-0 w-full flex-1 items-end justify-center pb-0.5">
-        <Image
-          src={category.iconSrc}
-          alt=""
-          width={56}
-          height={56}
-          unoptimized
-          className="h-[3.5rem] w-[3.5rem] object-contain object-center sm:h-[3.75rem] sm:w-[3.75rem]"
-        />
-      </span>
+      <Image
+        src={category.iconSrc}
+        alt=""
+        width={56}
+        height={56}
+        unoptimized
+        className="h-[3.5rem] w-[3.5rem] shrink-0 object-contain object-center sm:h-[3.75rem] sm:w-[3.75rem]"
+      />
       <span
         className={cn(
-          "mt-1 shrink-0 text-center text-[12px] font-semibold leading-tight sm:text-[13px]",
+          "mt-1.5 w-full shrink-0 text-center text-[12px] font-semibold leading-tight sm:text-[13px]",
           tone.label,
         )}
       >

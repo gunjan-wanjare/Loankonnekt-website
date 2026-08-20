@@ -15,7 +15,7 @@ export function Support() {
   return (
     <section
       id={support.id}
-      className="bg-[linear-gradient(90deg,#1A73E8_0%,#1557C7_50%,#0E3A9E_100%)] py-14 sm:py-16 lg:py-[4.25rem]"
+      className="bg-[linear-gradient(105deg,#2B84FF_0%,#0047FF_32%,#0047FF_58%,#001FAE_100%)] py-14 sm:py-16 lg:py-[4.25rem]"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
         <Reveal variants={fadeUpBlur} className="text-center">
@@ -48,7 +48,10 @@ export function Support() {
                   <span className="block font-[family-name:var(--font-plus-jakarta)] text-[22px] font-semibold leading-[28px] tracking-normal text-white lg:text-[25px] lg:leading-[30px]">
                     {item.title}
                   </span>
-                  <span className="mt-0.5 block font-[family-name:var(--font-be-vietnam)] text-[16px] font-medium leading-[25px] tracking-normal text-white">
+                  <span
+                    className="mt-0.5 block text-[16px] font-medium leading-[25px] tracking-normal text-[#FFFFFF]"
+                    style={{ fontFamily: "var(--font-be-vietnam), sans-serif" }}
+                  >
                     {item.subcopy}
                   </span>
                 </span>

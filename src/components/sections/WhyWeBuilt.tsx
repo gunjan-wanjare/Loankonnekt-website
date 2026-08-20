@@ -35,7 +35,7 @@ export function WhyWeBuilt() {
             <h2 className="heading-gradient text-[1.75rem] font-bold leading-none tracking-normal sm:text-[2rem] lg:text-[40px]">
               {whyWeBuilt.headline}
             </h2>
-            <p className="mt-5 text-[1.25rem] font-semibold leading-6 tracking-normal text-[#111827] lg:text-[24px] lg:leading-6">
+            <p className="mt-5 text-[1.25rem] font-semibold leading-6 tracking-normal text-[#0047FF] lg:text-[24px] lg:leading-6">
               {whyWeBuilt.lead}
             </p>
             <div className="mt-4 space-y-4">

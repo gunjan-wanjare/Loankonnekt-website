@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { compare, getIcon } from "@/content";
 import { fadeUp, fadeUpBlur, staggerContainer } from "@/lib/motion";
@@ -23,11 +24,23 @@ export function Compare() {
         >
           {compare.items.map((item) => {
             const Icon = getIcon(item.icon);
+            const iconSrc = "iconSrc" in item ? item.iconSrc : undefined;
             return (
               <StaggerItem key={item.key} variants={fadeUp}>
                 <article className="h-full rounded-[1.35rem] bg-[#F3F7FF] px-5 py-6 sm:px-6 sm:py-7">
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-[12px] bg-brand text-white">
-                    <Icon size={20} strokeWidth={2.1} />
+                    {iconSrc ? (
+                      <Image
+                        src={iconSrc}
+                        alt=""
+                        width={20}
+                        height={20}
+                        unoptimized
+                        className="h-5 w-5 object-contain"
+                      />
+                    ) : (
+                      <Icon size={20} strokeWidth={2.1} />
+                    )}
                   </span>
                   <h3 className="mt-5 text-lg font-bold tracking-tight text-[#111827] sm:text-xl">
                     {item.title}

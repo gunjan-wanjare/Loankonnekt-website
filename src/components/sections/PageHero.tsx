@@ -82,7 +82,7 @@ export function PageHero({
               href={primaryCta.href}
               variant="primary"
               size="lg"
-              className="max-lg:w-full"
+              className="max-lg:w-full text-[#FFFFFF]"
               icon={primaryHasArrow ? <ArrowRight size={16} strokeWidth={2.4} /> : undefined}
               iconPosition="right"
             >

@@ -51,16 +51,16 @@ export function Process() {
 
             <Reveal
               variants={slideInRight}
-              className="flex justify-center lg:justify-end"
+              className="flex justify-center self-end lg:justify-end"
             >
-              <div className="relative w-[240px] translate-y-4 sm:w-[270px] sm:translate-y-6 lg:w-[300px] lg:translate-y-8">
+              <div className="relative w-[240px] sm:w-[270px] lg:w-[300px]">
                 <Image
                   src={processContent.phoneSrc}
                   alt="LoanKonnekt app — check loan eligibility"
                   width={330}
                   height={495}
                   unoptimized
-                  className="h-auto w-full object-contain object-bottom drop-shadow-[0_32px_60px_rgba(0,0,0,0.45)]"
+                  className="h-auto w-full object-contain drop-shadow-[0_32px_60px_rgba(0,0,0,0.45)]"
                 />
               </div>
             </Reveal>

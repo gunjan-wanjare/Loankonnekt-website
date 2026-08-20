@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, Lock, Shield, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -10,83 +11,6 @@ const badgeIcons = {
   secure: Shield,
   eligibility: UserRound,
 } as const;
-
-function polar(cx: number, cy: number, r: number, deg: number) {
-  const rad = (deg * Math.PI) / 180;
-  return {
-    x: cx + r * Math.cos(rad),
-    y: cy - r * Math.sin(rad),
-  };
-}
-
-function CreditGauge() {
-  const { score, min, max, status, updated } = creditScore.gauge;
-  const cx = 160;
-  const cy = 148;
-  const r = 118;
-  const startAngle = 208;
-  const endAngle = -28;
-  const t = (score - min) / (max - min);
-  const scoreAngle = startAngle + t * (endAngle - startAngle);
-
-  const trackStart = polar(cx, cy, r, startAngle);
-  const trackEnd = polar(cx, cy, r, endAngle);
-  const scorePos = polar(cx, cy, r, scoreAngle);
-  const pointerOuter = polar(cx, cy, r + 14, scoreAngle);
-  const pointerLeft = polar(cx, cy, r - 3, scoreAngle + 7);
-  const pointerRight = polar(cx, cy, r - 3, scoreAngle - 7);
-  const minLabel = polar(cx, cy, r + 22, startAngle);
-  const maxLabel = polar(cx, cy, r + 22, endAngle);
-
-  return (
-    <div className="relative mx-auto w-full max-w-[22rem]">
-      <svg viewBox="0 0 320 230" className="h-auto w-full" aria-hidden>
-        <defs>
-          <linearGradient id="credit-gauge-fill" x1="0%" y1="40%" x2="100%" y2="40%">
-            <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="55%" stopColor="#60A5FA" />
-            <stop offset="100%" stopColor="#0047FF" />
-          </linearGradient>
-        </defs>
-
-        <path
-          d={`M ${trackStart.x} ${trackStart.y} A ${r} ${r} 0 1 1 ${trackEnd.x} ${trackEnd.y}`}
-          fill="none"
-          stroke="#0B1220"
-          strokeWidth="18"
-          strokeLinecap="round"
-        />
-        <path
-          d={`M ${trackStart.x} ${trackStart.y} A ${r} ${r} 0 0 1 ${scorePos.x} ${scorePos.y}`}
-          fill="none"
-          stroke="url(#credit-gauge-fill)"
-          strokeWidth="18"
-          strokeLinecap="round"
-        />
-        <polygon
-          points={`${pointerOuter.x},${pointerOuter.y} ${pointerLeft.x},${pointerLeft.y} ${pointerRight.x},${pointerRight.y}`}
-          fill="#93C5FD"
-        />
-        <text x={minLabel.x} y={minLabel.y + 4} textAnchor="middle" fill="#94A3B8" fontSize="12">
-          {min}
-        </text>
-        <text x={maxLabel.x} y={maxLabel.y + 4} textAnchor="middle" fill="#94A3B8" fontSize="12">
-          {max}
-        </text>
-      </svg>
-
-      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center pt-8">
-        <p className="text-[4.25rem] font-extrabold leading-none tracking-tight text-white sm:text-[4.75rem]">
-          {score}
-        </p>
-        <span className="mt-3 rounded-full bg-[#22C55E] px-3.5 py-1 text-[11px] font-bold tracking-[0.14em] text-white">
-          {status}
-        </span>
-        <p className="mt-2 text-xs text-[#94A3B8]">{updated}</p>
-      </div>
-    </div>
-  );
-}
 
 export function CreditScore() {
   return (
@@ -146,7 +70,14 @@ export function CreditScore() {
             </Reveal>
 
             <Reveal variants={slideInRight} className="relative flex justify-center lg:justify-end">
-              <CreditGauge />
+              <Image
+                src={creditScore.gaugeSrc}
+                alt="Credit score 750 — Good"
+                width={377}
+                height={377}
+                unoptimized
+                className="h-auto w-full max-w-[22rem] object-contain sm:max-w-[24rem]"
+              />
             </Reveal>
           </div>
         </div>

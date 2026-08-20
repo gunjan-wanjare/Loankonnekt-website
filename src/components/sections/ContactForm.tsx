@@ -185,11 +185,15 @@ export function ContactForm() {
                 disabled={isSubmitting}
                 className={cn(
                   "flex h-[52px] w-full items-center justify-center",
-                  "cursor-pointer rounded-[12px] bg-[#0047FF] text-sm font-bold text-white",
+                  "cursor-pointer rounded-[12px] bg-[#0047FF] text-[16px] font-medium leading-none text-[#FFFFFF]",
                   "transition-colors duration-200 hover:bg-[#003DE0]",
                   "focus:outline-none focus:ring-2 focus:ring-brand/30 focus:ring-offset-2",
                   "disabled:cursor-not-allowed disabled:opacity-70",
                 )}
+                style={{
+                  fontFamily: "var(--font-be-vietnam), sans-serif",
+                  fontWeight: 500,
+                }}
               >
                 {isSubmitting ? "Submitting..." : contactForm.submitLabel}
               </button>

@@ -169,6 +169,7 @@ export const compare = {
     {
       key: "collateral",
       icon: "FileText" as IconName,
+      iconSrc: "/home/Vector.svg",
       title: "No Collateral Required",
       description:
         "Access funds purely based on your credibility. Zero collateral or guarantor needed.",
@@ -183,6 +184,7 @@ export const compare = {
     {
       key: "emi",
       icon: "CalendarClock" as IconName,
+      iconSrc: "/home/calendar-check.svg",
       title: "Flexible EMI Options",
       description:
         "Choose a customized repayment structure that perfectly fits your monthly cash flow.",
@@ -190,6 +192,7 @@ export const compare = {
     {
       key: "docs",
       icon: "IdCard" as IconName,
+      iconSrc: "/home/file-text.svg",
       title: "Minimal Documentation",
       description:
         "Upload simple digital copies of your PAN, Aadhaar, and a bank statement.",
@@ -226,6 +229,7 @@ export const creditScore = {
     brand: "Equifax",
     suffix: "Secure SSL Connection",
   },
+  gaugeSrc: "/home/Gauge-Canvas (1).png",
   gauge: {
     score: 750,
     min: 300,
@@ -255,7 +259,7 @@ export const emiCalculator = {
     defaultValue: 12,
     unit: "Months",
   },
-  monthlyRate: 0.0133,
+  monthlyRate: 0.012515,
   monthlyRateLabel: "1.33% p.m.",
   processingFeeRate: 0.02,
   processingFeeLabel: "Processing Fee (2%)",
