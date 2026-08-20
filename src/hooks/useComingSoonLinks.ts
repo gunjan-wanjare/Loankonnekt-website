@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 function formatPageName(href: string, linkText: string) {
   if (linkText) return linkText;
@@ -69,6 +70,7 @@ function shouldRedirectToContact(anchor: HTMLAnchorElement) {
 }
 
 export function useComingSoonLinks() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [pageName, setPageName] = useState("");
 
@@ -101,13 +103,13 @@ export function useComingSoonLinks() {
       if (shouldRedirectToContact(anchor)) {
         event.preventDefault();
         event.stopPropagation();
-        window.location.assign("/contact/");
+        router.push("/contact/");
       }
     };
 
     document.addEventListener("click", handleClick, true);
     return () => document.removeEventListener("click", handleClick, true);
-  }, []);
+  }, [router]);
 
   return { isOpen, pageName, closeModal };
 }

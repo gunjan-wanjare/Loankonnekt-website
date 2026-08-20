@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { fadeUpBlur } from "@/lib/motion";
 
@@ -29,7 +30,7 @@ export function CtaBand({ headline, subcopy, cta }: CtaBandProps) {
             </p>
           ) : null}
           <div className="mt-8 flex justify-center">
-            <a
+            <Link
               href={cta.href}
               className="inline-flex h-12 items-center justify-center px-8 text-[15px] leading-none tracking-normal text-[#0047FF] transition-colors hover:bg-[#F8FAFF]"
               style={{
@@ -40,7 +41,7 @@ export function CtaBand({ headline, subcopy, cta }: CtaBandProps) {
               }}
             >
               {cta.label}
-            </a>
+            </Link>
           </div>
         </Reveal>
       </div>

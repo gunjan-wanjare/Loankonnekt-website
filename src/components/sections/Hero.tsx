@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { hero } from "@/content";
 import { cn } from "@/lib/utils";
@@ -58,7 +59,7 @@ function LoanCard({
   const tone = toneStyles[category.tone];
 
   return (
-    <a
+    <Link
       href={category.href}
       style={rotate ? { transform: `rotate(${category.rotate}deg)` } : undefined}
       className={cn(
@@ -85,7 +86,7 @@ function LoanCard({
       >
         {category.label}
       </span>
-    </a>
+    </Link>
   );
 }
 

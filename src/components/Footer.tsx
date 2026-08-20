@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { footer } from "@/content";
+import { isInternalHref } from "@/lib/utils";
 
 export function Footer() {
   const isExternalHref = (href: string) => /^https?:\/\//i.test(href);
@@ -14,6 +15,27 @@ export function Footer() {
   const legalLinks = footer.legal.filter(
     (link) => link.label.toLowerCase() !== "linkedin",
   );
+
+  const renderHref = (
+    href: string,
+    className: string,
+    children: React.ReactNode,
+    extra?: { "aria-label"?: string },
+  ) => {
+    if (isInternalHref(href)) {
+      return (
+        <Link href={href} className={className} {...extra}>
+          {children}
+        </Link>
+      );
+    }
+
+    return (
+      <a href={href} {...getAnchorProps(href)} className={className} {...extra}>
+        {children}
+      </a>
+    );
+  };
 
   return (
     <footer className="border-t border-[#E5E7EB] bg-white">
@@ -40,13 +62,11 @@ export function Footer() {
                 <ul className="mt-1.5 space-y-0">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        {...getAnchorProps(link.href)}
-                        className="block py-0.5 text-sm leading-tight text-[#434657] transition-colors hover:text-[#051325]"
-                      >
-                        {link.label}
-                      </a>
+                      {renderHref(
+                        link.href,
+                        "block py-0.5 text-sm leading-tight text-[#434657] transition-colors hover:text-[#051325]",
+                        link.label,
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -76,14 +96,13 @@ export function Footer() {
               </a>
             ) : null}
             {legalLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                {...getAnchorProps(link.href)}
-                className="text-sm text-[#000000] transition-colors hover:text-[#051325]"
-              >
-                {link.label}
-              </a>
+              <span key={link.label}>
+                {renderHref(
+                  link.href,
+                  "text-sm text-[#000000] transition-colors hover:text-[#051325]",
+                  link.label,
+                )}
+              </span>
             ))}
           </div>
         </div>

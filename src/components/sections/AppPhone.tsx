@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Bell, Briefcase, GraduationCap, UserRound } from "lucide-react";
 import { process as processContent } from "@/content";
 import { cn } from "@/lib/utils";
@@ -56,12 +57,12 @@ export function AppPhone({ className }: { className?: string }) {
               <p className="mt-2 text-[11px] leading-relaxed text-white/85">
                 {app.eligibilitySub}
               </p>
-              <a
+              <Link
                 href={app.eligibilityHref}
                 className="mt-5 inline-flex min-h-10 w-full items-center justify-center rounded-full bg-white text-[13px] font-bold text-brand"
               >
                 {app.eligibilityCta}
-              </a>
+              </Link>
             </div>
 
             <div className="mt-6">
@@ -72,7 +73,7 @@ export function AppPhone({ className }: { className?: string }) {
                 {app.categories.map((category) => {
                   const Icon = categoryIcons[category.key];
                   return (
-                    <a
+                    <Link
                       key={category.key}
                       href={category.href}
                       className="flex flex-col items-center gap-2"
@@ -83,7 +84,7 @@ export function AppPhone({ className }: { className?: string }) {
                       <span className="text-[11px] font-medium text-[#4B5563]">
                         {category.label}
                       </span>
-                    </a>
+                    </Link>
                   );
                 })}
               </div>

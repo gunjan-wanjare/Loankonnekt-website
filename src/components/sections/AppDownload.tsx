@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { appDownload } from "@/content";
 import { slideInLeft, slideInRight } from "@/lib/motion";
@@ -50,7 +51,7 @@ export function AppDownload() {
             {appDownload.stores.map((store) => {
               const Icon = storeIcons[store.key];
               return (
-                <a
+                <Link
                   key={store.key}
                   href={store.href}
                   data-coming-soon="true"
@@ -65,7 +66,7 @@ export function AppDownload() {
                       {store.name}
                     </span>
                   </span>
-                </a>
+                </Link>
               );
             })}
           </div>

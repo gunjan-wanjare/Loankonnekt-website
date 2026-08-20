@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { features } from "@/content";
@@ -49,7 +50,7 @@ function LoanTypeCard({ item }: { item: FeatureItem }) {
   const tone = toneStyles[item.tone];
 
   return (
-    <a
+    <Link
       href={item.href}
       className="block h-full rounded-[1.5rem] p-px transition-transform duration-300 hover:-translate-y-1"
       style={{
@@ -80,7 +81,7 @@ function LoanTypeCard({ item }: { item: FeatureItem }) {
           {item.description}
         </p>
       </div>
-    </a>
+    </Link>
   );
 }
 
