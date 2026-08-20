@@ -24,7 +24,7 @@ export const hero = {
       side: "left" as const,
       tone: "lavender" as const,
       iconSrc: "/home/personal.png",
-      rotate: 8,
+      rotate: -3,
     },
     {
       key: "business",
@@ -33,7 +33,7 @@ export const hero = {
       side: "left" as const,
       tone: "sky" as const,
       iconSrc: "/home/business.png",
-      rotate: -3,
+      rotate: 2,
     },
     {
       key: "property",
@@ -42,7 +42,7 @@ export const hero = {
       side: "left" as const,
       tone: "mint" as const,
       iconSrc: "/home/property.png",
-      rotate: -8,
+      rotate: -4,
     },
     {
       key: "home",
@@ -51,7 +51,7 @@ export const hero = {
       side: "right" as const,
       tone: "peach" as const,
       iconSrc: "/home/home.png",
-      rotate: -8,
+      rotate: 4,
     },
     {
       key: "education",
@@ -60,7 +60,7 @@ export const hero = {
       side: "right" as const,
       tone: "cyan" as const,
       iconSrc: "/home/education.png",
-      rotate: 3,
+      rotate: -2,
     },
     {
       key: "car",
@@ -69,7 +69,7 @@ export const hero = {
       side: "right" as const,
       tone: "rose" as const,
       iconSrc: "/home/car.png",
-      rotate: 8,
+      rotate: 3,
     },
   ],
 } as const;
