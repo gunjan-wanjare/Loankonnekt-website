@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { BackToTop } from "@/components/BackToTop";
 import { Reveal } from "@/components/ui/Reveal";
 import { PageHero } from "@/components/sections/PageHero";
 import { StatsBand } from "@/components/sections/StatsBand";
@@ -37,9 +34,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
-      <Header />
-      <main>
+    <main>
         <PageHero
           primaryHasArrow
           largeIllustration
@@ -117,9 +112,6 @@ export default function AboutPage() {
 
         <CtaBand headline={aboutCta.headline} subcopy={aboutCta.subcopy} cta={aboutCta.cta} />
         <AppDownload />
-      </main>
-      <Footer />
-      <BackToTop />
-    </>
+    </main>
   );
 }

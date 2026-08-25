@@ -2,7 +2,7 @@ export const cookies = {
   title: "Cookie Policy",
   lastUpdated: "July 16, 2026",
   intro:
-    "This Cookie Policy explains how Loan Konnekt uses cookies and similar tracking technologies on our website to enhance functionality, analyze usage, and improve user experience.",
+    "This Cookie Policy explains how LoanKonnekt uses cookies and similar tracking technologies on our website to enhance functionality, analyze usage, and improve user experience.",
   sections: [
     {
       heading: "What Are Cookies",

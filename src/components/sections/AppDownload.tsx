@@ -55,14 +55,14 @@ export function AppDownload() {
                   key={store.key}
                   href={store.href}
                   data-coming-soon="true"
-                  className="inline-flex w-full items-center gap-2.5 rounded-[10px] border border-solid border-[#CCDAFF]/55 bg-transparent px-3.5 py-2.5 text-white transition-colors hover:bg-white/5 sm:w-auto sm:px-4 sm:py-2.5"
+                  className="inline-flex w-full items-center gap-2.5 rounded-[10px] border-[1.15px] border-solid border-[#193250] bg-[#0C1E36] px-3.5 py-2.5 text-white transition-colors hover:bg-[#132A4D] sm:w-auto sm:px-4 sm:py-2.5"
                 >
                   <Icon />
                   <span className="text-left leading-tight">
                     <span className="block text-[10px] font-normal tracking-[0.02em] text-white/85">
                       {store.eyebrow}
                     </span>
-                    <span className="block text-[15px] font-bold sm:text-[16px]">
+                    <span className="block font-[family-name:var(--font-plus-jakarta)] text-[18.57px] font-semibold leading-[22.29px] tracking-[0px]">
                       {store.name}
                     </span>
                   </span>

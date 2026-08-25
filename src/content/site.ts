@@ -109,7 +109,7 @@ export const footer = {
       ],
     },
   ],
-  copyright: "© 2026 Loan Konnekt Technologies Pvt. Ltd. All rights reserved.",
+  copyright: "© 2026 LoanKonnekt Technologies Pvt. Ltd. All rights reserved.",
   linkedInIconSrc: "/home/icon-linkedin.png",
   legal: [
     {

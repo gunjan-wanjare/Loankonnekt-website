@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Features } from "@/components/sections/Features";
 import { Process } from "@/components/sections/Process";
@@ -13,7 +11,6 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { AppDownload } from "@/components/sections/AppDownload";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { BackToTop } from "@/components/BackToTop";
 import { seo, site } from "@/content";
 
 export const metadata: Metadata = {
@@ -109,7 +106,6 @@ export default function Home() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <Header />
       <main>
         <Hero />
         <Process />
@@ -123,8 +119,6 @@ export default function Home() {
         <FAQ />
         <AppDownload />
       </main>
-      <Footer />
-      <BackToTop />
     </>
   );
 }

@@ -48,9 +48,9 @@ export function Testimonials() {
                     <Star
                       key={starIndex}
                       size={16}
-                      fill="#FBBF24"
+                      fill="none"
                       stroke="#FBBF24"
-                      strokeWidth={1}
+                      strokeWidth={1.5}
                     />
                   ))}
                 </div>

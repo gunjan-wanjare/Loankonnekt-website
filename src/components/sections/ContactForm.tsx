@@ -16,7 +16,8 @@ const fieldClassName = cn(
   "focus:border-[#0047FF]/40 focus:ring-2 focus:ring-[#0047FF]/10",
 );
 
-const fieldFilledTextClassName = "text-[#111827] dark:text-white";
+const fieldFilledTextClassName =
+  "text-[#051325] font-semibold leading-none tracking-normal dark:text-white";
 const fieldPlaceholderTextClassName = "text-[#9CA3AF] dark:text-[#94A3B8]";
 
 /**
@@ -133,14 +134,26 @@ function getContactUrl() {
   return `${base}${endpoints.contact}`;
 }
 
+const FALLBACK_SUCCESS_MESSAGE = "Thank you! We'll get back to you shortly.";
+
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(FALLBACK_SUCCESS_MESSAGE);
   const [loanType, setLoanType] = useState("");
   const [loanTypeError, setLoanTypeError] = useState(false);
 
+  // A ref (not the isSubmitting state) guards against duplicate submits:
+  // state updates are async, so a fast double-click/tap before the button
+  // re-renders as disabled could otherwise fire the request twice.
+  const isSubmittingRef = useRef(false);
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (isSubmittingRef.current) {
+      return;
+    }
 
     // The visible control is a custom dropdown (not a native <select>), so
     // its "required" behavior — unlike the other native fields — has to be
@@ -150,6 +163,7 @@ export function ContactForm() {
       return;
     }
 
+    isSubmittingRef.current = true;
     setIsSubmitting(true);
 
     const form = event.currentTarget;
@@ -164,13 +178,19 @@ export function ContactForm() {
     };
 
     try {
-      await fetch(getContactUrl(), {
+      const response = await fetch(getContactUrl(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
+      const data = await response.json().catch(() => null);
+      setSuccessMessage(
+        (typeof data?.message === "string" && data.message) || FALLBACK_SUCCESS_MESSAGE,
+      );
     } catch {
-      // Always show success to the user, even if the request fails.
+      // Network failure: no backend message is available, fall back.
+      setSuccessMessage(FALLBACK_SUCCESS_MESSAGE);
     }
 
     form.reset();
@@ -178,6 +198,7 @@ export function ContactForm() {
     setLoanTypeError(false);
     setSubmitted(true);
     setIsSubmitting(false);
+    isSubmittingRef.current = false;
   };
 
   return (
@@ -232,7 +253,7 @@ export function ContactForm() {
                   Form submitted successfully
                 </p>
                 <p className="max-w-xs text-sm leading-6 text-[#434657] dark:text-[#94A3B8]">
-                  Thank you! We&apos;ll get back to you shortly.
+                  {successMessage}
                 </p>
                 <button
                   type="button"

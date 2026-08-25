@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { BackToTop } from "@/components/BackToTop";
 import { ContactForm } from "@/components/sections/ContactForm";
-import { AppDownload } from "@/components/sections/AppDownload";
 import { seo, site } from "@/content";
 
 export const metadata: Metadata = {
@@ -22,14 +18,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <>
-      <Header />
-      <main>
-        <ContactForm />
-        <AppDownload />
-      </main>
-      <Footer />
-      <BackToTop />
-    </>
+    <main>
+      <ContactForm />
+    </main>
   );
 }

@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { BackToTop } from "@/components/BackToTop";
 import { PageHero } from "@/components/sections/PageHero";
 import { AlternatingStep } from "@/components/sections/AlternatingStep";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -25,9 +22,7 @@ export const metadata: Metadata = {
 
 export default function HowItWorksPage() {
   return (
-    <>
-      <Header />
-      <main>
+    <main>
         <PageHero
           primaryHasArrow
           largeIllustration
@@ -64,9 +59,6 @@ export default function HowItWorksPage() {
           cta={howItWorksCta.cta}
         />
         <AppDownload />
-      </main>
-      <Footer />
-      <BackToTop />
-    </>
+    </main>
   );
 }

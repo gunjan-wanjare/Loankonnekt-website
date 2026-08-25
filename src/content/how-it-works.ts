@@ -2,7 +2,7 @@
 
 export const howItWorksHero = {
   subcopy:
-    "From choosing the right loan to getting started, Loan Konnekt makes the journey simple, transparent and easy to understand.",
+    "From choosing the right loan to getting started, LoanKonnekt makes the journey simple, transparent and easy to understand.",
   primaryCta: { label: "Explore Our Loans", href: "/loans/" },
   secondaryCta: { label: "Check Eligibility", href: "/apply" },
   illustration: {
@@ -18,7 +18,10 @@ export const steps = [
     description:
       "Create your secure LoanKonnekt account in just a few clicks. Enter your mobile number, verify with a secure OTP, and fill in your basic personal profile to initiate the system.",
     bullets: ["Takes less than 2 minutes", "Highly encrypted profile creation"],
-    image: { src: "/how-it-works/step-1.png", alt: "LoanKonnekt sign up screen" },
+    image: {
+      src: "/how-it-works/step-1.png",
+      alt: "LoanKonnekt sign up screen",
+    },
     imageSide: "left" as const,
   },
   {
@@ -42,7 +45,10 @@ export const steps = [
       "Approval decision in under 10 minutes",
       "Zero hidden terms or processing surprises",
     ],
-    image: { src: "/how-it-works/step-3.png", alt: "Real-time approval screen" },
+    image: {
+      src: "/how-it-works/step-3.png",
+      alt: "Real-time approval screen",
+    },
     imageSide: "left" as const,
   },
   {
@@ -50,14 +56,21 @@ export const steps = [
     title: "Immediate Direct Disbursal",
     description:
       "Once approved, authorize the automatic NACH mandate setup. The cash is directly credited to your registered primary bank account safely and instantly.",
-    bullets: ["Direct electronic fund transfer", "Automated easy repayment schedules"],
-    image: { src: "/how-it-works/step-4.png", alt: "Disbursal confirmation screen" },
+    bullets: [
+      "Direct electronic fund transfer",
+      "Automated easy repayment schedules",
+    ],
+    image: {
+      src: "/how-it-works/step-4.png",
+      alt: "Disbursal confirmation screen",
+    },
     imageSide: "right" as const,
   },
 ] as const;
 
 export const howItWorksCta = {
   headline: "Access your pre-approved limit now",
-  subcopy: "Manage EMIs and track repayments safely inside India's premier borrowing platform.",
+  subcopy:
+    "Manage EMIs and track repayments safely inside India's premier borrowing platform.",
   cta: { label: "Check Pre-Approval Now", href: "/apply" },
 } as const;

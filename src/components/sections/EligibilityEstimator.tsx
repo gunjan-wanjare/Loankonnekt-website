@@ -59,7 +59,7 @@ export function EligibilityEstimator() {
                         "flex h-11 items-center justify-center rounded-[12px] border bg-white text-[13px] font-medium tracking-tight transition-colors dark:bg-[#111A2E] sm:h-12 sm:text-sm",
                         selected
                           ? "border-[#0047FF] text-[#0047FF]"
-                          : "border-[#E5E7EB] text-[#051325] hover:border-[#0047FF]/40 dark:border-white/10 dark:text-white",
+                          : "border-[#E5E7EB] text-[#434657] hover:border-[#0047FF]/40 dark:border-white/10 dark:text-white",
                       )}
                     >
                       {option}

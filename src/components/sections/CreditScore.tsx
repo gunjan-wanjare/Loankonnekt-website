@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight, Lock, Shield, UserRound } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Lock } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CreditScoreGauge } from "@/components/sections/CreditScoreGauge";
@@ -8,8 +9,8 @@ import { creditScore } from "@/content";
 import { slideInLeft, slideInRight } from "@/lib/motion";
 
 const badgeIcons = {
-  secure: Shield,
-  eligibility: UserRound,
+  secure: "/home/Icon-Wrapper.svg",
+  eligibility: "/home/Icon-Wrapper (1).svg",
 } as const;
 
 export function CreditScore() {
@@ -33,13 +34,13 @@ export function CreditScore() {
 
               <div className="mt-6 flex flex-wrap gap-2.5">
                 {creditScore.badges.map((badge) => {
-                  const Icon = badgeIcons[badge.key];
+                  const iconSrc = badgeIcons[badge.key];
                   return (
                     <span
                       key={badge.key}
                       className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-[12px] font-medium text-[#E2E8F0]"
                     >
-                      <Icon size={14} strokeWidth={2.2} />
+                      <Image src={iconSrc} alt="" width={14} height={14} unoptimized />
                       {badge.label}
                     </span>
                   );

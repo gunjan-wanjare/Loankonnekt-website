@@ -97,5 +97,5 @@ export const eligibilityEstimator = {
 export const loansCta = {
   headline: "Ready to secure your transparent loan limit?",
   subcopy: "Get pre-approved in under 10 minutes. Zero collateral, zero hassle.",
-  cta: { label: "Check Free Eligibility", href: "/apply" },
+  cta: { label: "Check Pre-Approval Now", href: "/apply" },
 } as const;

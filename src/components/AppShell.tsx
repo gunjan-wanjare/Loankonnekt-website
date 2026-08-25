@@ -2,6 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { BackToTop } from "@/components/BackToTop";
 import { Preloader } from "@/components/Preloader";
 import { ComingSoonModal } from "@/components/ComingSoonModal";
 import { LegalModal } from "@/components/LegalModal";
@@ -80,7 +83,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         {isHome && phase === "ready" ? <ScrollHandoffLogo /> : null}
 
+        <Header />
         {children}
+        <Footer />
+        <BackToTop />
         <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
         <LegalModal activePage={activePage} onClose={closeLegal} />
       </ScrollHandoffProvider>
