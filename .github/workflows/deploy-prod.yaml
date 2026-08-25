@@ -58,6 +58,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: staging
+          NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
 
       - name: Verify dist folder
         run: |
