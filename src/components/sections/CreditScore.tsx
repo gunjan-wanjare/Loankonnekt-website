@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowRight, Lock, Shield, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { CreditScoreGauge } from "@/components/sections/CreditScoreGauge";
 import { creditScore } from "@/content";
 import { slideInLeft, slideInRight } from "@/lib/motion";
 
@@ -14,8 +14,8 @@ const badgeIcons = {
 
 export function CreditScore() {
   return (
-    <section id={creditScore.id} className="bg-white py-8 sm:py-10 md:py-12">
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+    <section id={creditScore.id} className="bg-white py-8 sm:py-10 md:py-12 dark:bg-[#0A0F1E]">
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <div className="relative overflow-hidden rounded-[1.75rem] bg-[#051325] sm:rounded-[2.25rem] lg:rounded-[2.5rem]">
           <div
             aria-hidden
@@ -70,14 +70,7 @@ export function CreditScore() {
             </Reveal>
 
             <Reveal variants={slideInRight} className="relative flex justify-center lg:justify-end">
-              <Image
-                src={creditScore.gaugeSrc}
-                alt="Credit score 750 — Good"
-                width={377}
-                height={377}
-                unoptimized
-                className="h-auto w-full max-w-[22rem] object-contain sm:max-w-[24rem]"
-              />
+              <CreditScoreGauge gauge={creditScore.gauge} />
             </Reveal>
           </div>
         </div>

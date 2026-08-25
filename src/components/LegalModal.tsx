@@ -39,7 +39,7 @@ function LegalDocument({ doc }: { doc: LegalDoc }) {
         Last updated · {doc.lastUpdated}
       </p>
 
-      <p className="mt-5 text-[15px] leading-relaxed text-slate-600 sm:text-base">
+      <p className="mt-5 text-[15px] leading-relaxed text-slate-600 sm:text-base dark:text-[#94A3B8]">
         {doc.intro}
       </p>
 
@@ -47,14 +47,14 @@ function LegalDocument({ doc }: { doc: LegalDoc }) {
         {doc.sections.map((section) => (
           <section
             key={section.heading}
-            className="border-t border-navy/8 pt-6 first:border-t-0 first:pt-0 sm:pt-7 first:sm:pt-0"
+            className="border-t border-navy/8 pt-6 first:border-t-0 first:pt-0 sm:pt-7 first:sm:pt-0 dark:border-white/10"
           >
-            <h3 className="text-lg font-semibold tracking-tight text-navy sm:text-xl">
+            <h3 className="text-lg font-semibold tracking-tight text-navy sm:text-xl dark:text-white">
               {section.heading}
             </h3>
 
             {section.bullets ? (
-              <ul className="mt-3.5 list-disc space-y-2.5 pl-5 text-[15px] leading-relaxed text-slate-600 marker:text-[#2563EB] sm:text-base">
+              <ul className="mt-3.5 list-disc space-y-2.5 pl-5 text-[15px] leading-relaxed text-slate-600 marker:text-[#2563EB] sm:text-base dark:text-[#94A3B8]">
                 {section.bullets.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -62,7 +62,7 @@ function LegalDocument({ doc }: { doc: LegalDoc }) {
             ) : null}
 
             {section.body ? (
-              <p className="mt-3.5 text-[15px] leading-relaxed text-slate-600 sm:text-base">
+              <p className="mt-3.5 text-[15px] leading-relaxed text-slate-600 sm:text-base dark:text-[#94A3B8]">
                 {section.body}
                 {section.email ? (
                   <>
@@ -118,8 +118,8 @@ export function LegalModal({ activePage, onClose }: LegalModalProps) {
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className={cn(
-              "relative flex max-h-[min(88vh,900px)] w-full max-w-[920px] flex-col overflow-hidden rounded-[20px] bg-white",
-              "shadow-[0_24px_70px_rgba(5,10,24,0.28),0_2px_8px_rgba(5,10,24,0.08)]",
+              "relative flex max-h-[min(88vh,900px)] w-full max-w-[920px] flex-col overflow-hidden rounded-[20px] bg-white dark:bg-[#111A2E]",
+              "shadow-[0_24px_70px_rgba(5,10,24,0.28),0_2px_8px_rgba(5,10,24,0.08)] dark:shadow-black/30",
               "max-sm:max-h-[92vh] max-sm:rounded-2xl",
             )}
             onClick={(event) => event.stopPropagation()}
@@ -148,7 +148,7 @@ export function LegalModal({ activePage, onClose }: LegalModalProps) {
             <div
               ref={contentRef}
               className={cn(
-                "min-h-0 flex-1 overflow-y-auto bg-gradient-to-b from-[#F7F9FC] via-white to-white",
+                "min-h-0 flex-1 overflow-y-auto bg-gradient-to-b from-[#F7F9FC] via-white to-white dark:from-[#111A2E] dark:via-[#111A2E] dark:to-[#111A2E]",
                 "[&::-webkit-scrollbar]:w-2.5",
                 "[&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#2563EB]/35",
                 "[&::-webkit-scrollbar-thumb]:border-[3px] [&::-webkit-scrollbar-thumb]:border-transparent",

@@ -21,14 +21,14 @@ type ButtonProps = {
 const variants = {
   primary:
     "bg-[#0047FF] text-[#FFFFFF] hover:bg-[#003DE0] border border-[#0047FF] shadow-none",
-  light: "bg-white text-navy hover:bg-white/90 border border-white",
+  light: "bg-white text-navy hover:bg-white/90 border border-white dark:text-white",
   secondary:
     "bg-transparent text-white border border-white/40 hover:bg-white/10 hover:border-white/70",
   outline:
-    "bg-transparent text-navy border border-navy/20 hover:border-brand hover:text-brand",
+    "bg-transparent text-navy border border-navy/20 hover:border-brand hover:text-brand dark:text-white dark:border-white/10",
   outlineBrand:
-    "bg-white text-[#0047FF] border border-[#0047FF] hover:bg-[#0047FF]/5",
-  ghost: "bg-transparent text-navy border border-transparent hover:text-brand",
+    "bg-white text-[#0047FF] border border-[#0047FF] hover:bg-[#0047FF]/5 dark:bg-[#0A0F1E]",
+  ghost: "bg-transparent text-navy border border-transparent hover:text-brand dark:text-white",
 };
 
 const sizes = {

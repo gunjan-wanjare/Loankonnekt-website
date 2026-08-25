@@ -7,8 +7,8 @@ import { slideInLeft, slideInRight } from "@/lib/motion";
 
 export function WhyWeBuilt() {
   return (
-    <section className="bg-white py-12 sm:py-14 md:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+    <section className="bg-white py-12 sm:py-14 md:py-16 dark:bg-[#0A0F1E]">
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-16">
           <Reveal variants={slideInLeft} className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div
@@ -19,7 +19,7 @@ export function WhyWeBuilt() {
               aria-hidden
               className="pointer-events-none absolute -bottom-8 -right-6 h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.14),transparent_65%)]"
             />
-            <div className="relative overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-28px_rgba(15,23,42,0.3)]">
+            <div className="relative overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-28px_rgba(15,23,42,0.3)] dark:shadow-black/30">
               <Image
                 src={whyWeBuilt.image.src}
                 alt={whyWeBuilt.image.alt}
@@ -42,7 +42,7 @@ export function WhyWeBuilt() {
               {whyWeBuilt.paragraphs.map((paragraph) => (
                 <p
                   key={paragraph}
-                  className="text-base font-normal leading-[1.6] tracking-normal text-[#4B5563] lg:text-[20px] lg:leading-[30px]"
+                  className="text-base font-normal leading-[1.6] tracking-normal text-[#4B5563] dark:text-[#94A3B8] lg:text-[20px] lg:leading-[30px]"
                 >
                   {paragraph}
                 </p>

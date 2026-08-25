@@ -45,7 +45,7 @@ export function InfoCardGrid({
             <article
               className={cn(
                 "h-full",
-                cardClassName ?? "rounded-[1.35rem] bg-white p-6 sm:p-7",
+                cardClassName ?? "rounded-[1.35rem] bg-white p-6 sm:p-7 dark:bg-[#111A2E]",
               )}
             >
               {Icon ? (
@@ -56,7 +56,7 @@ export function InfoCardGrid({
               <h3 className={cn("tracking-normal", titleClassName ?? "text-lg font-bold text-[#0047FF]")}>
                 {card.title}
               </h3>
-              <p className={cn("mt-2 font-normal", descriptionClassName ?? "text-sm leading-relaxed text-[#4B5563]")}>
+              <p className={cn("mt-2 font-normal", descriptionClassName ?? "text-sm leading-relaxed text-[#4B5563] dark:text-[#94A3B8]")}>
                 {card.description}
               </p>
             </article>

@@ -21,7 +21,7 @@ export function Support() {
           "linear-gradient(90deg, #3692FF 0%, #1E71FD 12%, #0047FF 28%, #0047FF 58%, #0027C0 82%, #001AA5 100%)",
       }}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <Reveal variants={fadeUpBlur} className="text-center">
           <h2 className="text-center text-[1.75rem] font-bold leading-none tracking-normal text-white sm:text-[2rem] lg:text-[40px]">
             {support.headline}
@@ -29,7 +29,7 @@ export function Support() {
         </Reveal>
 
         <Stagger
-          className="mt-8 flex flex-col items-center gap-5 sm:mt-10 sm:flex-row sm:justify-center sm:gap-8 md:gap-12 lg:mt-12"
+          className="mt-8 flex flex-col items-center gap-5 sm:mt-10 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8 md:gap-12 lg:mt-12"
           variants={staggerFast}
         >
           {support.items.map((item) => {

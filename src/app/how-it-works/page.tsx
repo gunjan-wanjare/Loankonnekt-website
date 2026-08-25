@@ -30,6 +30,7 @@ export default function HowItWorksPage() {
       <main>
         <PageHero
           primaryHasArrow
+          largeIllustration
           headline={
             <>
               Your Loan Journey,
@@ -43,7 +44,7 @@ export default function HowItWorksPage() {
           illustration={howItWorksHero.illustration}
         />
 
-        <section className="bg-white">
+        <section className="bg-white dark:bg-[#0A0F1E]">
           {steps.map((step, index) => (
             <AlternatingStep
               key={step.key}

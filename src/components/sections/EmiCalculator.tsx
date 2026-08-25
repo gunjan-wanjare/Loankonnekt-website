@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { emiCalculator as content } from "@/content";
-import { fadeUpBlur, slideInLeft, slideInRight } from "@/lib/motion";
+import { fadeUpBlur } from "@/lib/motion";
 
 const rupee = new Intl.NumberFormat("en-IN", {
   style: "currency",
@@ -51,13 +51,11 @@ function SliderField({
 
   return (
     <div>
-      <div className="flex items-end justify-between gap-4">
-        <label htmlFor={id} className="text-sm font-bold text-[#1F2937] sm:text-base">
+      <div className="flex items-center justify-between gap-4">
+        <label htmlFor={id} className="min-w-0 text-sm font-bold text-[#111827] dark:text-white sm:text-base">
           {label}
         </label>
-        <span className="text-sm font-extrabold text-[#0047FF] sm:text-base" style={{ fontWeight: 800 }}>
-          {valueText}
-        </span>
+        <span className="shrink-0 text-sm font-bold text-[#0047FF] sm:text-base">{valueText}</span>
       </div>
       <input
         id={id}
@@ -74,7 +72,7 @@ function SliderField({
         aria-valuenow={value}
         aria-valuetext={valueText}
       />
-      <div className="mt-2 flex justify-between text-[12px] text-[#9CA3AF]">
+      <div className="mt-2 flex justify-between text-[12px] text-[#9CA3AF] dark:text-[#94A3B8]">
         <span>{minLabel}</span>
         <span>{maxLabel}</span>
       </div>
@@ -98,103 +96,95 @@ export function EmiCalculator() {
   return (
     <section
       id={content.id}
-      className="bg-[linear-gradient(180deg,#F4F8FF_0%,#EEF3FF_100%)] py-12 sm:py-14 md:py-16"
+      className="bg-[#F4F8FF] py-12 sm:py-14 md:py-16 dark:bg-white/5"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
-        <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
-          <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
-            {content.headline}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#6B7280]">
-            {content.subcopy}
-          </p>
-        </Reveal>
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
+        <Reveal variants={fadeUpBlur}>
+          <div className="rounded-[20px] bg-white p-6 shadow-[0_18px_50px_-28px_rgba(15,23,42,0.28)] dark:bg-[#111A2E] dark:shadow-black/30 sm:rounded-[24px] sm:p-8 md:p-10">
+            <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)] lg:gap-0">
+              <div className="emi-panel-left min-w-0 dark:rounded-2xl dark:p-6 lg:pr-10 xl:pr-12">
+                <h2 className="heading-gradient text-[clamp(1.1rem,2.8vw,1.9rem)] font-bold tracking-tight max-lg:whitespace-normal lg:whitespace-nowrap">
+                  {content.headline}
+                </h2>
+                <p className="mt-3 max-w-[34rem] text-sm leading-relaxed text-[#6B7280] dark:text-[#94A3B8] sm:text-[15px] sm:leading-6">
+                  {content.subcopy}
+                </p>
 
-        <div className="mt-8 grid items-center gap-8 sm:mt-10 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22.5rem)] lg:gap-12">
-          <Reveal variants={slideInLeft} className="space-y-10">
-            <SliderField
-              id="emi-amount"
-              label={content.amount.label}
-              valueText={formatRupee(amount)}
-              min={content.amount.min}
-              max={content.amount.max}
-              step={content.amount.step}
-              value={amount}
-              minLabel={formatRupee(content.amount.min)}
-              maxLabel={formatRupee(content.amount.max)}
-              onChange={setAmount}
-            />
-            <SliderField
-              id="emi-tenure"
-              label={content.tenure.label}
-              valueText={`${tenure} ${content.tenure.unit}`}
-              min={content.tenure.min}
-              max={content.tenure.max}
-              step={content.tenure.step}
-              value={tenure}
-              minLabel={`${content.tenure.min} ${content.tenure.unit}`}
-              maxLabel={`${content.tenure.max} ${content.tenure.unit}`}
-              onChange={setTenure}
-            />
-          </Reveal>
-
-          <Reveal variants={slideInRight} className="w-full max-w-[22.5rem] justify-self-center lg:max-w-none lg:justify-self-end">
-            <div className="rounded-[1.5rem] bg-white p-6 shadow-[0_18px_50px_-24px_rgba(15,23,42,0.28)] sm:p-7">
-              <p className="text-center text-[14px] font-semibold leading-none tracking-normal text-[#434657]">
-                {content.resultLabel}
-              </p>
-              <p className="mt-2 text-center text-[2rem] font-extrabold tracking-tight text-brand sm:text-[2.35rem]">
-                {formatRupee(result.emi)}{" "}
-                <span className="text-[1.15rem] font-bold">/ mo</span>
-              </p>
-
-              <div className="mt-5 border-t border-[#E5E7EB] pt-5 space-y-3 text-sm">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-[#6B7280]">{content.interestLabel}</span>
-                  <span className="font-semibold text-[#111827]">
-                    {content.monthlyRateLabel}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-[#6B7280]">{content.totalInterestLabel}</span>
-                  <span className="font-semibold text-[#111827]">
-                    {formatRupee(result.totalInterest)}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-[#6B7280]">{content.processingFeeLabel}</span>
-                  <span className="font-semibold text-[#111827]">
-                    {formatRupee(result.processingFee)}
-                  </span>
+                <div className="mt-8 space-y-8 sm:mt-10">
+                  <SliderField
+                    id="emi-amount"
+                    label={content.amount.label}
+                    valueText={formatRupee(amount)}
+                    min={content.amount.min}
+                    max={content.amount.max}
+                    step={content.amount.step}
+                    value={amount}
+                    minLabel={formatRupee(content.amount.min)}
+                    maxLabel={formatRupee(content.amount.max)}
+                    onChange={setAmount}
+                  />
+                  <SliderField
+                    id="emi-tenure"
+                    label={content.tenure.label}
+                    valueText={`${tenure} ${content.tenure.unit}`}
+                    min={content.tenure.min}
+                    max={content.tenure.max}
+                    step={content.tenure.step}
+                    value={tenure}
+                    minLabel={`${content.tenure.min} ${content.tenure.unit}`}
+                    maxLabel={`${content.tenure.max} ${content.tenure.unit}`}
+                    onChange={setTenure}
+                  />
                 </div>
               </div>
 
-              <div className="mt-4 flex items-center justify-between gap-4 border-t border-dashed border-[#D1D5DB] pt-4">
-                <span className="font-bold text-[#111827]">
-                  {content.totalRepaymentLabel}
-                </span>
-                <span className="text-lg font-extrabold text-brand">
-                  {formatRupee(result.totalRepayment)}
-                </span>
-              </div>
+              <div aria-hidden className="hidden bg-[#E5E7EB] dark:bg-transparent lg:block" />
 
-              <div className="mt-6 flex justify-start">
-                <Button
-                  href={content.cta.href}
-                  variant="primary"
-                  size="lg"
-                  className="min-h-12 rounded-[12px] px-6 text-center text-[16px] font-medium leading-7 tracking-normal shadow-none"
-                  style={{
-                    fontFamily: "var(--font-be-vietnam), sans-serif",
-                    fontWeight: 500,
-                  }}
-                >
-                  {content.cta.label}
-                </Button>
+              <div className="emi-panel-right border-t border-[#E5E7EB] pt-8 dark:rounded-2xl dark:border-t-0 dark:p-6 lg:border-t-0 lg:pt-0 lg:pl-10 xl:pl-12">
+                <div className="text-center">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6B7280] dark:text-[#94A3B8] sm:text-xs">
+                    {content.resultLabel}
+                  </p>
+                  <p className="mt-2 text-[2rem] font-bold tracking-tight text-[#0047FF] sm:text-[2.35rem]">
+                    {formatRupee(result.emi)}
+                    <span className="text-[1.15rem] font-bold"> / mo</span>
+                  </p>
+                </div>
+
+                <div className="mt-6 space-y-3 border-t border-[#E5E7EB] pt-5 text-sm dark:border-white/10">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-[#6B7280] dark:text-[#94A3B8]">{content.interestLabel}</span>
+                    <span className="font-bold text-[#111827] dark:text-white">{content.monthlyRateLabel}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-[#6B7280] dark:text-[#94A3B8]">{content.totalInterestLabel}</span>
+                    <span className="font-bold text-[#111827] dark:text-white">{formatRupee(result.totalInterest)}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-[#6B7280] dark:text-[#94A3B8]">{content.processingFeeLabel}</span>
+                    <span className="font-bold text-[#111827] dark:text-white">{formatRupee(result.processingFee)}</span>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between gap-4 border-t border-dashed border-[#D1D5DB] pt-4 dark:border-white/10">
+                  <span className="font-bold text-[#111827] dark:text-white">{content.totalRepaymentLabel}</span>
+                  <span className="text-lg font-bold text-[#0047FF]">{formatRupee(result.totalRepayment)}</span>
+                </div>
+
+                <div className="mt-8">
+                  <Button
+                    href={content.cta.href}
+                    variant="primary"
+                    size="lg"
+                    className="min-h-12 rounded-[12px] px-6 text-center text-[16px] font-medium leading-7 tracking-normal shadow-none"
+                  >
+                    {content.cta.label}
+                  </Button>
+                </div>
               </div>
             </div>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

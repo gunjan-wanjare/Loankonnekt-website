@@ -2,8 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro, Geist, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { AppShell } from "@/components/AppShell";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { seo, site } from "@/content";
 import "./globals.css";
+
+const NO_FLASH_THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("loankonnekt-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#050A18" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0f1e" },
   ],
 };
 
@@ -126,6 +129,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${plusJakartaSans.variable} ${beVietnamPro.variable} h-full antialiased`}
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME_SCRIPT }} />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZJ3C7B2PSF"
           strategy="afterInteractive"
@@ -150,7 +154,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-background font-sans text-foreground antialiased">
-        <AppShell>{children}</AppShell>
+        <ThemeProvider>
+          <AppShell>{children}</AppShell>
+        </ThemeProvider>
       </body>
     </html>
   );

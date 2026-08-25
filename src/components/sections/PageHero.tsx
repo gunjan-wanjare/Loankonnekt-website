@@ -39,7 +39,7 @@ export function PageHero({
   children,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-white pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pb-16">
+    <section className="relative overflow-hidden bg-white pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pb-16 dark:bg-[#0A0F1E]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-[radial-gradient(ellipse_70%_80%_at_50%_100%,rgba(0,71,255,0.08),transparent_70%)]"
@@ -47,7 +47,7 @@ export function PageHero({
 
       <div
         className={cn(
-          "relative z-10 mx-auto grid max-w-7xl items-center px-4 sm:px-5 md:px-8",
+          "relative z-10 mx-auto grid max-w-[1340px] items-center px-4 sm:px-5 md:px-6",
           tall
             ? "gap-8 py-4 sm:gap-10 sm:py-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,22rem)] lg:gap-6 lg:py-10 xl:grid-cols-[minmax(0,1.2fr)_minmax(20rem,24rem)]"
             : largeIllustration
@@ -69,7 +69,7 @@ export function PageHero({
           </h1>
           <p
             className={cn(
-              "mt-5 font-normal tracking-normal text-[#434657]",
+              "mt-5 font-normal tracking-normal text-[#434657] dark:text-[#94A3B8]",
               tall
                 ? "max-w-[40rem] text-[18px] leading-[28px] sm:text-[20px] sm:leading-[30px]"
                 : "max-w-xl text-base leading-relaxed sm:max-w-2xl sm:text-lg",
@@ -154,7 +154,7 @@ export function PageHero({
                 {badges.map((label) => (
                   <span
                     key={label}
-                    className="inline-flex w-fit items-center gap-2 rounded-full border border-[#0047FF] bg-white px-3 py-1.5 text-[12px] font-medium text-[#0047FF] shadow-[0_8px_20px_-12px_rgba(0,71,255,0.35)] sm:px-3.5 sm:py-2 sm:text-[13px]"
+                    className="inline-flex w-fit items-center gap-2 rounded-full border border-[#0047FF] bg-white px-3 py-1.5 text-[12px] font-medium text-[#0047FF] shadow-[0_8px_20px_-12px_rgba(0,71,255,0.35)] sm:px-3.5 sm:py-2 sm:text-[13px] dark:bg-[#111A2E]"
                   >
                     <Check size={14} strokeWidth={2.75} className="shrink-0 text-[#0047FF]" />
                     {label}

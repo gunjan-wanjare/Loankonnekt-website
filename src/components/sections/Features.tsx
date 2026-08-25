@@ -58,10 +58,9 @@ function LoanTypeCard({ item }: { item: FeatureItem }) {
       }}
     >
       <div
-        className="flex h-full flex-col items-center rounded-[calc(1.5rem-1px)] px-5 pb-7 pt-5 text-center"
+        className="flex h-full flex-col items-center rounded-[calc(1.5rem-1px)] bg-white px-5 pb-7 pt-5 text-center dark:bg-[#111A2E]"
         style={{
           backgroundImage: `linear-gradient(180deg, ${tone.fillFrom} 0%, ${tone.fillTo} 100%)`,
-          backgroundColor: "#ffffff",
         }}
       >
         <div className="flex h-[8.5rem] w-full items-center justify-center sm:h-40 lg:h-44">
@@ -77,7 +76,7 @@ function LoanTypeCard({ item }: { item: FeatureItem }) {
         <h3 className={cn("mt-2 text-lg font-bold tracking-tight sm:text-xl", tone.title)}>
           {item.title}
         </h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-[#4B5563]">
+        <p className="mt-1.5 text-sm leading-relaxed text-[#4B5563] dark:text-[#94A3B8]">
           {item.description}
         </p>
       </div>
@@ -87,13 +86,13 @@ function LoanTypeCard({ item }: { item: FeatureItem }) {
 
 export function Features({ showCta = false }: { showCta?: boolean }) {
   return (
-    <section id={features.id} className="bg-white py-12 sm:py-14 md:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+    <section id={features.id} className="bg-white py-12 sm:py-14 md:py-16 dark:bg-[#0A0F1E]">
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
           <h2 className="heading-gradient text-[1.85rem] font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-[2.6rem]">
             {features.headline}
           </h2>
-          <p className="mt-3 text-sm font-normal leading-relaxed text-[#434657] sm:text-base">
+          <p className="mt-3 text-sm font-normal leading-relaxed text-[#434657] dark:text-[#94A3B8] sm:text-base">
             {features.subcopy}
           </p>
         </Reveal>

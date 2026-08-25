@@ -9,8 +9,8 @@ export function Process() {
   const steps = processContent.steps;
 
   return (
-    <section id={processContent.id} className="bg-white py-8 sm:py-10 md:py-12">
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+    <section id={processContent.id} className="bg-white py-8 sm:py-10 md:py-12 dark:bg-[#0A0F1E]">
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <div className="relative overflow-hidden rounded-[1.75rem] bg-[#010B18] sm:rounded-[2.25rem] lg:rounded-[2.5rem]">
           <div
             aria-hidden
@@ -33,11 +33,11 @@ export function Process() {
                         className="absolute left-[3.25rem] top-1/2 z-0 h-[calc(100%+0.875rem)] -translate-x-1/2 border-l-2 border-dashed border-white/90 sm:left-[3.625rem]"
                       />
                     ) : null}
-                    <div className="relative z-10 flex items-center gap-3 rounded-full bg-white p-1.5 pr-6 sm:gap-4 sm:p-2 sm:pr-8">
+                    <div className="relative z-10 flex items-center gap-3 rounded-full bg-white p-1.5 pr-6 sm:gap-4 sm:p-2 sm:pr-8 dark:bg-[#111827]">
                       <span className="inline-flex h-11 min-w-[5.75rem] shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#0047FF] px-3 text-[11px] font-bold text-white sm:h-12 sm:min-w-[6.25rem] sm:text-xs">
                         Step {step.num}
                       </span>
-                      <span className="text-sm font-semibold text-[#111827] sm:text-base">
+                      <span className="min-w-0 text-sm font-semibold text-[#111827] sm:text-base dark:text-white">
                         {step.label}
                       </span>
                     </div>

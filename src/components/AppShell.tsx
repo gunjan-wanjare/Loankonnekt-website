@@ -9,6 +9,7 @@ import {
   FloatingLogo,
   IntroContext,
 } from "@/components/FloatingLogo";
+import { ScrollHandoffProvider, ScrollHandoffLogo } from "@/components/ScrollHandoff";
 import { useComingSoonLinks } from "@/hooks/useComingSoonLinks";
 import { useLegalModal } from "@/hooks/useLegalModal";
 import {
@@ -66,19 +67,23 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <IntroContext.Provider value={{ phase: isHome ? phase : "ready" }}>
-      <ScrollToTopOnLoad />
+      <ScrollHandoffProvider>
+        <ScrollToTopOnLoad />
 
-      {showIntro && phase === "loading" ? (
-        <Preloader onComplete={handleLoaderComplete} />
-      ) : null}
+        {showIntro && phase === "loading" ? (
+          <Preloader onComplete={handleLoaderComplete} />
+        ) : null}
 
-      {showIntro && phase === "flying" ? (
-        <FloatingLogo phase={phase} onIntroComplete={handleIntroComplete} />
-      ) : null}
+        {showIntro && phase === "flying" ? (
+          <FloatingLogo phase={phase} onIntroComplete={handleIntroComplete} />
+        ) : null}
 
-      {children}
-      <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
-      <LegalModal activePage={activePage} onClose={closeLegal} />
+        {isHome && phase === "ready" ? <ScrollHandoffLogo /> : null}
+
+        {children}
+        <ComingSoonModal isOpen={isOpen} pageName={pageName} onClose={closeModal} />
+        <LegalModal activePage={activePage} onClose={closeLegal} />
+      </ScrollHandoffProvider>
     </IntroContext.Provider>
   );
 }

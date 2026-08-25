@@ -25,12 +25,12 @@ export function AlternatingStep({
   const textContent = (
     <Reveal variants={imageSide === "left" ? slideInRight : slideInLeft}>
       <h3
-        className="heading-gradient text-[1.4rem] font-bold tracking-tight sm:text-[1.6rem]"
+        className="heading-gradient text-[1.55rem] font-bold tracking-tight sm:text-[1.75rem]"
         style={{ fontWeight: 700 }}
       >
         {title}
       </h3>
-      <p className="mt-4 text-sm leading-relaxed text-[#4B5563]">{description}</p>
+      <p className="mt-4 text-sm leading-relaxed text-[#4B5563] sm:text-base dark:text-[#94A3B8]">{description}</p>
       <ul className="mt-5 space-y-3">
         {bullets.map((bullet) => (
           <li key={bullet} className="flex items-start gap-3">
@@ -42,7 +42,7 @@ export function AlternatingStep({
               unoptimized
               className="mt-0.5 h-[19px] w-[19px] shrink-0"
             />
-            <span className="text-sm text-[#374151]">{bullet}</span>
+            <span className="text-sm text-[#374151] sm:text-base dark:text-[#94A3B8]">{bullet}</span>
           </li>
         ))}
       </ul>
@@ -52,7 +52,7 @@ export function AlternatingStep({
   const imageContent = (
     <Reveal
       variants={imageSide === "left" ? slideInLeft : slideInRight}
-      className="relative mx-auto w-full max-w-md lg:max-w-none"
+      className="relative mx-auto w-full max-w-lg lg:max-w-none"
     >
       <div
         aria-hidden
@@ -62,12 +62,12 @@ export function AlternatingStep({
         aria-hidden
         className="pointer-events-none absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(37,99,235,0.14),transparent_65%)]"
       />
-      <div className="relative mx-auto w-full max-w-[540px] overflow-hidden rounded-[1.5rem] bg-[#F8FAFC] shadow-[0_24px_60px_-28px_rgba(15,23,42,0.3)]">
+      <div className="relative mx-auto w-full max-w-[620px] overflow-hidden rounded-3xl bg-[#F8FAFC] shadow-[0_24px_60px_-28px_rgba(15,23,42,0.3)] dark:bg-white/5 dark:shadow-black/30">
         <Image
           src={image.src}
           alt={image.alt}
-          width={540}
-          height={320}
+          width={620}
+          height={367}
           unoptimized
           className="h-auto w-full object-contain object-center"
         />
@@ -76,8 +76,8 @@ export function AlternatingStep({
   );
 
   return (
-    <div className={cn("py-10 sm:py-12", !isFirst && "border-t border-[#E5E7EB]")}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+    <div className={cn("py-10 sm:py-12", !isFirst && "border-t border-[#E5E7EB] dark:border-white/10")}>
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
           {imageSide === "left" ? (
             <>

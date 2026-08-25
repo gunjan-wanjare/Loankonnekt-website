@@ -59,6 +59,7 @@ export function ComingSoonModal({
             className={cn(
               "relative w-full max-w-[420px] rounded-[20px] bg-white p-8 text-center shadow-[0_24px_64px_rgba(5,10,24,0.22)]",
               "sm:p-11",
+              "dark:bg-[#111A2E] dark:shadow-black/30",
             )}
             onClick={(event) => event.stopPropagation()}
           >
@@ -67,7 +68,7 @@ export function ComingSoonModal({
               type="button"
               aria-label="Close"
               onClick={onClose}
-              className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-navy"
+              className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-navy dark:text-[#94A3B8] dark:hover:bg-white/5 dark:hover:text-white"
             >
               <X size={18} strokeWidth={2} />
             </button>
@@ -84,11 +85,11 @@ export function ComingSoonModal({
             </p>
             <h2
               id="coming-soon-title"
-              className="mb-3 text-[1.5rem] leading-tight font-extrabold tracking-tight text-navy sm:text-[1.875rem]"
+              className="mb-3 text-[1.5rem] leading-tight font-extrabold tracking-tight text-navy sm:text-[1.875rem] dark:text-white"
             >
               {pageName}
             </h2>
-            <p className="mb-7 text-[15px] leading-relaxed text-slate-500">
+            <p className="mb-7 text-[15px] leading-relaxed text-slate-500 dark:text-[#94A3B8]">
               We&apos;re working on this experience. Stay tuned — it will be
               available soon.
             </p>

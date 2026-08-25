@@ -16,7 +16,7 @@ export function StatsBand({
   className?: string;
 }) {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+    <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
       <Reveal
         variants={fadeUpBlur}
         className={cn(

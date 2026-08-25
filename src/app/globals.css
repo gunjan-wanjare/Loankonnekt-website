@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   --background: #ffffff;
   --foreground: #0a192f;
@@ -12,6 +14,15 @@
   --brand-bright: #3b82f6;
   --border: rgba(10, 25, 47, 0.1);
   --header-offset: 5.5rem;
+}
+
+[data-theme="dark"] {
+  --background: #0a0f1e;
+  --foreground: #f1f5f9;
+  --muted: #94a3b8;
+  --surface: #111a2e;
+  --surface-blue: #101d3d;
+  --border: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {
@@ -79,6 +90,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.preloader-active,
@@ -96,10 +108,55 @@ a {
 }
 
 .heading-gradient {
-  background: linear-gradient(90deg, #0047ff 0%, #051325 53.3%);
+  /* Fades from brand blue into the site's navy text color, holding navy
+     past the 53.3% mark even on wide/long headings. */
+  background: linear-gradient(90deg, #0047ff 0%, #051325 53.3%, #051325 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+[data-theme="dark"] .heading-gradient {
+  background: linear-gradient(90deg, #0047ff 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Browser autofill (Chrome/Edge/Safari) paints its own background over a
+   field the moment it's autofilled or a saved suggestion is picked, ignoring
+   our color classes entirely — only this box-shadow trick can override it.
+   Without this, a saved name/email flashes the contact form field white
+   even in dark theme. The long transition delay stops the browser's own
+   internal transition from visibly flashing before our override applies. */
+#contact-form input:-webkit-autofill,
+#contact-form input:-webkit-autofill:hover,
+#contact-form input:-webkit-autofill:focus,
+#contact-form textarea:-webkit-autofill {
+  -webkit-text-fill-color: #111827;
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+[data-theme="dark"] #contact-form input:-webkit-autofill,
+[data-theme="dark"] #contact-form input:-webkit-autofill:hover,
+[data-theme="dark"] #contact-form input:-webkit-autofill:focus,
+[data-theme="dark"] #contact-form textarea:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: 0 0 0 1000px #0b1220 inset;
+}
+
+[data-theme="dark"] .emi-panel-left {
+  background: #111827;
+  border-width: 1px 0px 1px 1px;
+  border-style: solid;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .emi-panel-right {
+  background: #0a0f1a;
+  border-width: 1px 0px 1px 1px;
+  border-style: solid;
+  border-color: #334155;
 }
 
 .scrollbar-none {
@@ -162,6 +219,16 @@ a {
     #e5e7eb 100%
   );
   outline: none;
+}
+
+[data-theme="dark"] .emi-slider {
+  background: linear-gradient(
+    to right,
+    var(--brand-bright) 0%,
+    var(--brand-bright) var(--fill),
+    rgba(255, 255, 255, 0.12) var(--fill),
+    rgba(255, 255, 255, 0.12) 100%
+  );
 }
 
 .emi-slider::-webkit-slider-thumb {

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useTransform } from "framer-motion";
 import {
   Banknote,
   CircleHelp,
@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { Logo } from "@/components/ui/Logo";
+import { useScrollHandoffProgress } from "@/components/ScrollHandoff";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { header as headerContent, site } from "@/content";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +33,14 @@ const navIcons: Record<string, typeof Home> = {
 
 export function Header() {
   const pathname = usePathname();
+  const isHome = pathname === "/" || pathname === "";
   const [open, setOpen] = useState(false);
+  // On the home page the YAKA mark lives in the Hero's top-right corner first;
+  // ScrollHandoffLogo flies it here, and this icon fades in right as that
+  // flight lands (same progress value drives both, so they stay in sync).
+  const progress = useScrollHandoffProgress();
+  const scrollNavOpacity = useTransform(progress, [0.85, 1], [0, 1]);
+  const scrollNavPointerEvents = useTransform(progress, (p) => (p > 0.9 ? "auto" : "none"));
 
   useEffect(() => {
     setOpen(false);
@@ -50,14 +59,14 @@ export function Header() {
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed inset-x-0 top-0 z-50 border-b border-navy/6 bg-white pt-[env(safe-area-inset-top)]"
+        className="fixed inset-x-0 top-0 z-50 border-b border-navy/6 bg-white pt-[env(safe-area-inset-top)] dark:border-white/8 dark:bg-[#0A0F1E]"
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-5 md:h-[4.5rem] md:px-8">
+        <div className="mx-auto flex h-16 max-w-[1340px] items-center justify-between gap-4 px-4 sm:px-5 md:h-[4.5rem] md:px-6">
           <Link href="/" aria-label="LoanKonnekt" className="relative z-10 flex items-center">
             <Logo tone="light" size="lg" />
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -68,8 +77,8 @@ export function Header() {
                   className={cn(
                     "text-[15px] tracking-tight transition-colors",
                     isActive
-                      ? "font-bold text-[#0047FF]"
-                      : "font-medium text-[#434657] hover:text-[#0047FF]",
+                      ? "font-bold text-[#0047FF] dark:text-[#5B8DFF]"
+                      : "font-medium text-[#434657] hover:text-[#0047FF] dark:text-[#94A3B8] dark:hover:text-[#5B8DFF]",
                   )}
                 >
                   {link.label}
@@ -79,6 +88,8 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
+            <ThemeToggle />
+
             <Link
               href={headerContent.cta.href}
               data-coming-soon="true"
@@ -87,27 +98,45 @@ export function Header() {
               {headerContent.cta.label}
             </Link>
 
-            <a
-              id="yaka-logo-anchor"
+            <motion.a
+              id="yaka-nav-anchor"
               href={site.brandUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="A YAKA Brand"
               className="relative block h-10 w-10 shrink-0"
+              style={{
+                opacity: isHome ? scrollNavOpacity : 1,
+                pointerEvents: isHome ? scrollNavPointerEvents : "auto",
+              }}
             >
               <span data-yaka-icon className="relative block h-10 w-10">
                 <Image
                   src={site.yaka.headerSrc}
-                  alt="YAKA"
+                  alt=""
+                  aria-hidden
                   fill
-                  sizes="40px"
-                  className="object-contain"
+                  sizes="80px"
+                  quality={100}
+                  unoptimized
+                  className="object-contain dark:hidden"
+                />
+                <Image
+                  src={site.yaka.headerDarkSrc}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="80px"
+                  quality={100}
+                  unoptimized
+                  className="hidden object-contain dark:block"
                 />
               </span>
-            </a>
+            </motion.a>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 lg:hidden">
+            <ThemeToggle className="h-9 w-9" />
             <a
               href={site.brandUrl}
               target="_blank"
@@ -117,17 +146,30 @@ export function Header() {
             >
               <Image
                 src={site.yaka.headerSrc}
-                alt="YAKA"
+                alt=""
+                aria-hidden
                 fill
-                sizes="28px"
-                className="object-contain"
+                sizes="56px"
+                quality={100}
+                unoptimized
+                className="object-contain dark:hidden"
+              />
+              <Image
+                src={site.yaka.headerDarkSrc}
+                alt=""
+                aria-hidden
+                fill
+                sizes="56px"
+                quality={100}
+                unoptimized
+                className="hidden object-contain dark:block"
               />
             </a>
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-navy"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-navy dark:text-white"
               onClick={() => setOpen((v) => !v)}
             >
               {open ? <X size={22} strokeWidth={2.25} /> : <Menu size={22} strokeWidth={2.25} />}
@@ -158,16 +200,16 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-y-0 right-0 z-[70] flex w-[min(20.5rem,88vw)] flex-col bg-white shadow-[-18px_0_50px_-20px_rgba(5,10,24,0.35)] lg:hidden"
+              className="fixed inset-y-0 right-0 z-[70] flex w-[min(20.5rem,88vw)] flex-col bg-white shadow-[-18px_0_50px_-20px_rgba(5,10,24,0.35)] dark:bg-[#0A0F1E] lg:hidden"
             >
-              <div className="flex items-center justify-between border-b border-[#EEF2F7] px-5 py-4 pt-[calc(env(safe-area-inset-top)+1rem)]">
+              <div className="flex items-center justify-between border-b border-[#EEF2F7] px-5 py-4 pt-[calc(env(safe-area-inset-top)+1rem)] dark:border-white/8">
                 <div className="min-w-0">
                   <Logo tone="light" size="md" />
                 </div>
                 <button
                   type="button"
                   aria-label="Close menu"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F6FF] text-[#051325]"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F6FF] text-[#051325] dark:bg-white/5 dark:text-white"
                   onClick={() => setOpen(false)}
                 >
                   <X size={18} strokeWidth={2.4} />
@@ -188,14 +230,16 @@ export function Header() {
                             "flex min-h-12 items-center gap-3 rounded-2xl px-3.5 text-[15px] transition-colors",
                             isActive
                               ? "bg-[#0047FF] font-bold text-white"
-                              : "font-medium text-[#434657] hover:bg-[#F3F6FF]",
+                              : "font-medium text-[#434657] hover:bg-[#F3F6FF] dark:text-[#94A3B8] dark:hover:bg-white/5",
                           )}
                           onClick={() => setOpen(false)}
                         >
                           <span
                             className={cn(
                               "inline-flex h-9 w-9 items-center justify-center rounded-xl",
-                              isActive ? "bg-white/15 text-white" : "bg-[#F3F6FF] text-[#0047FF]",
+                              isActive
+                                ? "bg-white/15 text-white"
+                                : "bg-[#F3F6FF] text-[#0047FF] dark:bg-white/5 dark:text-[#5B8DFF]",
                             )}
                           >
                             <Icon size={18} strokeWidth={2.2} />
@@ -208,7 +252,7 @@ export function Header() {
                 </ul>
               </nav>
 
-              <div className="border-t border-[#EEF2F7] p-4 pb-[calc(env(safe-area-inset-bottom)+1rem)]">
+              <div className="border-t border-[#EEF2F7] p-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] dark:border-white/8">
                 <Link
                   href={headerContent.cta.href}
                   data-coming-soon="true"

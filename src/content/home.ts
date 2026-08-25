@@ -229,7 +229,6 @@ export const creditScore = {
     brand: "Equifax",
     suffix: "Secure SSL Connection",
   },
-  gaugeSrc: "/home/Gauge-Canvas (1).png",
   gauge: {
     score: 750,
     min: 300,

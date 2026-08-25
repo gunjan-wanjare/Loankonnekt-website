@@ -1,0 +1,42 @@
+"use client";
+
+import { motion, useTransform } from "framer-motion";
+import { useIntroPhase } from "@/components/FloatingLogo";
+import { useScrollHandoffProgress } from "@/components/ScrollHandoff";
+import { YakaBrandMark } from "@/components/YakaBrandMark";
+import { site } from "@/content";
+
+/**
+ * Hero-corner YAKA mark + tagline (same composition as the splash).
+ * Invisible until intro flight lands, then fades out as scroll handoff starts
+ * so the floating clone can take over into the nav (icon only).
+ */
+export function HeroYakaAnchor() {
+  const { phase } = useIntroPhase();
+  const progress = useScrollHandoffProgress();
+  const scrollOpacity = useTransform(progress, [0, 0.08], [1, 0]);
+  const visible = phase === "ready";
+
+  return (
+    <motion.a
+      id="yaka-logo-anchor"
+      href={site.brandUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="A YAKA Brand"
+      className="absolute right-4 top-22 z-20 hidden md:block md:right-6 lg:right-10"
+      style={{
+        opacity: visible ? scrollOpacity : 0,
+        pointerEvents: visible ? "auto" : "none",
+      }}
+    >
+      <YakaBrandMark
+        tone="light"
+        darkLogoSrc={site.yaka.headerDarkSrc}
+        className="max-w-none gap-1.5 sm:gap-2"
+        logoClassName="h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14"
+        taglineClassName="max-w-none whitespace-nowrap text-[10px] md:text-[11px] lg:text-xs"
+      />
+    </motion.a>
+  );
+}

@@ -12,8 +12,8 @@ export function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id={faq.id} className="bg-[#F8FAFC] py-12 sm:py-14 md:py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-5 md:px-8">
+    <section id={faq.id} className="bg-[#F8FAFC] py-12 sm:py-14 md:py-16 dark:bg-white/5">
+      <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <Reveal variants={fadeUpBlur} className="text-center">
           <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
             {faq.headline}
@@ -28,21 +28,21 @@ export function FAQ() {
             const isOpen = open === index;
             return (
               <StaggerItem key={item.q} variants={fadeUp}>
-                <div className="overflow-hidden rounded-[1.15rem] border border-[#E5E7EB] bg-white shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)]">
+                <div className="overflow-hidden rounded-[1.15rem] border border-[#E5E7EB] bg-white shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] dark:border-white/10 dark:bg-[#111A2E] dark:shadow-black/30">
                   <button
                     type="button"
                     className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
                     onClick={() => setOpen(isOpen ? -1 : index)}
                     aria-expanded={isOpen}
                   >
-                    <span className="text-base font-bold leading-snug tracking-normal text-[#051325] sm:text-[18px] sm:leading-none">
+                    <span className="text-base font-bold leading-snug tracking-normal text-[#051325] sm:text-[18px] sm:leading-snug lg:leading-none dark:text-white">
                       {item.q}
                     </span>
                     <motion.span
                       animate={{ rotate: isOpen ? 0 : 180 }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className={cn(
-                        "flex h-8 w-8 shrink-0 items-center justify-center text-[#6B7280]",
+                        "flex h-8 w-8 shrink-0 items-center justify-center text-[#6B7280] dark:text-[#94A3B8]",
                       )}
                     >
                       <ChevronDown size={18} strokeWidth={2.25} />
@@ -57,7 +57,7 @@ export function FAQ() {
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="px-5 pb-5 text-base font-normal leading-[22px] tracking-normal text-[#434657] sm:px-6 sm:pr-14">
+                        <p className="px-5 pb-5 text-base font-normal leading-[22px] tracking-normal text-[#434657] sm:px-6 sm:pr-14 dark:text-[#94A3B8]">
                           {item.a}
                         </p>
                       </motion.div>

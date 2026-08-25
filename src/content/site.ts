@@ -8,7 +8,6 @@ export const site = {
   yakaTagline: "A YAKA Brand",
   logo: {
     src: "/logo.png",
-    iconSrc: "/rupee.svg",
     wordmark: "Loan Konnekt",
     alt: "LoanKonnekt — India’s smart lending marketplace",
   },
@@ -18,6 +17,8 @@ export const site = {
     /** Royal blue mark for light surfaces (scrolled header) — Crediple light */
     /** Header / light surfaces — drop your PNG at public/images/yaka-header.png */
     headerSrc: "/images/yaka-header.png",
+    /** Header mark on dark theme — darkthemelogo.png's color, full-res mask (source file was only 38x34px and blurred on upscale) */
+    headerDarkSrc: "/images/yaka-header-dark.png",
     lightSrc: "/images/yaka-light.png",
     alt: "A YAKA Brand",
     darkText: "#B0C0F8",
@@ -56,7 +57,7 @@ export const header = {
     { label: "Loans", href: "/loans/" },
     { label: "How It Works", href: "/how-it-works/" },
     { label: "About Us", href: "/about/" },
-    { label: "Contact", href: "/contact/" },
+    { label: "Contact", href: "/contact/#contact-form" },
   ],
   cta: { label: "Download App", href: "/download" },
 } as const;
@@ -70,41 +71,41 @@ export const footer = {
     {
       heading: "Products",
       links: [
-        { label: "Loan Origination", href: "/loan-origination" },
-        { label: "Credit Engine", href: "/credit-engine" },
-        { label: "Digital KYC", href: "/digital-kyc" },
-        { label: "Document Vault", href: "/document-vault" },
-        { label: "Risk Analytics", href: "/risk-analytics" },
+        { label: "Loan Origination", href: "/contact/#contact-form" },
+        { label: "Credit Engine", href: "/contact/#contact-form" },
+        { label: "Digital KYC", href: "/contact/#contact-form" },
+        { label: "Document Vault", href: "/contact/#contact-form" },
+        { label: "Risk Analytics", href: "/contact/#contact-form" },
       ],
     },
     {
       heading: "Solutions",
       links: [
-        { label: "Banks & HFCs", href: "/solutions/banks" },
-        { label: "NBFCs", href: "/solutions/nbfcs" },
-        { label: "Fintechs", href: "/solutions/fintechs" },
-        { label: "Microfinance", href: "/solutions/microfinance" },
-        { label: "Corporate Lending", href: "/solutions/corporate" },
+        { label: "Banks & HFCs", href: "/contact/#contact-form" },
+        { label: "NBFCs", href: "/contact/#contact-form" },
+        { label: "Fintechs", href: "/contact/#contact-form" },
+        { label: "Microfinance", href: "/contact/#contact-form" },
+        { label: "Corporate Lending", href: "/contact/#contact-form" },
       ],
     },
     {
       heading: "Resources",
       links: [
-        { label: "Documentation", href: "/docs" },
-        { label: "API Reference", href: "/api" },
-        { label: "Case Studies", href: "/case-studies" },
-        { label: "Blog", href: "/blog" },
-        { label: "Webinars", href: "/webinars" },
+        { label: "Documentation", href: "/contact/#contact-form" },
+        { label: "API Reference", href: "/contact/#contact-form" },
+        { label: "Case Studies", href: "/contact/#contact-form" },
+        { label: "Blog", href: "/contact/#contact-form" },
+        { label: "Webinars", href: "/contact/#contact-form" },
       ],
     },
     {
       heading: "Company",
       links: [
         { label: "About Us", href: "/about/" },
-        { label: "Careers", href: "/careers" },
-        { label: "Press Kit", href: "/press" },
-        { label: "Contact", href: "/contact/" },
-        { label: "Partners", href: "/partners" },
+        { label: "Careers", href: "/contact/#contact-form" },
+        { label: "Press Kit", href: "/contact/#contact-form" },
+        { label: "Contact", href: "/contact/#contact-form" },
+        { label: "Partners", href: "/contact/#contact-form" },
       ],
     },
   ],
@@ -116,7 +117,7 @@ export const footer = {
       href: "https://www.linkedin.com/company/loankonnekt/about/",
     },
     { label: "Privacy Policy", href: "#legal-privacy" },
-    { label: "Terms of Service", href: "#legal-terms" },
+    { label: "Terms of service", href: "#legal-terms" },
     { label: "Cookie Policy", href: "#legal-cookies" },
   ],
 } as const;

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { HeroYakaAnchor } from "@/components/HeroYakaAnchor";
 import { hero } from "@/content";
 import { cn } from "@/lib/utils";
 
@@ -12,40 +13,40 @@ const toneStyles: Record<
   { border: string; from: string; to: string; label: string }
 > = {
   lavender: {
-    border: "border-[#DDC8FF]",
-    from: "from-[rgba(109,40,217,0.12)]",
-    to: "to-[rgba(221,200,255,0.12)]",
-    label: "text-[#6D28D9]",
+    border: "border-[#DDC8FF] dark:border-[rgba(109,40,217,0.45)]",
+    from: "from-[rgba(109,40,217,0.12)] dark:from-[rgba(109,40,217,0.16)]",
+    to: "to-[rgba(221,200,255,0.12)] dark:to-[rgba(221,200,255,0.05)]",
+    label: "text-[#6D28D9] dark:text-[#C4B5FD]",
   },
   sky: {
-    border: "border-[#BFD3FF]",
-    from: "from-[rgba(37,99,235,0.12)]",
-    to: "to-[rgba(191,211,255,0.12)]",
-    label: "text-[#2563EB]",
+    border: "border-[#BFD3FF] dark:border-[rgba(37,99,235,0.45)]",
+    from: "from-[rgba(37,99,235,0.12)] dark:from-[rgba(37,99,235,0.16)]",
+    to: "to-[rgba(191,211,255,0.12)] dark:to-[rgba(191,211,255,0.05)]",
+    label: "text-[#2563EB] dark:text-[#93C5FD]",
   },
   mint: {
-    border: "border-[#BEFFD6]",
-    from: "from-[rgba(22,163,74,0.12)]",
-    to: "to-[rgba(190,255,214,0.12)]",
-    label: "text-[#16A34A]",
+    border: "border-[#BEFFD6] dark:border-[rgba(22,163,74,0.45)]",
+    from: "from-[rgba(22,163,74,0.12)] dark:from-[rgba(22,163,74,0.16)]",
+    to: "to-[rgba(190,255,214,0.12)] dark:to-[rgba(190,255,214,0.05)]",
+    label: "text-[#16A34A] dark:text-[#86EFAC]",
   },
   peach: {
-    border: "border-[#FFDDC6]",
-    from: "from-[rgba(249,115,22,0.12)]",
-    to: "to-[rgba(255,221,198,0.12)]",
-    label: "text-[#F97316]",
+    border: "border-[#FFDDC6] dark:border-[rgba(249,115,22,0.45)]",
+    from: "from-[rgba(249,115,22,0.12)] dark:from-[rgba(249,115,22,0.16)]",
+    to: "to-[rgba(255,221,198,0.12)] dark:to-[rgba(255,221,198,0.05)]",
+    label: "text-[#F97316] dark:text-[#FDBA74]",
   },
   cyan: {
-    border: "border-[#C7F4FF]",
-    from: "from-[rgba(8,145,178,0.12)]",
-    to: "to-[rgba(199,244,255,0.12)]",
-    label: "text-[#0891B2]",
+    border: "border-[#C7F4FF] dark:border-[rgba(8,145,178,0.45)]",
+    from: "from-[rgba(8,145,178,0.12)] dark:from-[rgba(8,145,178,0.16)]",
+    to: "to-[rgba(199,244,255,0.12)] dark:to-[rgba(199,244,255,0.05)]",
+    label: "text-[#0891B2] dark:text-[#67E8F9]",
   },
   rose: {
-    border: "border-[#FFC7D3]",
-    from: "from-[rgba(225,29,72,0.12)]",
-    to: "to-[rgba(255,199,211,0.12)]",
-    label: "text-[#E11D48]",
+    border: "border-[#FFC7D3] dark:border-[rgba(225,29,72,0.45)]",
+    from: "from-[rgba(225,29,72,0.12)] dark:from-[rgba(225,29,72,0.16)]",
+    to: "to-[rgba(255,199,211,0.12)] dark:to-[rgba(255,199,211,0.05)]",
+    label: "text-[#E11D48] dark:text-[#FDA4AF]",
   },
 };
 
@@ -97,7 +98,7 @@ export function Hero() {
   return (
     <section
       id={hero.id}
-      className="relative overflow-hidden bg-white pt-[6.25rem] pb-14 sm:pt-28 sm:pb-16 lg:pb-20"
+      className="relative overflow-hidden bg-white pt-[6.25rem] pb-14 sm:pt-28 sm:pb-16 lg:pb-20 dark:bg-[#0A0F1E]"
     >
       <div
         aria-hidden
@@ -108,7 +109,9 @@ export function Hero() {
         className="pointer-events-none absolute inset-y-0 right-0 w-[42%] bg-[radial-gradient(ellipse_70%_65%_at_100%_42%,rgba(167,139,250,0.09),transparent_72%)]"
       />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-6 px-4 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,10rem)_minmax(0,1fr)_minmax(0,10rem)] lg:gap-4 xl:grid-cols-[minmax(0,10.5rem)_minmax(0,1fr)_minmax(0,10.5rem)]">
+      <HeroYakaAnchor />
+
+      <div className="relative z-10 mx-auto grid max-w-[1340px] items-center gap-6 px-4 sm:px-5 md:px-6 lg:grid-cols-[minmax(0,10rem)_minmax(0,1fr)_minmax(0,10rem)] lg:gap-4 xl:grid-cols-[minmax(0,10.5rem)_minmax(0,1fr)_minmax(0,10.5rem)]">
         <div className="hidden lg:flex lg:flex-col lg:items-center lg:gap-4">
           {left.map((category) => (
             <LoanCard key={category.key} category={category} />
@@ -121,7 +124,7 @@ export function Hero() {
             <span className="block">{hero.headlineAccent}</span>
           </h1>
 
-          <p className="mx-auto mt-5 max-w-[39.4rem] text-center text-base leading-relaxed text-[#434657] sm:mt-6 sm:text-lg lg:text-[20px] lg:leading-[30px]">
+          <p className="mx-auto mt-5 max-w-[39.4rem] text-center text-base leading-relaxed text-[#434657] sm:mt-6 sm:text-lg lg:text-[20px] lg:leading-[30px] dark:text-[#94A3B8]">
             {hero.subcopy}
           </p>
 
@@ -138,21 +141,21 @@ export function Hero() {
               href={hero.secondaryCta.href}
               variant="outlineBrand"
               size="lg"
-              className="h-[50px] w-full rounded-[16px] border-[#0047FF] bg-white px-6 text-base font-medium text-[#0047FF] hover:bg-[#0047FF]/5 sm:w-auto"
+              className="h-[50px] w-full rounded-[16px] border-[#0047FF] bg-white px-6 text-base font-medium text-[#0047FF] hover:bg-[#0047FF]/5 sm:w-auto dark:bg-[#0A0F1E]"
             >
               {hero.secondaryCta.label}
             </Button>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-8 sm:mt-10">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:mt-10 sm:gap-8">
             {hero.stats.map((stat, i) => (
-              <div key={stat.label} className="flex items-center gap-8">
-                {i > 0 && <div className="h-10 w-px bg-[#434657]" />}
+              <div key={stat.label} className="flex items-center gap-6 sm:gap-8">
+                {i > 0 && <div className="hidden h-10 w-px bg-[#434657] sm:block dark:bg-white/10" />}
                 <div className="flex flex-col items-center">
-                  <p className="text-base font-semibold text-[#051325]">
+                  <p className="text-base font-semibold text-[#051325] dark:text-white">
                     {stat.value}
                   </p>
-                  <p className="text-base text-[#434657]">{stat.label}</p>
+                  <p className="text-base text-[#434657] dark:text-[#94A3B8]">{stat.label}</p>
                 </div>
               </div>
             ))}

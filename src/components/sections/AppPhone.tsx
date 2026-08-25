@@ -18,34 +18,34 @@ export function AppPhone({ className }: { className?: string }) {
   return (
     <div className={cn("relative mx-auto w-[270px] sm:w-[290px] lg:w-[300px]", className)}>
       <div className="rounded-[2.65rem] bg-[#111827] p-[10px] shadow-[0_40px_80px_-24px_rgba(0,0,0,0.65)] ring-1 ring-white/10">
-        <div className="relative overflow-hidden rounded-[2.1rem] bg-white">
+        <div className="relative overflow-hidden rounded-[2.1rem] bg-white dark:bg-[#111A2E]">
           <div className="absolute left-1/2 top-2 z-20 h-[22px] w-[92px] -translate-x-1/2 rounded-full bg-[#111827]" />
 
-          <div className="flex items-center justify-between px-6 pb-1 pt-8 text-[11px] font-semibold text-[#111827]">
+          <div className="flex items-center justify-between px-6 pb-1 pt-8 text-[11px] font-semibold text-[#111827] dark:text-white">
             <span>9:41</span>
             <span className="flex items-center gap-1 text-[10px] tracking-tight">
               •••
-              <span className="inline-block h-2.5 w-4 rounded-[2px] border border-[#111827]" />
+              <span className="inline-block h-2.5 w-4 rounded-[2px] border border-[#111827] dark:border-white" />
             </span>
           </div>
 
           <div className="px-5 pb-8 pt-3">
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#DBEAFE] text-sm font-bold text-brand">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#DBEAFE] text-sm font-bold text-brand dark:bg-white/5">
                   {initial}
                 </span>
                 <div>
-                  <p className="text-[15px] font-bold leading-tight text-[#111827]">
+                  <p className="text-[15px] font-bold leading-tight text-[#111827] dark:text-white">
                     {app.greeting}{" "}
                     <span aria-hidden>👋</span>
                   </p>
-                  <p className="mt-0.5 text-[11px] text-[#6B7280]">
+                  <p className="mt-0.5 text-[11px] text-[#6B7280] dark:text-[#94A3B8]">
                     {app.subcopy}
                   </p>
                 </div>
               </div>
-              <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F4F6] text-[#111827]">
+              <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F3F4F6] text-[#111827] dark:bg-white/5 dark:text-white">
                 <Bell size={16} strokeWidth={2} />
               </span>
             </div>
@@ -66,7 +66,7 @@ export function AppPhone({ className }: { className?: string }) {
             </div>
 
             <div className="mt-6">
-              <p className="text-[15px] font-bold text-[#111827]">
+              <p className="text-[15px] font-bold text-[#111827] dark:text-white">
                 {app.categoriesLabel}
               </p>
               <div className="mt-4 grid grid-cols-3 gap-3">
@@ -78,10 +78,10 @@ export function AppPhone({ className }: { className?: string }) {
                       href={category.href}
                       className="flex flex-col items-center gap-2"
                     >
-                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E8F1FF] text-brand">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E8F1FF] text-brand dark:bg-white/5">
                         <Icon size={22} strokeWidth={2} />
                       </span>
-                      <span className="text-[11px] font-medium text-[#4B5563]">
+                      <span className="text-[11px] font-medium text-[#4B5563] dark:text-[#94A3B8]">
                         {category.label}
                       </span>
                     </Link>

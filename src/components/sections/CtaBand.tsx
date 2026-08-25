@@ -19,7 +19,7 @@ export function CtaBand({ headline, subcopy, cta }: CtaBandProps) {
           "linear-gradient(96deg, #267DFF 0%, #0047FF 30%, #0047FF 55%, #001FAE 100%)",
       }}
     >
-      <div className="mx-auto max-w-7xl px-4 text-center sm:px-5 md:px-8">
+      <div className="mx-auto max-w-[1340px] px-4 text-center sm:px-5 md:px-6">
         <Reveal variants={fadeUpBlur}>
           <h2 className="text-[1.5rem] font-bold tracking-tight text-[#FFFFFF] sm:text-[1.75rem] md:text-[2rem]">
             {headline}

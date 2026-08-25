@@ -63,20 +63,20 @@ export default function AboutPage() {
 
         <WhyWeBuilt />
 
-        <section className="bg-white pb-12 sm:pb-14 md:pb-16">
-          <div className="mx-auto max-w-7xl border-t border-dashed border-[#0047FF66] px-4 pt-12 sm:px-5 sm:pt-14 md:px-8 md:pt-16">
+        <section className="bg-white pb-12 sm:pb-14 md:pb-16 dark:bg-[#0A0F1E]">
+          <div className="mx-auto max-w-[1340px] border-t border-dashed border-[#0047FF66] px-4 pt-12 sm:px-5 sm:pt-14 md:px-6 md:pt-16">
             <InfoCardGrid
               cards={[...missionCards]}
               columns={2}
-              cardClassName="rounded-[1.5rem] bg-[#0047FF14] px-8 py-8 text-left sm:px-10 sm:py-9"
+              cardClassName="rounded-[1.5rem] bg-[#0047FF14] px-8 py-8 text-left sm:px-10 sm:py-9 dark:bg-[#111827]"
               titleClassName="text-[1.25rem] font-semibold leading-6 tracking-normal text-[#0047FF] lg:text-[24px]"
-              descriptionClassName="mt-3 text-base font-normal leading-[1.6] tracking-normal text-[#051325] lg:text-[20px] lg:leading-[30px]"
+              descriptionClassName="mt-3 text-base font-normal leading-[1.6] tracking-normal text-[#051325] lg:text-[20px] lg:leading-[30px] dark:text-[#E2E8F0]"
             />
           </div>
         </section>
 
-        <section className="bg-[#F8FAFF] py-12 sm:py-14 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+        <section className="bg-[#F8FAFF] py-12 sm:py-14 md:py-16 dark:bg-white/5">
+          <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
             <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
               <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
                 {coreValues.headline}
@@ -86,9 +86,9 @@ export default function AboutPage() {
               <InfoCardGrid
                 cards={[...coreValues.cards]}
                 columns={4}
-                cardClassName="rounded-[1.35rem] bg-white p-6 sm:p-7"
-                titleClassName="text-[20px] font-bold leading-none tracking-normal text-[#051325]"
-                descriptionClassName="mt-2 text-[16px] font-normal leading-[22px] tracking-normal text-[#434657]"
+                cardClassName="rounded-[1.35rem] bg-white p-6 sm:p-7 dark:bg-[#111A2E]"
+                titleClassName="text-[20px] font-bold leading-none tracking-normal text-[#051325] dark:text-white"
+                descriptionClassName="mt-2 text-[16px] font-normal leading-[22px] tracking-normal text-[#434657] dark:text-[#94A3B8]"
               />
             </div>
           </div>
@@ -96,8 +96,8 @@ export default function AboutPage() {
 
         <Support />
 
-        <section className="bg-white py-12 sm:py-14 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-8">
+        <section className="bg-white py-12 sm:py-14 md:py-16 dark:bg-[#0A0F1E]">
+          <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
             <Reveal variants={fadeUpBlur} className="mx-auto max-w-3xl text-center">
               <h2 className="heading-gradient text-[1.6rem] font-bold tracking-tight sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem]">
                 {beliefs.headline}
@@ -107,9 +107,9 @@ export default function AboutPage() {
               <InfoCardGrid
                 cards={[...beliefs.cards]}
                 columns={4}
-                cardClassName="rounded-[1.35rem] border border-solid border-[#E2E8F0] bg-[#0047FF14] p-6 sm:p-7"
+                cardClassName="rounded-[1.35rem] border border-solid border-[#E2E8F0] bg-[#0047FF14] p-6 sm:p-7 dark:border-white/10"
                 titleClassName="text-[24px] font-bold leading-none tracking-normal text-[#0047FF]"
-                descriptionClassName="mt-2 text-[18px] font-normal leading-6 tracking-normal text-[#051325]"
+                descriptionClassName="mt-2 text-[18px] font-normal leading-6 tracking-normal text-[#051325] dark:text-[#E2E8F0]"
               />
             </div>
           </div>

@@ -1,7 +1,7 @@
 /** Contact page content — sourced from Figma "LoanKonnect - Contact" */
 
 export const contactHero = {
-  headline: ["Have a Question?", "We're here to help you"],
+  headline: ["How can we help", "you today?"],
   supporting:
     "Share a few details about your legal requirement and our team will help you understand what comes next.",
   askLabel: "Or just wanna say hi?",

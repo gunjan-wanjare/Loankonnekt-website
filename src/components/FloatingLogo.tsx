@@ -129,20 +129,38 @@ export function FloatingLogo({ phase, onIntroComplete }: FloatingLogoProps) {
           opacity: 1,
         }}
         transition={{
-          type: "spring",
-          stiffness: 90,
-          damping: 18,
-          mass: 1,
+          // Top resolves much faster than left: the mark rises clear of the
+          // hero copy/stats first, then glides across near header height —
+          // an arc instead of a straight diagonal cutting through the text.
+          top: { type: "spring", stiffness: 170, damping: 22, mass: 0.7 },
+          left: { type: "spring", stiffness: 80, damping: 18, mass: 1 },
+          width: { type: "spring", stiffness: 90, damping: 18, mass: 1 },
+          height: { type: "spring", stiffness: 90, damping: 18, mass: 1 },
+          opacity: { duration: 0.3 },
         }}
         onAnimationComplete={handleLand}
       >
         <Image
-          src={site.yaka.softSrc}
-          alt="A YAKA Brand"
+          src={site.yaka.lightSrc}
+          alt=""
+          aria-hidden
           fill
           priority
           quality={100}
-          className="object-contain"
+          unoptimized
+          sizes="240px"
+          className="object-contain dark:hidden"
+        />
+        <Image
+          src={site.yaka.headerDarkSrc}
+          alt=""
+          aria-hidden
+          fill
+          priority
+          quality={100}
+          unoptimized
+          sizes="240px"
+          className="hidden object-contain dark:block"
         />
       </motion.div>
     );
