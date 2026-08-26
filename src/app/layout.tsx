@@ -6,7 +6,12 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { seo, site } from "@/content";
 import "./globals.css";
 
-const NO_FLASH_THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("loankonnekt-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();`;
+// Set data-theme before paint so there's no light/dark flash on load.
+// Cross-brand domains (loankonnekt.com, lawvix.com, crediple.com, ...) can't
+// share localStorage/cookies, so a link handing off to another brand appends
+// ?theme=dark|light — read that first, persist it, then strip it from the
+// URL. Falls back to the saved preference, then the existing default (light).
+const NO_FLASH_THEME_SCRIPT = `(function(){try{var p=new URLSearchParams(location.search);var u=p.get("theme");var t;if(u==="dark"||u==="light"){t=u;localStorage.setItem("theme",t);p.delete("theme");var q=p.toString();history.replaceState(null,"",location.pathname+(q?"?"+q:"")+location.hash);}else{t=localStorage.getItem("theme");}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

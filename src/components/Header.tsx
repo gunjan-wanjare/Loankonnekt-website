@@ -18,6 +18,7 @@ import Image from "next/image";
 import { Logo } from "@/components/ui/Logo";
 import { useScrollHandoffProgress } from "@/components/ScrollHandoff";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTheme, withThemeParam } from "@/components/ThemeProvider";
 import { header as headerContent, site } from "@/content";
 import { cn } from "@/lib/utils";
 
@@ -35,6 +36,7 @@ export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/" || pathname === "";
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
   // On the home page the YAKA mark lives in the Hero's top-right corner first;
   // ScrollHandoffLogo flies it here, and this icon fades in right as that
   // flight lands (same progress value drives both, so they stay in sync).
@@ -100,7 +102,7 @@ export function Header() {
 
             <motion.a
               id="yaka-nav-anchor"
-              href={site.brandUrl}
+              href={withThemeParam(site.brandUrl, theme)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="A YAKA Brand"
@@ -138,7 +140,7 @@ export function Header() {
           <div className="flex items-center gap-1.5 lg:hidden">
             <ThemeToggle className="h-9 w-9" />
             <a
-              href={site.brandUrl}
+              href={withThemeParam(site.brandUrl, theme)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="A YAKA Brand"

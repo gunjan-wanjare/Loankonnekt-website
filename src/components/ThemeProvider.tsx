@@ -9,9 +9,25 @@ type ThemeContextValue = {
   toggleTheme: () => void;
 };
 
-export const THEME_STORAGE_KEY = "loankonnekt-theme";
+export const THEME_STORAGE_KEY = "theme";
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
+
+/**
+ * Cross-brand domains (loankonnekt.com, lawvix.com, crediple.com, ...) can't share
+ * localStorage/cookies — attach the current theme as a query param on outbound
+ * links to another brand's site so it lands in dark/light mode already matched.
+ * The receiving site's anti-flash script (see layout.tsx) reads it back off.
+ */
+export function withThemeParam(href: string, theme: Theme): string {
+  try {
+    const url = new URL(href);
+    url.searchParams.set("theme", theme);
+    return url.toString();
+  } catch {
+    return href;
+  }
+}
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");

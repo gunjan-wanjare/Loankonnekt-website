@@ -3,6 +3,7 @@
 import { motion, useTransform } from "framer-motion";
 import { useIntroPhase } from "@/components/FloatingLogo";
 import { useScrollHandoffProgress } from "@/components/ScrollHandoff";
+import { useTheme, withThemeParam } from "@/components/ThemeProvider";
 import { YakaBrandMark } from "@/components/YakaBrandMark";
 import { site } from "@/content";
 
@@ -16,11 +17,12 @@ export function HeroYakaAnchor() {
   const progress = useScrollHandoffProgress();
   const scrollOpacity = useTransform(progress, [0, 0.08], [1, 0]);
   const visible = phase === "ready";
+  const { theme } = useTheme();
 
   return (
     <motion.a
       id="yaka-logo-anchor"
-      href={site.brandUrl}
+      href={withThemeParam(site.brandUrl, theme)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="A YAKA Brand"
