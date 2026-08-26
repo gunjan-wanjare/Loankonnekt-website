@@ -1,10 +1,16 @@
 "use client";
 
-import Image from "next/image";
 import { Star } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { testimonials } from "@/content";
 import { fadeUp, fadeUpBlur, staggerContainer } from "@/lib/motion";
+
+function getInitials(name: string) {
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0]?.[0] ?? "";
+  const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
+  return `${first}${last}`.toUpperCase();
+}
 
 export function Testimonials() {
   return (
@@ -27,19 +33,16 @@ export function Testimonials() {
             <StaggerItem key={item.name} variants={fadeUp}>
               <article className="flex h-full flex-col rounded-[1.35rem] bg-[#EEF2FF] p-6 sm:p-7 dark:bg-white/5">
                 <div className="flex items-center gap-3">
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.name}
-                    width={48}
-                    height={48}
-                    unoptimized
-                    className="h-12 w-12 shrink-0 rounded-full object-cover"
-                  />
+                  <div
+                    aria-hidden="true"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold tracking-tight text-[#111827]"
+                  >
+                    {getInitials(item.name)}
+                  </div>
                   <div>
                     <p className="font-bold tracking-tight text-[#111827] dark:text-white">
                       {item.name}
                     </p>
-                    <p className="text-sm text-[#6B7280] dark:text-[#94A3B8]">{item.role}</p>
                   </div>
                 </div>
 
