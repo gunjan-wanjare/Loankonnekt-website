@@ -147,16 +147,48 @@ a {
 
 [data-theme="dark"] .emi-panel-left {
   background: #111827;
-  border-width: 1px 0px 1px 1px;
-  border-style: solid;
-  border-color: #334155;
 }
 
 [data-theme="dark"] .emi-panel-right {
   background: #0a0f1a;
-  border-width: 1px 0px 1px 1px;
-  border-style: solid;
-  border-color: #334155;
+}
+
+@media (max-width: 1023px) {
+  [data-theme="dark"] .emi-panel-left,
+  [data-theme="dark"] .emi-panel-right {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #334155;
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-theme="dark"] .emi-panel-left {
+    border-radius: 1rem 0 0 1rem;
+  }
+
+  [data-theme="dark"] .emi-panel-right {
+    border-radius: 0 1rem 1rem 0;
+  }
+
+  [data-theme="light"] .emi-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  [data-theme="light"] .emi-panel-left {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 2.5rem;
+    background: #f8fafc;
+  }
+
+  [data-theme="light"] .emi-panel-right {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-right: 2.5rem;
+    background: #e2e8f0;
+  }
 }
 
 .scrollbar-none {

@@ -100,8 +100,8 @@ export function EmiCalculator() {
     >
       <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">
         <Reveal variants={fadeUpBlur}>
-          <div className="rounded-[20px] bg-white p-6 shadow-[0_18px_50px_-28px_rgba(15,23,42,0.28)] dark:bg-[#111A2E] dark:shadow-black/30 sm:rounded-[24px] sm:p-8 md:p-10">
-            <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)] lg:gap-0">
+          <div className="emi-card rounded-[20px] bg-white p-6 shadow-[0_18px_50px_-28px_rgba(15,23,42,0.28)] dark:bg-[#111A2E] dark:shadow-black/30 sm:rounded-[24px] sm:p-8 md:p-10">
+            <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)] lg:gap-0 dark:lg:overflow-hidden dark:lg:rounded-2xl dark:lg:border dark:lg:border-[#334155]">
               <div className="emi-panel-left min-w-0 dark:rounded-2xl dark:p-6 lg:pr-10 xl:pr-12">
                 <h2 className="heading-gradient text-[clamp(1.1rem,2.8vw,1.9rem)] font-bold tracking-tight max-lg:whitespace-normal lg:whitespace-nowrap">
                   {content.headline}
@@ -138,7 +138,7 @@ export function EmiCalculator() {
                 </div>
               </div>
 
-              <div aria-hidden className="hidden bg-[#E5E7EB] dark:bg-transparent lg:block" />
+              <div aria-hidden className="hidden bg-[#E5E7EB] dark:bg-[#334155] lg:block" />
 
               <div className="emi-panel-right border-t border-[#E5E7EB] pt-8 dark:rounded-2xl dark:border-t-0 dark:p-6 lg:border-t-0 lg:pt-0 lg:pl-10 xl:pl-12">
                 <div className="text-center">

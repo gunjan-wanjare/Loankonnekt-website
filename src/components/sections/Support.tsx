@@ -18,7 +18,7 @@ export function Support() {
       className="py-14 sm:py-16 lg:py-[4.25rem]"
       style={{
         background:
-          "linear-gradient(90deg, #3692FF 0%, #1E71FD 12%, #0047FF 28%, #0047FF 58%, #0027C0 82%, #001AA5 100%)",
+          "linear-gradient(90deg, #3692FF 0%, #1E71FD 12%, #0047FF 28%, #0047FF 58%, #1E45D6 82%, #1C3ABF 100%)",
       }}
     >
       <div className="mx-auto max-w-[1340px] px-4 sm:px-5 md:px-6">

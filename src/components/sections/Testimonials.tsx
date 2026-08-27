@@ -1,6 +1,6 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { Star, StarHalf } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { testimonials } from "@/content";
 import { fadeUp, fadeUpBlur, staggerContainer } from "@/lib/motion";
@@ -47,15 +47,40 @@ export function Testimonials() {
                 </div>
 
                 <div className="mt-4 flex gap-1" aria-label={`${item.rating} out of 5 stars`}>
-                  {Array.from({ length: item.rating }).map((_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      size={16}
-                      fill="none"
-                      stroke="#FBBF24"
-                      strokeWidth={1.5}
-                    />
-                  ))}
+                  {Array.from({ length: 5 }).map((_, starIndex) => {
+                    const diff = item.rating - starIndex;
+                    if (diff >= 1) {
+                      return (
+                        <Star
+                          key={starIndex}
+                          size={16}
+                          fill="#FBBF24"
+                          stroke="#FBBF24"
+                          strokeWidth={1.5}
+                        />
+                      );
+                    }
+                    if (diff >= 0.5) {
+                      return (
+                        <StarHalf
+                          key={starIndex}
+                          size={16}
+                          fill="#FBBF24"
+                          stroke="#FBBF24"
+                          strokeWidth={1.5}
+                        />
+                      );
+                    }
+                    return (
+                      <Star
+                        key={starIndex}
+                        size={16}
+                        fill="none"
+                        stroke="#FBBF24"
+                        strokeWidth={1.5}
+                      />
+                    );
+                  })}
                 </div>
 
                 <p className="mt-4 text-[15px] font-normal leading-[22px] tracking-normal text-[#051325] dark:text-white">

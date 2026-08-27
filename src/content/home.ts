@@ -355,7 +355,7 @@ export const testimonials = {
       name: "Rahul Verma",
       role: "Software Engineer",
       imageSrc: "/home/testimonial-rahul.png",
-      rating: 5,
+      rating: 4,
       quote:
         "LoanKonnekt helped me secure money for my medical emergency in less than 10 minutes. The direct integration and lack of physical verification was incredibly convenient.",
     },
@@ -363,7 +363,7 @@ export const testimonials = {
       name: "Priyah Patel",
       role: "Boutique Owner",
       imageSrc: "/home/testimonial-priyah.png",
-      rating: 5,
+      rating: 4.5,
       quote:
         "As a small business owner, getting loans is usually an uphill task. LoanKonnekt's easy self-employed flow verified my business and disbursed ₹2,00,000 without any issues.",
     },
