@@ -21,8 +21,8 @@ export const site = {
     headerDarkSrc: "/images/yaka-header-dark.png",
     lightSrc: "/images/yaka-light.png",
     alt: "A YAKA Brand",
-    darkText: "#B0C0F8",
-    lightText: "#2F80ED",
+    darkText: "#E2E8F0",
+    lightText: "#0047AB",
   },
 } as const;
 

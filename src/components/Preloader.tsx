@@ -75,44 +75,50 @@ export function Preloader({ onComplete }: PreloaderProps) {
             transition={{ duration: 1, ease: "easeOut" }}
             className="pointer-events-none absolute rounded-full blur-3xl"
             style={{
-              width: 400,
-              height: 400,
+              width: "min(400px, 70vw)",
+              height: "min(400px, 70vw)",
               background:
                 "radial-gradient(circle, rgba(37,99,235,0.28) 0%, rgba(59,130,246,0.1) 45%, transparent 70%)",
             }}
           />
 
-          <AnimatePresence mode="wait">
-            {stage === "brand" ? (
-              <motion.div
-                key="loankonnekt-mark"
-                initial={{ scale: 1.2, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.92, opacity: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 flex min-h-[17.5rem] w-[min(90vw,22rem)] flex-col items-center justify-center gap-5"
-              >
-                <Logo tone="dark" size="xl" />
-                <LoadingBar delay={0.3} />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="yaka-mark"
-                initial={{ scale: 1.2, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 flex min-h-[17.5rem] w-[min(90vw,22rem)] flex-col items-center justify-center gap-5"
-              >
-                <YakaBrandMark
-                  tone="dark"
-                  logoClassName="h-16 w-16 sm:h-20 sm:w-20"
-                  taglineClassName="max-w-none text-xs sm:text-sm"
-                  className="max-w-none gap-3 sm:gap-3.5"
-                />
-                <LoadingBar delay={0.5} />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <motion.div
+            initial={{ scale: 3.5, opacity: 0, filter: "blur(18px)" }}
+            animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 flex min-h-[17.5rem] w-[min(90vw,22rem)] flex-col items-center justify-center gap-5"
+          >
+            <AnimatePresence mode="wait">
+              {stage === "brand" ? (
+                <motion.div
+                  key="loankonnekt-mark"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  <Logo tone="dark" size="xl" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="yaka-mark"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  <YakaBrandMark
+                    tone="dark"
+                    logoClassName="h-16 w-16 sm:h-20 sm:w-20"
+                    taglineClassName="max-w-none text-xs sm:text-sm"
+                    className="max-w-none gap-3 sm:gap-3.5"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <LoadingBar delay={0.5} />
+          </motion.div>
         </motion.div>
       ) : null}
     </AnimatePresence>

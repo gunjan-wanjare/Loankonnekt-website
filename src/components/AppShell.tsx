@@ -12,7 +12,7 @@ import {
   FloatingLogo,
   IntroContext,
 } from "@/components/FloatingLogo";
-import { ScrollHandoffProvider, ScrollHandoffLogo } from "@/components/ScrollHandoff";
+import { ScrollHandoffProvider } from "@/components/ScrollHandoff";
 import { useComingSoonLinks } from "@/hooks/useComingSoonLinks";
 import { useLegalModal } from "@/hooks/useLegalModal";
 import {
@@ -80,8 +80,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         {showIntro && phase === "flying" ? (
           <FloatingLogo phase={phase} onIntroComplete={handleIntroComplete} />
         ) : null}
-
-        {isHome && phase === "ready" ? <ScrollHandoffLogo /> : null}
 
         <Header />
         {children}

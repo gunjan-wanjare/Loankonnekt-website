@@ -38,11 +38,11 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const { theme } = useTheme();
   // On the home page the YAKA mark lives in the Hero's top-right corner first;
-  // ScrollHandoffLogo flies it here, and this icon fades in right as that
-  // flight lands (same progress value drives both, so they stay in sync).
+  // this icon cross-fades in as that hero mark fades out (same progress value
+  // drives both, so they stay in sync — no separate flying clone).
   const progress = useScrollHandoffProgress();
-  const scrollNavOpacity = useTransform(progress, [0.85, 1], [0, 1]);
-  const scrollNavPointerEvents = useTransform(progress, (p) => (p > 0.9 ? "auto" : "none"));
+  const scrollNavOpacity = useTransform(progress, [0, 0.3], [0, 1]);
+  const scrollNavPointerEvents = useTransform(progress, (p) => (p > 0.25 ? "auto" : "none"));
 
   useEffect(() => {
     setOpen(false);

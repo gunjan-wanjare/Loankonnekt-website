@@ -9,13 +9,13 @@ import { site } from "@/content";
 
 /**
  * Hero-corner YAKA mark + tagline (same composition as the splash).
- * Invisible until intro flight lands, then fades out as scroll handoff starts
- * so the floating clone can take over into the nav (icon only).
+ * Invisible until intro flight lands, then cross-fades out as the header's
+ * own nav icon fades in at the same scroll progress (no floating clone).
  */
 export function HeroYakaAnchor() {
   const { phase } = useIntroPhase();
   const progress = useScrollHandoffProgress();
-  const scrollOpacity = useTransform(progress, [0, 0.08], [1, 0]);
+  const scrollOpacity = useTransform(progress, [0, 0.3], [1, 0]);
   const visible = phase === "ready";
   const { theme } = useTheme();
 
