@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Logo } from "@/components/ui/Logo";
 import { YakaBrandMark } from "@/components/YakaBrandMark";
+import { site } from "@/content";
 
 const BRAND_MS = 1400;
 const YAKA_MS = 1600;
@@ -109,8 +110,9 @@ export function Preloader({ onComplete }: PreloaderProps) {
                 >
                   <YakaBrandMark
                     tone="dark"
+                    logoSrc={site.yaka.headerDarkSrc}
                     logoClassName="h-16 w-16 sm:h-20 sm:w-20"
-                    taglineClassName="max-w-none text-xs sm:text-sm"
+                    taglineClassName="max-w-none text-xs text-[#E2E8F0] sm:text-sm"
                     className="max-w-none gap-3 sm:gap-3.5"
                   />
                 </motion.div>
