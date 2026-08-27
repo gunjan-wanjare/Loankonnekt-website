@@ -363,7 +363,7 @@ export const testimonials = {
       name: "Priyah Patel",
       role: "Boutique Owner",
       imageSrc: "/home/testimonial-priyah.png",
-      rating: 4.5,
+      rating: 3,
       quote:
         "As a small business owner, getting loans is usually an uphill task. LoanKonnekt's easy self-employed flow verified my business and disbursed ₹2,00,000 without any issues.",
     },
