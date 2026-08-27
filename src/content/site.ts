@@ -14,12 +14,14 @@ export const site = {
   yaka: {
     /** Soft mark for dark navy (hero / preloader) — Crediple dark */
     softSrc: "/images/yaka-soft.png",
-    /** Royal blue mark for light surfaces (scrolled header) — Crediple light */
-    /** Header / light surfaces — drop your PNG at public/images/yaka-header.png */
-    headerSrc: "/images/yaka-header.png",
+    /** Royal blue mark for light surfaces (scrolled header) — Crediple light.
+     *  Full-res mask: yaka-header.png/yaka-light.png are only 38x34px and
+     *  blur badly on upscale, so header/light surfaces use the full-res
+     *  version of the same mark instead. */
+    headerSrc: "/images/yaka-mark-hq.png",
     /** Header mark on dark theme — darkthemelogo.png's color, full-res mask (source file was only 38x34px and blurred on upscale) */
     headerDarkSrc: "/images/yaka-header-dark.png",
-    lightSrc: "/images/yaka-light.png",
+    lightSrc: "/images/yaka-mark-hq.png",
     alt: "A YAKA Brand",
     darkText: "#E2E8F0",
     lightText: "#0047AB",

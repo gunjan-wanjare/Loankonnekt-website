@@ -40,8 +40,8 @@ export function YakaBrandMark({
   darkLogoSrc,
 }: YakaBrandMarkProps) {
   const isDark = tone === "dark";
-  const resolvedLogoSrc = logoSrc ?? (isDark ? "/images/yaka-soft.png" : "/images/yaka-light.png");
-  const taglineClass = isDark ? "text-[#B0C0F8]" : "text-[#155DFC]";
+  const resolvedLogoSrc = logoSrc ?? (isDark ? "/images/yaka-soft.png" : "/images/yaka-mark-hq.png");
+  const taglineClass = isDark ? "text-[#B0C0F8]" : "text-[#0047AB]";
 
   return (
     <div
