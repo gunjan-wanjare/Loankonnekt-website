@@ -3,10 +3,6 @@
  */
 let homeIntroCompleted = false;
 
-export function isHomeIntroCompleted() {
-  return homeIntroCompleted;
-}
-
 export function markHomeIntroCompleted() {
   homeIntroCompleted = true;
 }

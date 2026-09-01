@@ -1,18 +1,11 @@
 import type { Variants, Transition } from "framer-motion";
 
-export const easeOut = [0.22, 1, 0.36, 1] as const;
 export const easeOutExpo = [0.16, 1, 0.3, 1] as const;
 
 export const springSnappy: Transition = {
   type: "spring",
   stiffness: 380,
   damping: 28,
-};
-
-export const springSoft: Transition = {
-  type: "spring",
-  stiffness: 260,
-  damping: 26,
 };
 
 export const fadeUp: Variants = {
@@ -31,14 +24,6 @@ export const fadeUpBlur: Variants = {
     y: 0,
     filter: "blur(0px)",
     transition: { duration: 0.95, ease: easeOutExpo },
-  },
-};
-
-export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.7, ease: easeOut },
   },
 };
 
@@ -70,26 +55,6 @@ export const slideInRight: Variants = {
   },
 };
 
-export const heroContainer: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-export const heroItem: Variants = {
-  hidden: { opacity: 0, y: 36, filter: "blur(12px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.9, ease: easeOutExpo },
-  },
-};
-
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {
@@ -107,14 +72,5 @@ export const staggerFast: Variants = {
       staggerChildren: 0.07,
       delayChildren: 0.06,
     },
-  },
-};
-
-export const cardHover = {
-  rest: { y: 0, scale: 1 },
-  hover: {
-    y: -8,
-    scale: 1.01,
-    transition: springSoft,
   },
 };

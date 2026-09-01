@@ -25,24 +25,6 @@ jobs:
           cache: "npm"
 
       # =======================
-      # DEBUG OIDC TOKEN
-      # =======================
-      - name: Get OIDC Token
-        id: oidc
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const token = await core.getIDToken("sts.amazonaws.com");
-            core.setSecret(token);
-            core.setOutput("token", token);
-      - name: Decode OIDC Token
-        run: |
-          TOKEN="${{ steps.oidc.outputs.token }}"
-          PAYLOAD=$(echo "$TOKEN" | cut -d '.' -f2 | tr '_-' '/+' | base64 -d 2>/dev/null || true)
-          echo "===== OIDC TOKEN PAYLOAD ====="
-          echo "$PAYLOAD"
-          echo "=============================="
-      # =======================
       # AWS LOGIN
       # =======================
       - name: Configure AWS credentials
@@ -57,9 +39,9 @@ jobs:
       - name: Build React app
         run: npm run build
         env:
-          NODE_ENV: staging
+          NODE_ENV: production
 
-      - name: Verify dist folder
+      - name: Verify build output
         run: |
           ls -la
           ls -la out
@@ -74,4 +56,4 @@ jobs:
       - name: Deployment summary
         run: |
           echo "# Deployment Successful" >> $GITHUB_STEP_SUMMARY
-          echo "- Static files deployed from dist/" >> $GITHUB_STEP_SUMMARY
+          echo "- Static files deployed from out/" >> $GITHUB_STEP_SUMMARY

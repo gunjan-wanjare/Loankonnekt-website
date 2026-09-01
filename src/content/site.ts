@@ -46,7 +46,7 @@ export const seo = {
     "LoanKonnekt",
   ],
   ogImage: {
-    url: "/images/Frame.svg",
+    url: "/Frame.svg",
     width: 1200,
     height: 630,
     alt: "LoanKonnekt — India’s smart lending marketplace",

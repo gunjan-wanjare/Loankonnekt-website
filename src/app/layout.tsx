@@ -105,17 +105,6 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "default",
   },
-  icons: {
-    icon: [
-      { url: "/favicon.png?v=4", sizes: "any", type: "image/png" },
-      { url: "/favicon-16x16.png?v=4", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png?v=4", sizes: "32x32", type: "image/png" },
-      { url: "/icon-192.png?v=3", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png?v=3", sizes: "512x512", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" }],
-    shortcut: ["/favicon.png?v=4"],
-  },
   other: {
     "brand:url": site.brandUrl,
     "geo.region": "IN",
@@ -132,6 +121,7 @@ export default function RootLayout({
     <html
       lang="en-IN"
       className={`${geistSans.variable} ${plusJakartaSans.variable} ${beVietnamPro.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME_SCRIPT }} />
