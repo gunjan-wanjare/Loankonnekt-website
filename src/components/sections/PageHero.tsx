@@ -58,8 +58,9 @@ export function PageHero({
         <Reveal variants={fadeUpBlur}>
           <h1
             className={cn(
+              "[text-wrap:balance]",
               tall
-                ? "max-w-[48rem] text-[2.35rem] font-bold leading-none tracking-normal sm:text-[3rem] lg:text-[64px]"
+                ? "max-w-[48rem] text-[2.35rem] font-bold leading-none tracking-normal sm:text-[3rem] md:text-[3.5rem] lg:text-[64px]"
                 : "max-w-2xl text-[1.9rem] font-bold leading-[1.12] tracking-tight sm:text-[2.35rem] md:text-[2.75rem] lg:max-w-3xl lg:text-[3.1rem]",
               gradientHeadline && "heading-gradient",
             )}
@@ -117,9 +118,9 @@ export function PageHero({
           >
             <div
               className={cn(
-                "relative mx-auto aspect-[542/484]",
+                "relative aspect-[542/484]",
                 tall
-                  ? "w-[82%] lg:ml-auto lg:w-[88%]"
+                  ? "ml-auto w-[70%] sm:w-[74%] lg:w-[88%]"
                   : largeIllustration
                     ? "w-[92%] lg:ml-auto lg:w-full"
                     : "w-[78%] lg:ml-auto lg:w-[88%]",
@@ -147,7 +148,7 @@ export function PageHero({
                 className={cn(
                   "absolute flex flex-col gap-2.5 sm:gap-3",
                   tall
-                    ? "left-2 top-2 sm:left-0 sm:top-0 lg:-top-4 lg:left-[-0.25rem]"
+                    ? "left-0 top-0 lg:-top-4 lg:left-[-0.25rem]"
                     : "left-2 top-4 sm:left-0 sm:top-[18%] lg:top-[22%]",
                 )}
               >

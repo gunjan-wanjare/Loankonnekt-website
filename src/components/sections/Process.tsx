@@ -53,7 +53,7 @@ export function Process() {
               variants={slideInRight}
               className="flex justify-center self-end lg:justify-end"
             >
-              <div className="relative w-[260px] -translate-x-[4.5rem] sm:w-[300px] sm:-translate-x-16 lg:w-[340px] lg:-translate-x-[5.5rem]">
+              <div className="relative w-[260px] sm:w-[300px] sm:-translate-x-16 lg:w-[340px] lg:-translate-x-[5.5rem]">
                 <Image
                   src={processContent.phoneSrc}
                   alt="LoanKonnekt app — check loan eligibility"

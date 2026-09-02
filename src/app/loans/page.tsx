@@ -35,8 +35,7 @@ export default function LoansPage() {
           secondaryHasArrow
           headline={
             <>
-              Transparent Loans
-              <br />
+              Transparent Loans <br className="hidden lg:block" />
               Designed for Your Life
             </>
           }
