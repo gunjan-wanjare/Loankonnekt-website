@@ -110,7 +110,7 @@ export function PageHero({
             className={cn(
               "relative mx-auto w-full",
               tall
-                ? "max-w-[16.5rem] lg:ml-auto lg:max-w-none"
+                ? "max-w-[16.5rem] sm:max-w-[19rem] md:max-w-[22rem] lg:ml-auto lg:max-w-none"
                 : largeIllustration
                   ? "max-w-[20rem] sm:max-w-md lg:max-w-[28rem]"
                   : "max-w-[16.5rem] sm:max-w-sm lg:max-w-[22rem]",
@@ -120,7 +120,7 @@ export function PageHero({
               className={cn(
                 "relative aspect-[542/484]",
                 tall
-                  ? "ml-auto w-[70%] sm:w-[74%] lg:w-[88%]"
+                  ? "mx-auto w-[70%] sm:w-[74%] md:w-[80%] lg:mr-0 lg:ml-auto lg:w-[88%]"
                   : largeIllustration
                     ? "w-[92%] lg:ml-auto lg:w-full"
                     : "w-[78%] lg:ml-auto lg:w-[88%]",
@@ -145,12 +145,11 @@ export function PageHero({
 
             {badges && badges.length ? (
               <div
-                className={cn(
-                  "absolute flex flex-col gap-2.5 sm:gap-3",
+                className={
                   tall
-                    ? "left-0 top-0 lg:-top-4 lg:left-[-0.25rem]"
-                    : "left-2 top-4 sm:left-0 sm:top-[18%] lg:top-[22%]",
-                )}
+                    ? "mt-5 flex flex-wrap items-center justify-center gap-2 sm:mt-6 sm:gap-2.5 lg:absolute lg:-top-4 lg:left-[-0.25rem] lg:mt-0 lg:flex-col lg:flex-nowrap lg:items-start lg:justify-start lg:gap-3"
+                    : "absolute left-2 top-4 flex flex-col gap-2.5 sm:left-0 sm:top-[18%] sm:gap-3 lg:top-[22%]"
+                }
               >
                 {badges.map((label) => (
                   <span
